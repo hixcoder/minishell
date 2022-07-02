@@ -6,14 +6,17 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/06/29 14:13:03 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/07/02 13:24:37 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 # madatory
-SRCS = main.c 
+PARSING_FOLDER = ./parsing/
+PARSING_FILES  = parse.c quotes.c
+SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
+SRCS = main.c $(SRCS_PARSING)
 
 
 LIBFT_FOLDER = ./libft/

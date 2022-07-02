@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/29 14:03:30 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/02 13:13:03 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,19 @@
 # include <readline/history.h>
 # include "./libft/libft.h"
 
+typedef struct s_command
+{
+    char    *cmd;
+    char    *atr;
+    char    *input;
+}   t_command;
+
 typedef struct s_data
 {
-    char    *args;   
+    char    *args;
+    char    **cmds;
 }   t_data;
 
 void    ft_readline(t_data *data);
+int    ft_quotes_handler(char q, char *start);
 #endif
