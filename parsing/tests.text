@@ -1,0 +1,13 @@
+echo
+echo -n
+cd 
+pwd
+export
+unset
+env
+exit
+
+echo $?
+echo "cat lol.c | cat > lol.c"
+echo "cat lol.c | cat > lol.c"
+echo '$USER'
