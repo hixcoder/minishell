@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/21 12:13:35 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:31:03 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 {
 	char        *args;
 	t_command   *cmds;
-	int			*cmds_len;
+	int			cmds_len;
 }   t_data;
 
 void    ft_readline(t_data *data);

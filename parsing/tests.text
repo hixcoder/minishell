@@ -11,3 +11,5 @@ echo $?
 echo "cat lol.c | cat > lol.c"
 echo "cat lol.c | cat > lol.c"
 echo '$USER'
+
+c1 a1 a2 a3  | c2 a1 a2 |c3 a1 a2 a3 a4

@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/21 12:15:05 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/22 09:18:48 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ void    ft_readline(t_data *data)
 		cmdsTmp = ft_split(ft_strtrim(data->args, " "), '|');
 		printf("args : %s\n", data->args);
 
-		// trim the commands and split them by " " then fill the values of data->cmds
 		i = -1;
+		while (cmdsTmp[++i])
+			data->cmds_len = i + 1;
+		data->cmds = malloc(sizeof(t_command) * data->cmds_len);
+		if (!data->cmds)
+			exit(1);
+		i = -1;
+		// trim the commands and split them by " " then fill the values of data->cmds
 		while (cmdsTmp[++i])
 		{
 			printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
 			data->cmds[i].atr = ft_split(ft_strtrim(cmdsTmp[i], " "), ' ');
-			j = -1;
-			while (data->cmds[i].atr[++j])
-			{
-				if (j == 0)
-					data->cmds[i].cmd = data->cmds[i].atr[j];
-			}
+			data->cmds[i].cmd = data->cmds[i].atr[0];
+			data->cmds[i].atr = &(data->cmds[i].atr[1]);
 		}
-		data->cmds_len = i;
-		data->cmds[j].atr = &(data->cmds[j].atr[1]);
 
 		// here I print the values of data->cmds
 		j = -1;
