@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/21 12:31:03 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:08:38 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ typedef struct s_data
 }   t_data;
 
 void    ft_readline(t_data *data);
+void ft_error(char *error);
+
 int    ft_quotes_handler(char q, char *start);
+int    ft_check_quotes(char *s);
 #endif
