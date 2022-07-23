@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/22 11:08:24 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/23 12:06:13 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void    ft_readline(t_data *data)
 		// check if quotes are closed
 		if (ft_check_quotes(data->args) == 1)
 		{
-			printf("Error: inclosed quotes\n");
+			printf("syntax error: unclosed quotes\n");
 			continue;
 		}
 
 		// trim and split the input by '|'
-		cmdsTmp = ft_split(ft_strtrim(data->args, " "), '|');
+		cmdsTmp = ft_split2(ft_strtrim(data->args, " "), '|');
 
 		i = -1;
 		while (cmdsTmp[++i])
@@ -55,7 +55,7 @@ void    ft_readline(t_data *data)
 		while (cmdsTmp[++i])
 		{
 			printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
-			data->cmds[i].atr = ft_split(ft_strtrim(cmdsTmp[i], " "), ' ');
+			data->cmds[i].atr = ft_split2(ft_strtrim(cmdsTmp[i], " "), ' ');
 			free(cmdsTmp[i]);
 			data->cmds[i].cmd = data->cmds[i].atr[0];
 			data->cmds[i].atr = &(data->cmds[i].atr[1]);
