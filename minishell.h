@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/23 11:24:16 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/24 12:48:54 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,32 @@
 # include <readline/history.h>
 # include "./libft/libft.h"
 
+// our types
+typedef enum type
+{
+	ARG, // word
+	FILE_IN, // '<'
+	FILE_OUT, // '>'
+	HERE_DOC, // '<<'
+	FILE_OUT_APD // '>>'
+	
+	
+}	Type;
+
+typedef struct s_word
+{
+	char    *word;
+	Type	t;
+}   t_word;
+
 // cmd : command
 // atr : atributes
 typedef struct s_command
 {
 	char    *cmd;
 	char    **atr;
+	int		fd_in;
+	int		fd_out;
 }   t_command;
 
 typedef struct s_data
@@ -38,7 +58,7 @@ typedef struct s_data
 }   t_data;
 
 void    ft_readline(t_data *data);
-void ft_error(char *error);
+void	ft_error(char *error);
 
 int		ft_quotes_handler(char q, char *start);
 int		ft_check_quotes(char *s);
