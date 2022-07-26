@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/07/26 09:55:30 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/07/26 13:09:11 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 # madatory
 PARSING_FOLDER = ./parsing/
-PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c
+PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c expand.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 SRCS = main.c $(SRCS_PARSING)
 
