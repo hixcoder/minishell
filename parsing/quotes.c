@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 12:14:45 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/23 09:35:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/26 09:46:37 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,3 @@ int    ft_check_quotes(char *s)
     return (0);
 }
 
-// int    ft_quotes_handler(char *s)
-// {
-//     int i;
-    
-//     i = -1;
-//     while(s[++i])
-//     {
-//         if (s[i] == q)
-//             return (i);
-//     }
-//     return (-1);
-// }
-
-// int    ft_quotes_checker(char q, char *start)
-// {
-//     int i;
-    
-//     i = -1;
-//     while(start[++i])
-//     {
-//         if (start[i] == q)
-//             return (i);
-//     }
-//     return (-1);
-// }

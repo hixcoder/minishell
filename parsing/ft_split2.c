@@ -12,27 +12,6 @@
 
 #include "../minishell.h"
 
-static int	is_insid_qots(char const *s, int j)
-{
-	int i;
-    int q1;
-    int q2;
-
-    i = -1;
-    q1 = 0;
-    q2 = 0;
-    while (++i < j)
-    {
-        if (s[i] == '\'' && q2 % 2 == 0)
-            q1++;
-        if (s[i] == '\"' && q1 % 2 == 0)
-            q2++;
-    }
-    if (q1 % 2 != 0 || q2 % 2 != 0)
-        return (1);
-	return (0);
-}
-
 static int	ft_rowlen(char const *s, char c)
 {
 	int	j;
