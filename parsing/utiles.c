@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/26 12:41:34 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/27 10:28:52 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,12 @@ void	ft_expander(t_data *data)
 {
 	int i;
 	int j;
-	int quots_nbr;
 	
 	i = -1;
 	while (++i < data->cmds_len)
 	{
 		j = -1;
 		while (data->cmds[i].atr[++j])
-		{
-			quots_nbr = ft_isquoted(data->cmds[i].atr[j]);
-			printf("data->cmds[%d].atr[%d] = %s   quotes nbr = %d\n",i,j, data->cmds[i].atr[j],quots_nbr);
-			if (quots_nbr > 0)
-				ft_expand(data, i, j, quots_nbr);
-		}
+			ft_expand(data, i, j);
 	}
 }

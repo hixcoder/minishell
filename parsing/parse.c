@@ -6,16 +6,29 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/26 12:47:46 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/27 10:11:42 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void    ft_readline(t_data *data)
+// here I print the values of data->cmds
+void ft_print_values(t_data *data)
 {
 	int j;
-	
+	printf("===========================\n");
+	j = -1;
+	while (++j < data->cmds_len)
+	{
+		printf("data->cmds[%d].cmd : %s\n", j, data->cmds[j].cmd);
+		int k = -1;
+		while (data->cmds[j].atr[++k])
+			printf("data->cmds[%d].atr[%d] : %s\n", j, k, data->cmds[j].atr[k]);
+	}
+}
+
+void    ft_readline(t_data *data)
+{
 	while (1)
 	{
 		data->args = readline("Minishell ++> ");
@@ -29,26 +42,10 @@ void    ft_readline(t_data *data)
 			continue;
 		}
 		ft_spliter(data);
-
-		printf("===========================\n");
-		j = -1;
-		while (++j < data->cmds_len)
-		{
-			printf("data->cmds[%d].cmd : %s\n", j, data->cmds[j].cmd);
-			int k = -1;
-			while (data->cmds[j].atr[++k])
-				printf("data->cmds[%d].atr[%d] : %s\n", j, k, data->cmds[j].atr[k]);
-		}
-		printf("===========================\n");
+		ft_print_values(data);
+		
+		
 		ft_expander(data);
-		// here I print the values of data->cmds
-		j = -1;
-		while (++j < data->cmds_len)
-		{
-			printf("data->cmds[%d].cmd : %s\n", j, data->cmds[j].cmd);
-			int k = -1;
-			while (data->cmds[j].atr[++k])
-				printf("data->cmds[%d].atr[%d] : %s\n", j, k, data->cmds[j].atr[k]);
-		}
+		ft_print_values(data);
 	}
 }
