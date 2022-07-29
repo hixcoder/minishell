@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/28 13:18:42 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/29 10:44:16 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,10 @@ void    ft_expand_env_vars(char *s, char **env)
         {
             
             
-            printf("%s \n",ft_strreplace(&s[i] ,get_env_var_name(&s[i+1]), get_env_var_value(env, get_env_var_name(&s[i+1]))));
-            printf("");
+            printf("get_env_var_name  (old_w) ==> %s \n",get_env_var_name(&s[i+1]));
+            printf("get_env_var_value (new_w) ==> %s \n",get_env_var_value(env, get_env_var_name(&s[i+1])));
+            printf("old: %s ==> new: %s \n",&s[i],ft_strreplace(&s[i] ,get_env_var_name(&s[i+1]), get_env_var_value(env, get_env_var_name(&s[i+1]))));
+            printf("-------------------\n");
         }
     }
 }
