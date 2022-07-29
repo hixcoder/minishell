@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/27 10:11:42 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:27:38 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void    ft_readline(t_data *data)
 		ft_spliter(data);
 		ft_print_values(data);
 		
-		
-		ft_expander(data);
-		ft_print_values(data);
+		// ft_expander(data);
+		// ft_print_values(data);
 	}
 }

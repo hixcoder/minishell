@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/29 10:44:16 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:25:10 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,17 @@ char    *get_env_var_name(char *s)
         else
             break ;
     }
-    if (!(var_name = malloc(sizeof(char) * (len + 1))))
+    if (!(var_name = malloc(sizeof(char) * (len + 2))))
         return (NULL);
+    var_name[0] = '$';
     i = -1;
-    j = -1;
+    j = 0;
     while(s[++i] && j < len)
     {
         if (s[i] == '_' || ft_isalnum(s[i]))
             var_name[++j] = s[i];
     }
-    var_name[len] = '\0';
+    var_name[len + 1] = '\0';
     return (var_name);
 }
 
@@ -66,6 +67,7 @@ char    *get_env_var_value(char **env, char *var_name)
     int var_name_len;
     
     i = -1;
+    var_name = ft_strtrim(var_name, "$");
     var_name_len = ft_strlen(var_name);
     while (env[++i])
     {
@@ -100,7 +102,9 @@ void    ft_expand_env_vars(char *s, char **env)
             
             printf("get_env_var_name  (old_w) ==> %s \n",get_env_var_name(&s[i+1]));
             printf("get_env_var_value (new_w) ==> %s \n",get_env_var_value(env, get_env_var_name(&s[i+1])));
-            printf("old: %s ==> new: %s \n",&s[i],ft_strreplace(&s[i] ,get_env_var_name(&s[i+1]), get_env_var_value(env, get_env_var_name(&s[i+1]))));
+            printf("old: %s \n",s);
+            
+            printf("new: %s \n", ft_strreplace(s ,get_env_var_name(&s[i+1]), get_env_var_value(env, get_env_var_name(&s[i+1]))));
             printf("-------------------\n");
         }
     }
