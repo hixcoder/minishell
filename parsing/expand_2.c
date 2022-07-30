@@ -6,17 +6,11 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/29 17:20:38 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/30 13:39:18 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-typedef struct s_var
-{
-	char    *name;
-	char    *value;
-}   t_var;
 
 int ft_is_singl_qoted(char *s)
 {
@@ -85,33 +79,30 @@ char    *get_env_var_value(char **env, char *var_name)
 }
 
 
-// now you should know the exact name of the env var (alphamum type) then do this:
-// 1- splite with $
-// 2- give the env var its value (use strstr to search in the env)
-// 3- join the strings and return them in one string
 
 // this check if there is an env var(start with '$') and expand it
 // sInd : is the space index
 void    ft_expand_env_vars(char *s, char **env)
 {
     int i;
-    int sInd;
-    // t_var var;
-    // char *tmp;
+    char **tmp;
+    char *new_s;
 
     i = -1;
-    sInd = 0;
-    (void) env;
+    tmp = NULL;
+    new_s = s;
     while (s[++i])
     {
         if (s[i] == '$' && ft_is_singl_qoted(&s[i+1]) == 0)
-        {
-            printf("get_env_var_name  (old_w) ==> %s \n",get_env_var_name(&s[i+1]));
-            // printf("get_env_var_value (new_w) ==> %s \n",get_env_var_value(env, get_env_var_name(&s[i+1])));
-            // printf("old: %s \n",s);
-            // tmp = ft_strreplace(s ,get_env_var_name(&s[i+1]), get_env_var_value(env, get_env_var_name(&s[i+1])));
-            // printf("new: %s \n", tmp);
-            // printf("-------------------\n");
-        }
+            tmp = ft_add_string(tmp, get_env_var_name(&s[i+1]));
     }
+    i = -1;
+    while (tmp[++i])
+    {
+        new_s = ft_strreplace(new_s ,tmp[i], get_env_var_value(env, tmp[i]));
+        free(tmp[i]);
+    }
+    tmp = NULL;
+    printf("old: %s\n", s);
+    printf("new: %s\n", new_s);
 }
