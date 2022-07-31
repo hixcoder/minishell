@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:27:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/28 11:46:16 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/31 16:48:30 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,77 @@
    if yes , it returns the number of quotes
    if no , returns 0
 */
-int ft_isquoted(char *s)
+int ft_get_quotes_nbr(char *s)
 {
     int i;
     int j;
-
+    int lock;
+    char q;
+    
     i = -1;
     j = 0;
+    lock = 1;
+    q = 'q';
     while (s[++i])
     {
-        if (s[i] == '\"' || s[i] == '\'')
+        if (s[i] == q || j % 2 == 0)
+            lock = 1;
+        if ((s[i] == '\"' || s[i] == '\'') && lock == 1)
+        {
+            q = s[i];
             j++;
+            lock = 0;
+        }
     }
     return (j);
 }
 
-void ft_expand(t_data *data, int i, int j)
+// this function remove quotes that needs to be removed
+char    *ft_get_remove_quotes(char *s, char *tmp)
 {
-    int     k;
-    int     l;
+    int i;
+    int j;
+    int k;
+    int lock;
+    char q;
+    
+    i = -1;
+    j = -1;
+    k = 0;
+    lock = 1;
+    q = 'q';
+    while (s[++i])
+    {
+        if (s[i] == q || k % 2 == 0)
+            lock = 1;
+        if ((s[i] == '\"' || s[i] == '\'') && lock == 1)
+        {
+            q = s[i];
+            lock = 0;
+            k++;
+            continue ;
+        }
+        tmp[++j] = s[i]; 
+    }
+    tmp[++j] = '\0';
+    return (tmp);
+}
+
+// here we remove all quotes "" '' 
+// and we replace env vars with there values
+char    *ft_expand(char **env, char *s)
+{
 	int     quots_nbr;
-    char    *s;
     char    *tmp;
     int     len;
 
-    quots_nbr = ft_isquoted(data->cmds[i].atr[j]);
-    ft_expand_env_vars(data->cmds[i].atr[j], data->env);
-    s =  data->cmds[i].atr[j];
-	printf("data->cmds[%d].atr[%d] = %s   quotes nbr = %d\n",i,j, data->cmds[i].atr[j],quots_nbr);
+    s = ft_expand_env_vars(s, env);;
+    quots_nbr = ft_get_quotes_nbr(s);
 	if (quots_nbr == 0)
-		return ;
-    
-    // you don't have to remove all quotes just the external quotes!
-    k = -1;
-    l = -1;
+		return (s);
     len = ft_strlen(s) - quots_nbr;
-    tmp = (char *) malloc(sizeof(char) * len);
-    while (s[++k])
-    {
-        if (s[k] != '\"' && s[k] != '\'')
-            tmp[++l] = s[k]; 
-    }
-    tmp[l+1] = '\0';
-    printf("tmp == %s\n",tmp);
-    data->cmds[i].atr[j] = tmp;
-    free(tmp);
-    tmp = NULL;
+    if (!(tmp = (char *) malloc(sizeof(char) * len)))
+        return (NULL);
+    tmp = ft_get_remove_quotes(s, tmp);
+    return (tmp);
 }

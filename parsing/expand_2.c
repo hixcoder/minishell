@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/30 13:39:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:05:05 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,8 @@ char    *get_env_var_value(char **env, char *var_name)
     return (NULL);
 }
 
-
-
-// this check if there is an env var(start with '$') and expand it
-// sInd : is the space index
-void    ft_expand_env_vars(char *s, char **env)
+// this function check if there is an env var(start with '$') and expand it
+char    *ft_expand_env_vars(char *s, char **env)
 {
     int i;
     char **tmp;
@@ -96,6 +93,8 @@ void    ft_expand_env_vars(char *s, char **env)
         if (s[i] == '$' && ft_is_singl_qoted(&s[i+1]) == 0)
             tmp = ft_add_string(tmp, get_env_var_name(&s[i+1]));
     }
+    if (!tmp)
+        return (s);
     i = -1;
     while (tmp[++i])
     {
@@ -103,6 +102,5 @@ void    ft_expand_env_vars(char *s, char **env)
         free(tmp[i]);
     }
     tmp = NULL;
-    printf("old: %s\n", s);
-    printf("new: %s\n", new_s);
+    return (new_s);
 }

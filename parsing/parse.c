@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/29 16:54:23 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:38:13 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 void ft_print_values(t_data *data)
 {
 	int j;
+	if (data->cmds == NULL)
+		return ;
 	printf("===========================\n");
 	j = -1;
 	while (++j < data->cmds_len)

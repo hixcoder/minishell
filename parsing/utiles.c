@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/27 10:28:52 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:07:10 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ void	ft_spliter(t_data *data)
 	cmdsTmp = NULL;
 }
 
-// here we remove all quotes "" '' 
-// and we replace env vars with there values
+// this function expand all strings inside the 2D array: data->cmds to there env values
 void	ft_expander(t_data *data)
 {
 	int i;
@@ -80,7 +79,8 @@ void	ft_expander(t_data *data)
 	while (++i < data->cmds_len)
 	{
 		j = -1;
+		data->cmds[i].cmd = ft_expand(data->env, data->cmds[i].cmd);
 		while (data->cmds[i].atr[++j])
-			ft_expand(data, i, j);
+			data->cmds[i].atr[j] = ft_expand(data->env, data->cmds[i].atr[j]);
 	}
 }

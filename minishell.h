@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/30 13:46:44 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:21:38 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ char	**ft_split2(char const *s, char c);
 void	ft_spliter(t_data *data);
 void	ft_error(char *error);
 void	ft_expander(t_data *data);
-void ft_expand(t_data *data, int i, int j);
-int ft_isquoted(char *s);
-void    ft_expand_env_vars(char *s, char **env);
+char    *ft_expand(char **env, char *s);
+int ft_get_quotes_nbr(char *s);
+char    *ft_expand_env_vars(char *s, char **env);
 char    *ft_strreplace(char *s, char *old_w, char *new_w);
 char    **ft_add_string(char **tmp, char *varname);
 #endif
