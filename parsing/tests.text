@@ -14,6 +14,12 @@ echo '$USER'
 
 c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
 
+expand tests:
+ls -la | "$U rr$USER"
+ls '-la' | "$U rr$USER"
+'l's' '-la' '|' '"$U rr$USER"'
+ls -la | "$US $USER r $U $USE$U rr$x"
+"$U $PATH $_x I"
 
 
 

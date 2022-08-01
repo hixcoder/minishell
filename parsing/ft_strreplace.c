@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:31:07 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/29 16:50:40 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 13:13:08 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ char	*ft_strreplace(char *s, char *old_w, char *new_w)
 	param.new_w_len = ft_strlen(new_w);
 	param.old_w_nbr = ft_get_old_w_nbr(s, old_w, param.old_w_len, &i);
 	param.res_len = i + param.old_w_nbr * \
-	(param.new_w_len - param.old_w_len) + 1;
+	(param.new_w_len - param.old_w_len) + 2;
+	printf("====> param.res_len = %d\n", param.res_len);
 	param.res = malloc(sizeof(char) * param.res_len);
 	if (!param.res)
 		return (NULL);

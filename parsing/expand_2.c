@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/01 09:44:36 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 12:30:49 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,14 @@ char    *ft_expand_env_vars(char *s, char **env)
     }
     if (!tmp)
         return (s);
+    i = 0;
+    while (tmp[i])
+        i++;
+    ft_strlen_sort(tmp, i);
     i = -1;
     while (tmp[++i])
     {
+        printf("tmp[%d]= %s\n", i, tmp[i]);
         new_s = ft_strreplace(new_s ,tmp[i], get_env_var_value(env, tmp[i]));
         free(tmp[i]);
     }

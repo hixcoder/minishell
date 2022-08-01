@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 13:38:52 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/30 13:47:29 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 11:35:57 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char    **ft_protect(char **tmp, char *varname)
 }
 
 // this function you give it a 2D array and a string, 
-// its job is to add the string to the 2D array
+// its job is to add the string to the 2D array if it's not exist
 char    **ft_add_string(char **tmp, char *varname)
 {
     int     i;
@@ -43,7 +43,7 @@ char    **ft_add_string(char **tmp, char *varname)
     i = -1;
     while(tmp[++i])
     {
-        if (ft_memcmp(tmp[i], varname, sizeof(char) * strlen(tmp[i])) == 0)
+        if (ft_memcmp(tmp[i], varname, sizeof(char) * (strlen(varname)+1)) == 0)
             return (tmp);
     }
     if (!(new_tmp = malloc (sizeof(char *) * (tmplen + 2))))

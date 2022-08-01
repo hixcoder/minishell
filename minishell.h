@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/31 15:21:38 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 11:22:58 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int		is_insid_qots(char const *s, int j);
 int		ft_check_quotes(char *s);
 char	**ft_split2(char const *s, char c);
 void	ft_spliter(t_data *data);
-void	ft_error(char *error);
 void	ft_expander(t_data *data);
 char    *ft_expand(char **env, char *s);
-int ft_get_quotes_nbr(char *s);
+int		ft_get_quotes_nbr(char *s);
 char    *ft_expand_env_vars(char *s, char **env);
 char    *ft_strreplace(char *s, char *old_w, char *new_w);
 char    **ft_add_string(char **tmp, char *varname);
+void    ft_strlen_sort(char **s, int s_len);
 #endif
