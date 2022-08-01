@@ -6,24 +6,42 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/31 15:05:05 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 09:44:36 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_is_singl_qoted(char *s)
+int ft_is_singl_qoted(char *s, int j)
 {
     int i;
-    char end_qote;
-    
+    int n;
+    int start;
+    int end;
+
+    start = 0;
+    end = 0;
+    n = 0;
     i = -1;
+    while (++i < j)
+    {
+        if (s[i] == '\'')
+        {
+            n++;
+            start = 1;
+        }
+        else if (s[i] == '\"')
+            start = 0;
+    }
     while (s[++i])
     {
-        if (s[i] == '\'' || s[i] == '\"')
-            end_qote = s[i];
+        if (s[i] == '\'')
+        {
+            end = 1;
+            break ;
+        }
     }
-    if (end_qote == '\'' == 1)
+    if (start == 1 && end == 1 && n % 2 != 0)
         return (1);
     return (0);
 }
@@ -73,7 +91,10 @@ char    *get_env_var_value(char **env, char *var_name)
     {
         tmp = ft_strnstr(env[i], var_name, var_name_len);
         if (tmp != NULL)
-            return (tmp + (var_name_len + 1));
+        {
+            if (tmp[var_name_len] == '=')
+                return (tmp + (var_name_len + 1));
+        }
     }
     return (NULL);
 }
@@ -90,7 +111,7 @@ char    *ft_expand_env_vars(char *s, char **env)
     new_s = s;
     while (s[++i])
     {
-        if (s[i] == '$' && ft_is_singl_qoted(&s[i+1]) == 0)
+        if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
             tmp = ft_add_string(tmp, get_env_var_name(&s[i+1]));
     }
     if (!tmp)

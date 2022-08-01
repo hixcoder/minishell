@@ -13,3 +13,34 @@ echo "cat lol.c | cat > lol.c"
 echo '$USER'
 
 c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
+
+
+
+
+USER=hboumahd
+PATH=/Users/hboumahd/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/hboumahd/goinfre/.brew/bin
+LOGNAME=hboumahd
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.lztunhQfmP/Listeners
+HOME=/Users/hboumahd
+SHELL=/bin/zsh
+__CF_USER_TEXT_ENCODING=0x18D72:0x0:0x0
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000cdf80033bk/T/
+XPC_SERVICE_NAME=0
+XPC_FLAGS=0x0
+ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+SHLVL=1
+PWD=/Users/hboumahd/Desktop/minishell
+OLDPWD=/Users/hboumahd/Desktop/minishell
+HOMEBREW_NO_AUTO_UPDATE=1
+TERM_PROGRAM=vscode
+TERM_PROGRAM_VERSION=1.67.0
+LANG=en_US.UTF-8
+COLORTERM=truecolor
+VSCODE_GIT_IPC_HANDLE=/var/folders/zz/zyxvpxvq6csfxvn_n000cdf80033bk/T/vscode-git-4e63fc1b51.sock
+VSCODE_GIT_ASKPASS_NODE=/Applications/Visual Studio Code.app/Contents/MacOS/Electron
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+VSCODE_GIT_ASKPASS_MAIN=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
+GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+TERM=xterm-256color
+LS=ls -la
+_=/usr/bin/env

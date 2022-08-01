@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:27:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/31 16:48:30 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/01 08:43:50 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int ft_get_quotes_nbr(char *s)
 }
 
 // this function remove quotes that needs to be removed
-char    *ft_get_remove_quotes(char *s, char *tmp)
+char    *ft_remove_quotes(char *s, char *tmp)
 {
     int i;
     int j;
@@ -87,6 +87,6 @@ char    *ft_expand(char **env, char *s)
     len = ft_strlen(s) - quots_nbr;
     if (!(tmp = (char *) malloc(sizeof(char) * len)))
         return (NULL);
-    tmp = ft_get_remove_quotes(s, tmp);
+    tmp = ft_remove_quotes(s, tmp);
     return (tmp);
 }
