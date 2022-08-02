@@ -34,7 +34,7 @@ int	ft_get_old_w_nbr(char *s, char *old_w, int old_w_len, int *i)
 	while (s[++j])
 	{
 		if (ft_memcmp(ft_strnstr(&s[j], old_w, \
-		ft_strlen(&s[j])), &s[j], sizeof(char)) == 0)
+		old_w_len), &s[j], sizeof(char) * old_w_len) == 0)
 		{
 			old_w_nbr++;
 			j += old_w_len - 1;
@@ -85,7 +85,7 @@ char	*ft_strreplace(char *s, char *old_w, char *new_w)
 	param.new_w_len = ft_strlen(new_w);
 	param.old_w_nbr = ft_get_old_w_nbr(s, old_w, param.old_w_len, &i);
 	param.res_len = i + param.old_w_nbr * \
-	(param.new_w_len - param.old_w_len) + 2;
+	(param.new_w_len - param.old_w_len) + 1;
 	printf("====> param.res_len = %d\n", param.res_len);
 	param.res = malloc(sizeof(char) * param.res_len);
 	if (!param.res)
