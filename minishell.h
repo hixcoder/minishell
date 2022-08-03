@@ -69,7 +69,7 @@ void	ft_expander(t_data *data);
 char    *ft_expand(char **env, char *s);
 int		ft_get_quotes_nbr(char *s);
 char    *ft_expand_env_vars(char *s, char **env);
-char    *ft_strreplace(char *s, char *old_w, char *new_w);
+char	*ft_strreplace(char *s, char *old_w, char *new_w, int all);
 char    **ft_add_string(char **tmp, char *varname);
 void    ft_strlen_sort(char **s, int s_len);
 #endif

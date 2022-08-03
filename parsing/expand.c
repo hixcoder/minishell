@@ -42,6 +42,7 @@ int ft_get_quotes_nbr(char *s)
 }
 
 // this function remove quotes that needs to be removed
+// k is the number of quotes 
 char    *ft_remove_quotes(char *s, char *tmp)
 {
     int i;
@@ -53,16 +54,16 @@ char    *ft_remove_quotes(char *s, char *tmp)
     i = -1;
     j = -1;
     k = 0;
-    lock = 1;
+    lock = 0;
     q = 'q';
     while (s[++i])
     {
         if (s[i] == q || k % 2 == 0)
-            lock = 1;
-        if ((s[i] == '\"' || s[i] == '\'') && lock == 1)
+            lock = 0;
+        if ((s[i] == '\"' || s[i] == '\'') && lock == 0)
         {
             q = s[i];
-            lock = 0;
+            lock = 1;
             k++;
             continue ;
         }

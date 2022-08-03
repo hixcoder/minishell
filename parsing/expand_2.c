@@ -15,23 +15,28 @@
 int ft_is_singl_qoted(char *s, int j)
 {
     int i;
-    int n;
+    int n1;
+    int n2;
     int start;
     int end;
 
     start = 0;
     end = 0;
-    n = 0;
+    n1 = 0;
+    n2 = 0;
     i = -1;
     while (++i < j)
     {
-        if (s[i] == '\'')
+        if (s[i] == '\'' && n2 % 2 == 0)
         {
-            n++;
+            n1++;
             start = 1;
         }
         else if (s[i] == '\"')
+        {
+            n2++;
             start = 0;
+        }
     }
     while (s[++i])
     {
@@ -41,7 +46,7 @@ int ft_is_singl_qoted(char *s, int j)
             break ;
         }
     }
-    if (start == 1 && end == 1 && n % 2 != 0)
+    if (start == 1 && end == 1 && n1 % 2 != 0)
         return (1);
     return (0);
 }
@@ -103,7 +108,7 @@ char    *get_env_var_value(char **env, char *var_name)
 char    *ft_expand_env_vars(char *s, char **env)
 {
     int i;
-    char **tmp;
+    char *tmp;
     char *new_s;
 
     i = -1;
@@ -112,21 +117,12 @@ char    *ft_expand_env_vars(char *s, char **env)
     while (s[++i])
     {
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
-            tmp = ft_add_string(tmp, get_env_var_name(&s[i+1]));
+        {
+            tmp = get_env_var_name(&s[i+1]);
+            new_s = ft_strreplace(new_s ,tmp, get_env_var_value(env, tmp), 0);
+            free(tmp);
+            tmp = NULL;
+        }
     }
-    if (!tmp)
-        return (s);
-    i = 0;
-    while (tmp[i])
-        i++;
-    ft_strlen_sort(tmp, i);
-    i = -1;
-    while (tmp[++i])
-    {
-        printf("tmp[%d]= %s\n", i, tmp[i]);
-        new_s = ft_strreplace(new_s ,tmp[i], get_env_var_value(env, tmp[i]));
-        free(tmp[i]);
-    }
-    tmp = NULL;
     return (new_s);
 }
