@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/07/31 15:07:10 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:58:08 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,6 @@ void ft_error(char *error)
 {
 	printf("%s\n", error);
 	exit(1);
-}
-
-int	is_insid_qots(char const *s, int j)
-{
-	int i;
-    int q1;
-    int q2;
-
-    i = -1;
-    q1 = 0;
-    q2 = 0;
-    while (++i < j)
-    {
-        if (s[i] == '\'' && q2 % 2 == 0)
-            q1++;
-        if (s[i] == '\"' && q1 % 2 == 0)
-            q2++;
-    }
-    if (q1 % 2 != 0 || q2 % 2 != 0)
-        return (1);
-	return (0);
 }
 
 void	ft_fill_atrs(char **tmp, t_data *data, int ind)
@@ -52,6 +31,7 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 	while (tmp[++i]){
 		data->cmds[ind].atr[i] = malloc(sizeof(t_word));
 		data->cmds[ind].atr[i]->w = tmp[i];
+		tmp[i] = NULL;
 	}
 }
 
@@ -102,5 +82,21 @@ void	ft_expander(t_data *data)
 		data->cmds[i].cmd->w = ft_expand(data->env, data->cmds[i].cmd->w);
 		while (data->cmds[i].atr[++j])
 			data->cmds[i].atr[j]->w = ft_expand(data->env, data->cmds[i].atr[j]->w);
+	}
+}
+
+// this function gives the type of each cmd and atr
+void	ft_tokenizer(t_data *data)
+{
+	int i;
+	int j;
+	
+	i = -1;
+	while (++i < data->cmds_len)
+	{
+		j = -1;
+		data->cmds[i].cmd->t = ft_tokenize(data->cmds[i].cmd->w);
+		while (data->cmds[i].atr[++j])
+			data->cmds[i].atr[j]->t = ft_tokenize(data->cmds[i].atr[j]->w);
 	}
 }
