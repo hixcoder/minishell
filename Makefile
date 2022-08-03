@@ -14,7 +14,7 @@ NAME = minishell
 
 # madatory
 PARSING_FOLDER = ./parsing/
-PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c expand.c expand_2.c ft_strreplace.c ft_add_string.c ft_strlen_sort.c
+PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c expand.c expand_2.c ft_strreplace.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 SRCS = main.c $(SRCS_PARSING)
 

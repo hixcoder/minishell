@@ -22,10 +22,10 @@ void ft_print_values(t_data *data)
 	j = -1;
 	while (++j < data->cmds_len)
 	{
-		printf("data->cmds[%d].cmd : %s\n", j, data->cmds[j].cmd);
+		printf("data->cmds[%d].cmd->w : %s\n", j, data->cmds[j].cmd->w);
 		int k = -1;
 		while (data->cmds[j].atr[++k])
-			printf("data->cmds[%d].atr[%d] : %s\n", j, k, data->cmds[j].atr[k]);
+			printf("data->cmds[%d].atr[%d]->w : %s\n", j, k, data->cmds[j].atr[k]->w);
 	}
 }
 

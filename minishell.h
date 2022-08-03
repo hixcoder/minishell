@@ -29,14 +29,14 @@ typedef enum type
 	FILE_IN, // '<'
 	FILE_OUT, // '>'
 	HERE_DOC, // '<<'
-	FILE_OUT_APD // '>>'
+	FILE_OUT_APND // '>>'
 	
 	
 }	Type;
 
 typedef struct s_word
 {
-	char    *word;
+	char    *w; // this is the word
 	Type	t;
 }   t_word;
 
@@ -44,8 +44,8 @@ typedef struct s_word
 // atr : atributes
 typedef struct s_command
 {
-	char    *cmd;
-	char    **atr;
+	t_word	*cmd;
+	t_word	**atr;
 	int		fd_in;
 	int		fd_out;
 }   t_command;
