@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/01 12:30:49 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:14:18 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int ft_is_singl_qoted(char *s, int j)
             n1++;
             start = 1;
         }
-        else if (s[i] == '\"')
+        else if (s[i] == '\"' && n1 % 2 == 0)
         {
             n2++;
             start = 0;
@@ -108,10 +108,12 @@ char    *get_env_var_value(char **env, char *var_name)
 char    *ft_expand_env_vars(char *s, char **env)
 {
     int i;
+    int j;
     char *tmp;
     char *new_s;
 
     i = -1;
+    j = 0;
     tmp = NULL;
     new_s = s;
     while (s[++i])
@@ -119,10 +121,13 @@ char    *ft_expand_env_vars(char *s, char **env)
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
         {
             tmp = get_env_var_name(&s[i+1]);
-            new_s = ft_strreplace(new_s ,tmp, get_env_var_value(env, tmp), 0);
+            new_s = ft_strreplace(new_s, tmp, get_env_var_value(env, tmp), j);
+            j += ft_strlen(get_env_var_value(env, tmp)) - ft_strlen(tmp) + 1;
             free(tmp);
             tmp = NULL;
         }
+        else
+            j++;
     }
     return (new_s);
 }

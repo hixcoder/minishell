@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:31:07 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/01 13:13:08 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:05:38 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,57 +18,12 @@ typedef struct s_param
 	int		res_len;
 	int		old_w_len;
 	int		new_w_len;
-	int		old_w_nbr;
 	char	*s;
 	char	*old_w;
 	char	*new_w;
 }	t_param;
 
-int	ft_get_old_w_nbr(char *s, char *old_w, int old_w_len)
-{
-	int	old_w_nbr;
-	int	j;
-
-	old_w_nbr = 0;
-	j = -1;
-	while (s[++j])
-	{
-		if (ft_memcmp(ft_strnstr(&s[j], old_w, \
-		old_w_len), &s[j], sizeof(char) * old_w_len) == 0)
-		{
-			old_w_nbr++;
-			j += old_w_len - 1;
-		}
-	}
-	return (old_w_nbr);
-}
-
-void	ft_make_new_string(t_param *param)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (j < param->res_len)
-	{
-		if (ft_memcmp(ft_strnstr(&param->s[i], param->old_w, ft_strlen(&param->s[i])), &param->s[i], param->old_w_len) == 0)
-		{
-			ft_memcpy(&param->res[j], param->new_w, param->new_w_len);
-			j += param->new_w_len;
-			i += param->old_w_len - 1;
-		}
-		else
-		{
-			param->res[j] = param->s[i];
-			j++;
-		}
-		i++;
-	}
-	param->res[j] = '\0';
-}
-
-void	ft_make_new_string_2(t_param *param)
+void	ft_make_new_string(t_param *param, int from)
 {
 	int	i;
 	int	j;
@@ -79,7 +34,7 @@ void	ft_make_new_string_2(t_param *param)
 	lock = 0;
 	while (j < param->res_len)
 	{
-		if (lock == 0 && ft_memcmp(ft_strnstr(&param->s[i], param->old_w, ft_strlen(&param->s[i])), &param->s[i], param->old_w_len) == 0)
+		if (i >= from && lock == 0 && ft_memcmp(ft_strnstr(&param->s[i], param->old_w, ft_strlen(&param->s[i])), &param->s[i], param->old_w_len) == 0)
 		{
 			ft_memcpy(&param->res[j], param->new_w, param->new_w_len);
 			j += param->new_w_len;
@@ -100,7 +55,7 @@ void	ft_make_new_string_2(t_param *param)
 // The task is find all occurrences of the word ‘old_w’ in 
 // string ‘s’ and replace them with word ‘new_w’.
 // the 'all' tells the function if you want to change all old_w occurrences to new_w or just the first occurrence 
-char	*ft_strreplace(char *s, char *old_w, char *new_w, int all)
+char	*ft_strreplace(char *s, char *old_w, char *new_w, int from)
 {
 	int		i;
 	t_param	param;
@@ -111,18 +66,10 @@ char	*ft_strreplace(char *s, char *old_w, char *new_w, int all)
 	param.new_w = new_w;
 	param.old_w_len = ft_strlen(old_w);
 	param.new_w_len = ft_strlen(new_w);
-	if (all == 1)
-		param.old_w_nbr = ft_get_old_w_nbr(s, old_w, param.old_w_len);
-	else
-		param.old_w_nbr = 1;
-	param.res_len = i + param.old_w_nbr * \
-	(param.new_w_len - param.old_w_len) + 1;
+	param.res_len = i + param.new_w_len - param.old_w_len + 1;
 	param.res = malloc(sizeof(char) * param.res_len);
 	if (!param.res)
 		return (NULL);
-	if (all == 1)
-		ft_make_new_string(&param);
-	else
-		ft_make_new_string_2(&param);
+	ft_make_new_string(&param, from);
 	return (param.res);
 }

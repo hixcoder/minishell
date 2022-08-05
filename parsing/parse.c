@@ -77,8 +77,8 @@ void    ft_readline(t_data *data)
 		ft_expander(data);
 		ft_print_values(data, 1);
 
-		ft_tokenizer(data);
-		ft_print_values(data, 2);
+		// ft_tokenizer(data);
+		// ft_print_values(data, 2);
 	}
 }
 
