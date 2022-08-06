@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/03 13:58:08 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/06 14:01:41 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,70 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 	}
 }
 
+char	*is_delimiter(char const **c, char const *s)
+{
+	int i;
+	
+	i = -1;
+	while (c[++i])
+	{
+		if (ft_memcmp(c[i], s, ft_strlen(c[i])) == 0)
+			return ((char *)c[i]);
+	}
+	return (NULL);
+}
+
+char *ft_add_spaces(char *c)
+{
+	char *s;
+	int c_len;
+
+	c_len = ft_strlen(c);
+	if (!(s = malloc(sizeof(char) * c_len + 2)))
+		return (NULL);
+	s[0] = ' ';
+	ft_memcpy(&s[1], c, c_len);
+	s[c_len + 1] = ' ';
+	s[c_len + 2] = '\0';
+	return (s);
+}
+
+char	*ft_check_redirections(char *s)
+{
+	int i;
+	int j;
+	char *new_s;
+	char *tmp_d;
+	char const	**c;
+
+	c = malloc(sizeof(char *) * 5);
+	c[0] = ">>"; 
+	c[1] = "<<"; 
+	c[2] = ">"; 
+	c[3] = "<"; 
+	c[4] = NULL; 
+	i = -1;
+	j = 0;
+	new_s = s;
+	while (s[++i])
+	{
+		tmp_d = is_delimiter(c, &s[i]);
+		if (tmp_d != NULL)
+		{
+			new_s = ft_strreplace(new_s, tmp_d, ft_add_spaces(tmp_d), j);
+			j += ft_strlen(tmp_d) - ft_strlen(ft_add_spaces(tmp_d)) + 1;
+			i += ft_strlen(tmp_d) - 1;
+		}
+		else
+			j++;
+	}
+	tmp_d = NULL;
+	c = NULL;
+	free(tmp_d);
+	free(c);
+	return (new_s);
+}
+
 // what this function do:
 // 1- trim and split the input by '|'
 // 2- trim the commands and split them by " " then fill the values of data->cmds
@@ -57,6 +121,8 @@ void	ft_spliter(t_data *data)
 	i = -1;
 	while (cmdsTmp[++i])
 	{
+		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
+		cmdsTmp[i] = ft_check_redirections(cmdsTmp[i]);
 		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
 		atrTmp = ft_split2(ft_strtrim(cmdsTmp[i], " "), ' ');
 		ft_fill_atrs(atrTmp, data, i);

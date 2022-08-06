@@ -71,11 +71,14 @@ void    ft_readline(t_data *data)
 			printf("syntax error: unclosed quotes\n");
 			continue;
 		}
+
+		// you need to split with > < >> ...
+		// and tokenize before expanding
 		ft_spliter(data);
-		ft_print_values(data, 1);
+		// ft_print_values(data, 1);
 		
-		ft_expander(data);
-		ft_print_values(data, 1);
+		// ft_expander(data);
+		// ft_print_values(data, 1);
 
 		// ft_tokenizer(data);
 		// ft_print_values(data, 2);

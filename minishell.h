@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/05 11:39:35 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/06 13:29:23 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ char    **ft_add_string(char **tmp, char *varname);
 void    ft_strlen_sort(char **s, int s_len);
 void	ft_tokenizer(t_data *data);
 Type    ft_tokenize(char *word);
+char	**ft_split3(char const *s, char const **c);
+char	*is_delimiter(char const **c, char const *s);
 #endif

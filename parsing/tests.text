@@ -29,6 +29,7 @@ ls -la | "$US $USER r $U $USE$U rr$x"
 "cou'cou"$lol'$USER '
 "cou'cou"$lol'$USER '$USER
 '$USER'$USER
+"'"$xx  ""''$xx|  "'$xx'" '$xx' |  '"$xx"' '$xx'| $xx"'"'$xx '$| $a'$xx '$xx     
 
 
 "'"$xx   	    ok
@@ -39,4 +40,13 @@ ls -la | "$US $USER r $U $USE$U rr$x"
 '$xx'$xx 	    ok
 "'"'$xx '$xx    ok
 $a'$xx '$xx     ok
+-----------------------------------------------
+
+
+-------------
+redirections tests:
+-----------------------------------------------
+ls -la | ls > file
+
+
 -----------------------------------------------
