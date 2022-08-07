@@ -92,6 +92,7 @@ static char	**ft_fillrows(char **dst, const char *s, char const **c)
 	return (dst);
 }
 
+// this split function can split the text 's' with a lot of strings that you could pass them as a 2d array 'c'
 char	**ft_split3(char const *s, char const **c)
 {
 	int		row;

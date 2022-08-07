@@ -75,13 +75,13 @@ void    ft_readline(t_data *data)
 		// you need to split with > < >> ...
 		// and tokenize before expanding
 		ft_spliter(data);
-		// ft_print_values(data, 1);
+		ft_print_values(data, 1);
 		
-		// ft_expander(data);
-		// ft_print_values(data, 1);
+		ft_expander(data);
+		ft_print_values(data, 1);
 
-		// ft_tokenizer(data);
-		// ft_print_values(data, 2);
+		ft_tokenizer(data);
+		ft_print_values(data, 2);
 	}
 }
 

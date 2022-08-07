@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/06 13:29:23 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/07 09:49:12 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ char    *ft_expand(char **env, char *s);
 int		ft_get_quotes_nbr(char *s);
 char    *ft_expand_env_vars(char *s, char **env);
 char	*ft_strreplace(char *s, char *old_w, char *new_w, int from);
-char    **ft_add_string(char **tmp, char *varname);
-void    ft_strlen_sort(char **s, int s_len);
 void	ft_tokenizer(t_data *data);
 Type    ft_tokenize(char *word);
-char	**ft_split3(char const *s, char const **c);
-char	*is_delimiter(char const **c, char const *s);
+char	*ft_check_redirections(char *s);
 #endif

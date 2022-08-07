@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 12:14:45 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/03 13:57:29 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/07 09:27:45 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int    ft_check_quotes(char *s)
             q2++;
     }
     if (q1 % 2 != 0 || q2 % 2 != 0)
-        return (1); 
+        return (1);
     return (0);
 }
 
