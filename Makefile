@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/07 09:46:32 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/07 15:41:36 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,13 @@ NAME = minishell
 # madatory
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c expand.c expand_2.c ft_strreplace.c tokenize.c\
-				 redirections_check.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
-SRCS = main.c $(SRCS_PARSING)
+
+REDIRECTIONS_FOLDER = ./redirections/
+REDIRECTIONS_FILES  = redirections_check.c 
+SRCS_REDIRECTIONS = $(addprefix $(REDIRECTIONS_FOLDER), $(REDIRECTIONS_FILES))
+
+SRCS = main.c $(SRCS_PARSING) $(SRCS_REDIRECTIONS)
 
 
 LIBFT_FOLDER = ./libft/

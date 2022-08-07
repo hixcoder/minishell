@@ -49,9 +49,9 @@ void ft_print_values(t_data *data, int st)
 		else
 		{
 			k = -1;
-			printf("data->cmds[%d].cmd->w : %s <%s>\n", j, data->cmds[j].cmd->w, ft_type_printer(data->cmds[j].cmd->t));
+			printf("data->cmds[%d].cmd->w : %s {%s}\n", j, data->cmds[j].cmd->w, ft_type_printer(data->cmds[j].cmd->t));
 			while (data->cmds[j].atr[++k] && st == 2)
-				printf("data->cmds[%d].atr[%d]->w : %s <%s>\n", j, k, data->cmds[j].atr[k]->w,ft_type_printer(data->cmds[j].atr[k]->t));
+				printf("data->cmds[%d].atr[%d]->w : %s {%s}\n", j, k, data->cmds[j].atr[k]->w,ft_type_printer(data->cmds[j].atr[k]->t));
 		}
 		
 	}
