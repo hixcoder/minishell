@@ -15,14 +15,14 @@
 
 char    *ft_type_printer(Type t)
 {
-    if (t == FILE_IN)
-        return ("FILE_IN");
-    else if (t == FILE_OUT)
-        return ("FILE_OUT");
+    if (t == REDIRECT_IN)
+        return ("REDIRECT_IN");
+    else if (t == REDIRECT_OUT)
+        return ("REDIRECT_OUT");
     else if (t == HERE_DOC)
         return ("HERE_DOC");
-    else if (t == FILE_OUT_APND)
-        return ("FILE_OUT_APND");
+    else if (t == REDIRECT_OUT_APND)
+        return ("REDIRECT_OUT_APND");
     else
         return ("ARG");
 }

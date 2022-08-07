@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/07 09:49:12 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:48:44 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@
 typedef enum type
 {
 	ARG, // word
-	FILE_IN, // '<'
-	FILE_OUT, // '>'
+	REDIRECT_IN, // '<'
+	REDIRECT_OUT, // '>'
 	HERE_DOC, // '<<'
-	FILE_OUT_APND // '>>'
+	REDIRECT_OUT_APND, // '>>'
+	
+	FILE_IN,
+	FILE_OUT,
+	DELIMITER
 	
 	
 }	Type;
