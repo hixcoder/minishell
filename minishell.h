@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/07 21:48:44 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/08 13:00:07 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ typedef enum type
 	HERE_DOC, // '<<'
 	REDIRECT_OUT_APND, // '>>'
 	
-	FILE_IN,
-	FILE_OUT,
-	DELIMITER
-	
-	
+	FILE_IN, // word after '<'
+	FILE_OUT, // word after '>'
+	DELIMITER, // word after '<<'
+	FILE_OUT_APND // word after '>>'
 }	Type;
 
 typedef struct s_word
@@ -68,7 +67,7 @@ void	ft_error(char *error);
 int		is_insid_qots(char const *s, int j);
 int		ft_check_quotes(char *s);
 char	**ft_split2(char const *s, char c);
-void	ft_spliter(t_data *data);
+int		ft_spliter(t_data *data);
 void	ft_expander(t_data *data);
 char    *ft_expand(char **env, char *s);
 int		ft_get_quotes_nbr(char *s);
@@ -77,4 +76,5 @@ char	*ft_strreplace(char *s, char *old_w, char *new_w, int from);
 void	ft_tokenizer(t_data *data);
 Type    ft_tokenize(char *word);
 char	*ft_check_redirections(char *s);
+int		ft_check_syntax(t_data *data, int check_nbr);
 #endif

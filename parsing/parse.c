@@ -65,16 +65,16 @@ void    ft_readline(t_data *data)
 		if (ft_strlen(data->args) > 0)
 			add_history(data->args);
 		printf("args : %s\n", data->args);
+
 		// check if quotes are closed
-		if (ft_check_quotes(data->args) == 1)
+		if (ft_check_syntax(data, 1) == 1 || ft_check_syntax(data, 2) == 1)
+			continue;
+		if (ft_spliter(data) == 1)
 		{
-			printf("syntax error: unclosed quotes\n");
+			ft_check_syntax(data, 0);
 			continue;
 		}
-
-		// you need to split with > < >> ...
-		// and tokenize before expanding
-		ft_spliter(data);
+		
 		ft_print_values(data, 1);
 		
 		ft_expander(data);

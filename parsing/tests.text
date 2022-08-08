@@ -54,3 +54,8 @@ ls>-la"<<" | ls<<file
 
 
 -----------------------------------------------
+
+syntax error:
+- check if there is any special character not inside quotes
+- check if there is a redirection without its file or herdoc without delimeter
+- 

@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/07 16:17:12 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/08 12:26:15 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 // what this function do:
 // 1- trim and split the input by '|'
 // 2- trim the commands and split them by " " then fill the values of data->cmds
-void	ft_spliter(t_data *data)
+int	ft_spliter(t_data *data)
 {
 	char	**cmdsTmp;
 	char	**atrTmp;
@@ -66,9 +66,12 @@ void	ft_spliter(t_data *data)
 		free(cmdsTmp[i]);
 		data->cmds[i].cmd = data->cmds[i].atr[0];
 		data->cmds[i].atr = &(data->cmds[i].atr[1]);
+		if (data->cmds[i].cmd == NULL)
+			return (1);
 	}
 	atrTmp = NULL;
 	cmdsTmp = NULL;
+	return (0);
 }
 
 // this function expand all strings inside the 2D array: data->cmds to there env values
