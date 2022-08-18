@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/08 13:00:07 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:04:30 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum type
 	HERE_DOC, // '<<'
 	REDIRECT_OUT_APND, // '>>'
 	
+	MY_FILE,
 	FILE_IN, // word after '<'
 	FILE_OUT, // word after '>'
 	DELIMITER, // word after '<<'

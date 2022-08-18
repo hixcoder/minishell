@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/08 12:26:15 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:13:42 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,18 @@ void	ft_tokenizer(t_data *data)
 		data->cmds[i].cmd->t = ft_tokenize(data->cmds[i].cmd->w);
 		while (data->cmds[i].atr[++j])
 			data->cmds[i].atr[j]->t = ft_tokenize(data->cmds[i].atr[j]->w);
+	}
+	i = -1;
+	while (++i < data->cmds_len)
+	{
+		if (data->cmds[i].cmd->t != ARG && data->cmds[i].atr[0])
+			data->cmds[i].atr[0]->t = MY_FILE;
+		j = -1;
+		while (data->cmds[i].atr[++j])
+		{
+			if (data->cmds[i].atr[j]->t != ARG && data->cmds[i].atr[j]->t != MY_FILE
+				&& data->cmds[i].atr[j + 1])
+				data->cmds[i].atr[j + 1]->t = MY_FILE;
+		}
 	}
 }

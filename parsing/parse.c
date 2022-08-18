@@ -23,6 +23,8 @@ char    *ft_type_printer(Type t)
         return ("HERE_DOC");
     else if (t == REDIRECT_OUT_APND)
         return ("REDIRECT_OUT_APND");
+	else if (t == MY_FILE)
+        return ("MY_FILE");
     else
         return ("ARG");
 }
