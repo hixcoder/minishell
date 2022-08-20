@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:44:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 11:38:56 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/20 20:02:54 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
         if (ft_check_quotes(data->args) == 1)
 		{
 			printf("syntax error: unclosed quotes\n");
-			return (1);
+			return (-1);
 		}
     }
     // check if there is any special character not in this list (>, <, ", ', space, |, $, ?)
@@ -68,7 +68,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
         if (ft_check_specials(data->args) == 1)
 		{
 			printf("syntax error: unhandled special character\n");
-			return (1);
+			return (-1);
 		}
     }
     return (0);

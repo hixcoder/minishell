@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 12:25:32 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/20 20:04:35 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ int	ft_spliter(t_data *data)
 		data->cmds_len = i + 1;
 	data->cmds = malloc(sizeof(t_command) * data->cmds_len);
 	if (!data->cmds)
-	{
-		free(data->cmds);
-		exit(1);
-	}
+		return (-1);
 	i = -1;
 	while (cmdsTmp[++i])
 	{
@@ -59,7 +56,7 @@ int	ft_spliter(t_data *data)
 		free(atrTmp);
 		free(cmdsTmp[i]);
 		if (data->cmds[i].words == NULL)
-			return (1);
+			return (-1);
 	}
 	atrTmp = NULL;
 	cmdsTmp = NULL;

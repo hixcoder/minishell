@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 13:21:33 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/20 21:01:29 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,13 @@ char    *ft_expand(char **env, char *s);
 int		ft_get_quotes_nbr(char *s);
 char    *ft_expand_env_vars(char *s, char **env);
 char	*ft_strreplace(char *s, char *old_w, char *new_w, int from);
-void	ft_tokenizer(t_data *data);
 Type    ft_tokenize(char *word);
 char	*ft_check_redirections(char *s);
 int		ft_check_syntax(t_data *data, int check_nbr);
 void	ft_expander(t_data *data);
-void	ft_tokenizer(t_data *data);
+int	ft_tokenizer(t_data *data);
 int		ft_spliter(t_data *data);
-void	ft_redirector(t_data *data);
+int		ft_redirector(t_data *data);
 
 
 

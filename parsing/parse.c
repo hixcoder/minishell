@@ -44,14 +44,12 @@ void ft_print_values(t_data *data, int st)
 		if (st == 1)
 		{
 			k = -1;
-			// printf("data->cmds[%d].words[0]->w : %s\n", j, data->cmds[j].words[0]->w);
 			while (data->cmds[j].words[++k] && st == 1)
 				printf("data->cmds[%d].words[%d]->w : %s\n", j, k, data->cmds[j].words[k]->w);
 		}
 		else
 		{
 			k = -1;
-			// printf("data->cmds[%d].words[0]->w : %s {%s}\n", j, data->cmds[j].words[0]->w, ft_type_printer(data->cmds[j].words[0]->t));
 			while (data->cmds[j].words[++k] && st == 2)
 				printf("data->cmds[%d].words[%d]->w : %s {%s}\n", j, k, data->cmds[j].words[k]->w,ft_type_printer(data->cmds[j].words[k]->t));
 		}
@@ -69,9 +67,9 @@ void    ft_readline(t_data *data)
 		printf("args : %s\n", data->args);
 
 		// check if quotes are closed
-		if (ft_check_syntax(data, 1) == 1 || ft_check_syntax(data, 2) == 1)
+		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
-		if (ft_spliter(data) == 1)
+		if (ft_spliter(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
@@ -82,12 +80,18 @@ void    ft_readline(t_data *data)
 		ft_expander(data);
 		// ft_print_values(data, 1);
 
-		ft_tokenizer(data);
+		if (ft_tokenizer(data) == -1)
+		{
+			ft_check_syntax(data, 0);
+			continue;
+		}
+
+		// if (ft_redirector(data) == -1)
+		// {
+		// 	ft_check_syntax(data, 0);
+		// 	continue;
+		// }
 		ft_print_values(data, 2);
-
-		ft_redirector(data);
-
-
 	}
 }
 
