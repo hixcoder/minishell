@@ -44,16 +44,16 @@ void ft_print_values(t_data *data, int st)
 		if (st == 1)
 		{
 			k = -1;
-			printf("data->cmds[%d].cmd->w : %s\n", j, data->cmds[j].cmd->w);
-			while (data->cmds[j].atr[++k] && st == 1)
-				printf("data->cmds[%d].atr[%d]->w : %s\n", j, k, data->cmds[j].atr[k]->w);
+			// printf("data->cmds[%d].words[0]->w : %s\n", j, data->cmds[j].words[0]->w);
+			while (data->cmds[j].words[++k] && st == 1)
+				printf("data->cmds[%d].words[%d]->w : %s\n", j, k, data->cmds[j].words[k]->w);
 		}
 		else
 		{
 			k = -1;
-			printf("data->cmds[%d].cmd->w : %s {%s}\n", j, data->cmds[j].cmd->w, ft_type_printer(data->cmds[j].cmd->t));
-			while (data->cmds[j].atr[++k] && st == 2)
-				printf("data->cmds[%d].atr[%d]->w : %s {%s}\n", j, k, data->cmds[j].atr[k]->w,ft_type_printer(data->cmds[j].atr[k]->t));
+			// printf("data->cmds[%d].words[0]->w : %s {%s}\n", j, data->cmds[j].words[0]->w, ft_type_printer(data->cmds[j].words[0]->t));
+			while (data->cmds[j].words[++k] && st == 2)
+				printf("data->cmds[%d].words[%d]->w : %s {%s}\n", j, k, data->cmds[j].words[k]->w,ft_type_printer(data->cmds[j].words[k]->t));
 		}
 		
 	}
@@ -77,13 +77,17 @@ void    ft_readline(t_data *data)
 			continue;
 		}
 		
-		ft_print_values(data, 1);
+		// ft_print_values(data, 1);
 		
 		ft_expander(data);
-		ft_print_values(data, 1);
+		// ft_print_values(data, 1);
 
 		ft_tokenizer(data);
 		ft_print_values(data, 2);
+
+		ft_redirector(data);
+
+
 	}
 }
 

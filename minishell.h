@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/18 12:04:30 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:21:33 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef enum type
 	REDIRECT_OUT_APND, // '>>'
 	
 	MY_FILE,
-	FILE_IN, // word after '<'
-	FILE_OUT, // word after '>'
-	DELIMITER, // word after '<<'
-	FILE_OUT_APND // word after '>>'
+	// FILE_IN, // word after '<'
+	// FILE_OUT, // word after '>'
+	// DELIMITER, // word after '<<'
+	// FILE_OUT_APND // word after '>>'
 }	Type;
 
 typedef struct s_word
@@ -44,12 +44,19 @@ typedef struct s_word
 	Type	t;
 }   t_word;
 
+typedef struct s_redi
+{
+	t_word  *redi; 
+	t_word	*file;
+}   t_redi;
+
 // cmd : command
-// atr : atributes
+// words : atributes
 typedef struct s_command
 {
-	t_word	*cmd;
-	t_word	**atr;
+	char	**cmds;
+	t_word	**words;
+	t_redi	**redi;
 	int		fd_in;
 	int		fd_out;
 }   t_command;
@@ -78,4 +85,11 @@ void	ft_tokenizer(t_data *data);
 Type    ft_tokenize(char *word);
 char	*ft_check_redirections(char *s);
 int		ft_check_syntax(t_data *data, int check_nbr);
+void	ft_expander(t_data *data);
+void	ft_tokenizer(t_data *data);
+int		ft_spliter(t_data *data);
+void	ft_redirector(t_data *data);
+
+
+
 #endif

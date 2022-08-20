@@ -20,46 +20,47 @@ c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
 -------------
 expand tests:
 -----------------------------------------------
-ls -la | "$U rr$USER"
-ls '-la' | "$U rr$USER"
-'l's' '-la' '|' '"$U rr$USER"'
-ls -la | "$US $USER r $U $USE$U rr$x"
-"$U $PATH $_x I"
-"$a $b lkl $c $pi $bq I$hix"
-"cou'cou"$lol'$USER '
-"cou'cou"$lol'$USER '$USER
-'$USER'$USER
-"'"$xx  ""''$xx|  "'$xx'" '$xx' |  '"$xx"' '$xx'| $xx"'"'$xx '$| $a'$xx '$xx     
+✅ ls -la | "$U rr$USER"
+✅ ls '-la' | "$U rr$USER"
+✅ 'l's' '-la' '|' '"$U rr$USER"'
+✅ ls -la | "$US $USER r $U $USE$U rr$x"
+✅ "$U $PATH $_x I"
+✅ "$a $b lkl $c $pi $bq I$hix"
+✅ "cou'cou"$lol'$USER '
+✅ "cou'cou"$lol'$USER '$USER
+✅ '$USER'$USER
+✅ "'"$xx  ""''$xx|  "'$xx'" '$xx' |  '"$xx"' '$xx'| $xx"'"'$xx '$| $a'$xx '$xx     
 
 
-"'"$xx   	    ok
-""''$xx  	    ok
-"'$xx'"  	    ok
-'$xx'    	    ok
-'"$xx"'  	    ok
-'$xx'$xx 	    ok
-"'"'$xx '$xx    ok
-$a'$xx '$xx     ok
+"'"$xx   	    ✅
+""''$xx  	    ✅
+"'$xx'"  	    ✅
+'$xx'    	    ✅
+'"$xx"'  	    ✅
+'$xx'$xx 	    ✅
+"'"'$xx '$xx    ✅
+$a'$xx '$xx     ✅
 -----------------------------------------------
 
 
 -------------
 redirections tests:
 -----------------------------------------------
-ls -la | ls > file
-ls>-la"<<" | ls<<file
->>>>>>>>>>>>>>
->>><<>>
->ff>>>>"fdsf>">>'>>>>' "fdf>"
+[✅]==} ls -la | ls > file
+[✅]==} ls>-la"<<" | ls<<file
+[✅]==} >>>>>>>>>>>>>>
+[✅]==} >>><<>>
+[✅]==} >ff>>>>"fdsf>">>'>>>>' "fdf>"
 
 
 -----------------------------------------------
 
 syntax error:
-- check if there is any special character not inside quotes
-- check if there is a redirection without its file or herdoc without delimeter
-- check this " f |   "
-- check this "  |"
-- check this " ff | | fdf"
-- check this "ls  +lll"
-- ls >>>l
+[✅]==} check if there is any special character not inside quotes
+[❌]==} check if there is a redirection without its file or herdoc without delimeter
+[❌]==} check this " f |   "
+[✅]==} check this "  |"
+[❌]==} check this " ff | | fdf"
+[✅]==} check this "ls  +lll"
+[❌]==} ls >>>l
+[❌]==} ls > | grep l

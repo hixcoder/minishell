@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/08 10:46:23 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/20 12:43:10 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME = minishell
 
 # madatory
 PARSING_FOLDER = ./parsing/
-PARSING_FILES  = parse.c quotes.c ft_split2.c utiles.c expand.c expand_2.c ft_strreplace.c tokenize.c syntax_error.c
+PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
+					tokenizer.c syntax_error.c spliter.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 REDIRECTIONS_FOLDER = ./redirections/
-REDIRECTIONS_FILES  = redirections_check.c 
+REDIRECTIONS_FILES  = redirections_check.c redirector.c
 SRCS_REDIRECTIONS = $(addprefix $(REDIRECTIONS_FOLDER), $(REDIRECTIONS_FILES))
 
 SRCS = main.c $(SRCS_PARSING) $(SRCS_REDIRECTIONS)

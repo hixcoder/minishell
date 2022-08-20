@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.c                                           :+:      :+:    :+:   */
+/*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 11:27:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/01 08:43:50 by hboumahd         ###   ########.fr       */
+/*   Created: 2022/08/20 12:23:25 by hboumahd          #+#    #+#             */
+/*   Updated: 2022/08/20 12:23:28 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,20 @@ char    *ft_expand(char **env, char *s)
         return (NULL);
     tmp = ft_remove_quotes(s, tmp);
     return (tmp);
+}
+
+// this function expand all strings inside the 2D array: data->cmds to there env values
+void	ft_expander(t_data *data)
+{
+	int i;
+	int j;
+	
+	i = -1;
+	while (++i < data->cmds_len)
+	{
+		j = -1;
+		data->cmds[i].words[0]->w = ft_expand(data->env, data->cmds[i].words[0]->w);
+		while (data->cmds[i].words[++j])
+			data->cmds[i].words[j]->w = ft_expand(data->env, data->cmds[i].words[j]->w);
+	}
 }

@@ -6,11 +6,11 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 13:38:52 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/01 11:35:57 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:04:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
 char    **ft_protect(char **tmp, char *varname)
 {
