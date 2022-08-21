@@ -16,6 +16,12 @@ c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
 
 
 
+-------------
+split tests:
+-----------------------------------------------
+[❌]==} "    "| sdf|sdf
+
+-----------------------------------------------
 
 -------------
 expand tests:
@@ -51,16 +57,16 @@ redirections tests:
 [✅]==} >>>>>>>>>>>>>>
 [✅]==} >>><<>>
 [✅]==} >ff>>>>"fdsf>">>'>>>>' "fdf>"
-
+[❌]==} ls > $gfg ll  ($gfg have no value)
 
 -----------------------------------------------
 
 syntax error:
 [✅]==} check if there is any special character not inside quotes
 [✅]==} check if there is a redirection without its file or herdoc without delimeter
-[❌]==} check this " f |   "
+[✅]==} check this " f |   "
 [✅]==} check this "  |"
-[❌]==} check this " ff | | fdf"
+[✅]==} check this " ff | | fdf"
 [✅]==} check this "ls  +lll"
 [✅]==} ls >>>l
 [✅]==} ls > | grep l

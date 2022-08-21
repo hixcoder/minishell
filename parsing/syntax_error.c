@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:44:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 20:02:54 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 12:40:13 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ int is_spaces_before(char *s, int i)
     while (++j < i)
     {
         if (s[j] != ' ')
+            return (0);
+    }
+    return (1);
+}
+
+int is_spaces_after(char *s, int i)
+{
+    while (s[++i])
+    {
+        if (s[i] != ' ')
             return (0);
     }
     return (1);
@@ -41,7 +51,8 @@ int ft_check_specials(char *s)
             return (1);
         if ((s[i] == '|' && is_insid_qots(s, i) == 0 && 
             s[i + 1] == '|' && is_insid_qots(s, i + 1) == 0) ||
-            (s[i] == '|' && is_spaces_before(s, i) == 1))
+            (s[i] == '|' && is_spaces_before(s, i) == 1) ||
+            (s[i] == '|' && is_spaces_after(s, i) == 1))
             return (1);
     }
     if (s[i - 1] == '|')

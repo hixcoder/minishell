@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:23:25 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 12:23:28 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:02:33 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	ft_expander(t_data *data)
 	while (++i < data->cmds_len)
 	{
 		j = -1;
-		data->cmds[i].words[0]->w = ft_expand(data->env, data->cmds[i].words[0]->w);
 		while (data->cmds[i].words[++j])
 			data->cmds[i].words[j]->w = ft_expand(data->env, data->cmds[i].words[j]->w);
 	}

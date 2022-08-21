@@ -40,20 +40,23 @@ void ft_print_values(t_data *data, int st)
 	while (++j < data->cmds_len)
 	{
 		int k;
+		k = -1;
 
 		if (st == 1)
 		{
-			k = -1;
-			while (data->cmds[j].words[++k] && st == 1)
+			while (data->cmds[j].words[++k])
 				printf("data->cmds[%d].words[%d]->w : %s\n", j, k, data->cmds[j].words[k]->w);
 		}
-		else
+		else if (st == 2)
 		{
-			k = -1;
-			while (data->cmds[j].words[++k] && st == 2)
+			while (data->cmds[j].words[++k])
 				printf("data->cmds[%d].words[%d]->w : %s {%s}\n", j, k, data->cmds[j].words[k]->w,ft_type_printer(data->cmds[j].words[k]->t));
 		}
-		
+		else if (st == 3)
+		{
+			while (data->cmds[j].cmds[++k])
+				printf("data->cmds[%d].cmds[%d] : |%s| \n", j, k, data->cmds[j].cmds[k]);
+		}
 	}
 }
 
@@ -75,7 +78,7 @@ void    ft_readline(t_data *data)
 			continue;
 		}
 		
-		// ft_print_values(data, 1);
+		ft_print_values(data, 1);
 		
 		ft_expander(data);
 		// ft_print_values(data, 1);
@@ -86,12 +89,14 @@ void    ft_readline(t_data *data)
 			continue;
 		}
 
-		// if (ft_redirector(data) == -1)
-		// {
-		// 	ft_check_syntax(data, 0);
-		// 	continue;
-		// }
+		if (ft_redirector(data) == -1)
+		{
+			ft_check_syntax(data, 0);
+			continue;
+		}
 		ft_print_values(data, 2);
+		ft_print_values(data, 3);
+
 	}
 }
 

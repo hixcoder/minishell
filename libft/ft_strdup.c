@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:41:33 by hboumahd          #+#    #+#             */
-/*   Updated: 2021/11/08 14:46:12 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 13:18:07 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_strlen1(const char *s1)
 	int	i;
 
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 		i++;
 	return (i);
 }

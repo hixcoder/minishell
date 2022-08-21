@@ -6,11 +6,25 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/20 20:04:35 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 12:28:11 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+// this function takes the string s and return 1 if it contains only spaces and 0 otherways
+int	ft_is_space(char *s)
+{
+	int i;
+
+	i = -1;
+	while (s[++i])
+	{
+		if (s[i] != ' ')
+			return (0);
+	}
+	return (1);
+}
 
 void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 {
@@ -29,7 +43,6 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 	}
 }
 
-
 // what this function do:
 // 1- trim and split the input by '|'
 // 2- trim the commands and split them by " " then fill the values of data->cmds
@@ -42,7 +55,11 @@ int	ft_spliter(t_data *data)
 	cmdsTmp = ft_split2(ft_strtrim(data->args, " "), '|');
 	i = -1;
 	while (cmdsTmp[++i])
-		data->cmds_len = i + 1;
+	{
+		if (ft_is_space(cmdsTmp[i]) == 1)
+			return (-1);
+	}
+	data->cmds_len = i;
 	data->cmds = malloc(sizeof(t_command) * data->cmds_len);
 	if (!data->cmds)
 		return (-1);
