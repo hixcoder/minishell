@@ -57,6 +57,7 @@ void ft_print_values(t_data *data, int st)
 			while (data->cmds[j].cmds[++k])
 				printf("data->cmds[%d].cmds[%d] : |%s| \n", j, k, data->cmds[j].cmds[k]);
 		}
+		printf("\n");
 	}
 }
 

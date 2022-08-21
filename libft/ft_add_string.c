@@ -6,47 +6,31 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 13:38:52 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 13:50:29 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:41:36 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    **ft_protect(char **tmp, char *varname)
-{
-    if (tmp == NULL)
-    {
-        if (!(tmp = malloc(sizeof(char *) * 2)))
-            return (NULL);
-        tmp[0] = ft_strdup(varname);
-        tmp[1] = NULL;
-        return (tmp);
-    }
-    if (varname == NULL)
-        return (tmp);
-    return (NULL);
-}
-
-// this function you give it a 2D array and a string, 
-// its job is to add the string to the 2D array 
-char    **ft_add_string(char **tmp, char *varname)
+// this function you give it a 2D array 's' and a string 'w', 
+// its job is to add the string 'w' to the 2D array 's'
+char    **ft_add_string(char **s, char *w)
 {
     int     i;
     int     tmplen;
     char    **new_tmp;
 
-    if (tmp== NULL || varname == NULL)
-        return (ft_protect(tmp, varname));
+    if (w == NULL)
+        return (s);
     tmplen = 0;
-    printf("======> %s\n", tmp[0]);
-    while(tmp[tmplen])
+    while(s[tmplen])
         tmplen++;
     if (!(new_tmp = malloc (sizeof(char *) * (tmplen + 2))))
         return (NULL);
     i = -1;
-    while(tmp[++i])
-        new_tmp[i] = ft_strdup(tmp[i]);
-    new_tmp[tmplen] = ft_strdup(varname);
+    while(s[++i])
+        new_tmp[i] = ft_strdup(s[i]);
+    new_tmp[tmplen] = ft_strdup(w);
     new_tmp[tmplen + 1] = NULL;
     return (new_tmp);
 }

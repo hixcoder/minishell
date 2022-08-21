@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:30:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 13:39:06 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:30:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int	ft_redirector(t_data *data)
     // char **tmp;
 
     i = -1;
+    
 	while (++i < data->cmds_len)
 	{
+        if (!(data->cmds[i].cmds = malloc(sizeof(char *))))
+            return (-1);
+        data->cmds[i].cmds[0] = NULL;
 		j = -1;
 		while (data->cmds[i].words[++j])
         {
@@ -43,10 +47,7 @@ int	ft_redirector(t_data *data)
                 printf("==> test : %s\n", data->cmds[i].words[j]->w);
             }
             if (data->cmds[i].words[j]->t == ARG && data->cmds[i].words[j]->w != NULL)
-            {
                 data->cmds[i].cmds = ft_add_string(data->cmds[i].cmds, data->cmds[i].words[j]->w);
-                //  = tmp;
-            }
         }
 	}
     return (0);
