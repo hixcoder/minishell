@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 12:38:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/19 17:42:01 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/18 12:19:26 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/20 12:21:31 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
+    size_t i;
 
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-
-void ft_lstprint(t_list *lst)
-{
-	int i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-		i++;
-	}
+    i = 0;
+    while (s1[i] == s2[i])
+    {
+        if (s1[i] == '\0' && s2[i] == '\0')
+            return (0);
+        i++;
+    }
+    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:02:04 by hboumahd          #+#    #+#             */
-/*   Updated: 2021/11/11 14:23:57 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:15:48 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strlen7(const char *str)
+static size_t ft_strlen7(const char *str)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -22,11 +22,11 @@ static size_t	ft_strlen7(const char *str)
 	return (i);
 }
 
-static int	ft_cheknd(const char *hay, const char *ndl, size_t hayi, size_t len)
+static int ft_cheknd(const char *hay, const char *ndl, size_t hayi, size_t len)
 {
-	size_t	len_nedl;
-	size_t	j;
-	size_t	i;
+	size_t len_nedl;
+	size_t j;
+	size_t i;
 
 	j = 0;
 	i = 0;
@@ -41,9 +41,9 @@ static int	ft_cheknd(const char *hay, const char *ndl, size_t hayi, size_t len)
 	return (0);
 }
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t		i;
+	size_t i;
 
 	i = 0;
 	if (*needle == '\0')

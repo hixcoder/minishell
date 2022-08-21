@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:55:15 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/08 12:26:15 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/10 12:17:30 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_error(char *error)
 	exit(1);
 }
 
-void	ft_fill_atrs(char **tmp, t_data *data, int ind)
+void ft_fill_atrs(char **tmp, t_data *data, int ind)
 {
 	int i;
 
@@ -28,23 +28,23 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 	data->cmds[ind].atr = malloc(sizeof(t_word *) * (i + 1));
 	data->cmds[ind].atr[i] = NULL;
 	i = -1;
-	while (tmp[++i]){
+	while (tmp[++i])
+	{
 		data->cmds[ind].atr[i] = malloc(sizeof(t_word));
 		data->cmds[ind].atr[i]->w = tmp[i];
 		tmp[i] = NULL;
 	}
 }
 
-
 // what this function do:
 // 1- trim and split the input by '|'
 // 2- trim the commands and split them by " " then fill the values of data->cmds
-int	ft_spliter(t_data *data)
+int ft_spliter(t_data *data)
 {
-	char	**cmdsTmp;
-	char	**atrTmp;
-	int		i;
-	
+	char **cmdsTmp;
+	char **atrTmp;
+	int i;
+
 	cmdsTmp = ft_split2(ft_strtrim(data->args, " "), '|');
 	i = -1;
 	while (cmdsTmp[++i])
@@ -59,7 +59,7 @@ int	ft_spliter(t_data *data)
 	while (cmdsTmp[++i])
 	{
 		cmdsTmp[i] = ft_check_redirections(cmdsTmp[i]);
-		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
+		// printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
 		atrTmp = ft_split2(ft_strtrim(cmdsTmp[i], " "), ' ');
 		ft_fill_atrs(atrTmp, data, i);
 		free(atrTmp);
@@ -75,11 +75,11 @@ int	ft_spliter(t_data *data)
 }
 
 // this function expand all strings inside the 2D array: data->cmds to there env values
-void	ft_expander(t_data *data)
+void ft_expander(t_data *data)
 {
 	int i;
 	int j;
-	
+
 	i = -1;
 	while (++i < data->cmds_len)
 	{
@@ -91,11 +91,11 @@ void	ft_expander(t_data *data)
 }
 
 // this function gives the type of each cmd and atr
-void	ft_tokenizer(t_data *data)
+void ft_tokenizer(t_data *data)
 {
 	int i;
 	int j;
-	
+
 	i = -1;
 	while (++i < data->cmds_len)
 	{

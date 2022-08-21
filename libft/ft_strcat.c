@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 12:38:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/19 17:42:01 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/20 11:59:50 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/20 12:11:13 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int ft_lstsize(t_list *lst)
+char *ft_strcat(char *dest, char *src)
 {
-	int i;
+    int i;
+    int j;
 
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-
-void ft_lstprint(t_list *lst)
-{
-	int i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-		i++;
-	}
+    i = 0;
+    while (dest[i] != '\0')
+        i++;
+    j = 0;
+    while (src[j] != '\0')
+    {
+        dest[i + j] = src[j];
+        j++;
+    }
+    dest[i + j] = '\n';
+    dest[i + j + 1] = '\0';
+    return (dest);
 }
