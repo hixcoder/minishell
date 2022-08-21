@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 12:21:05 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/21 16:11:50 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/21 16:11:44 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/21 16:45:31 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_echo(t_command *cmds)
+int ft_is_char_instring(char *str, char c)
 {
     int i;
-    int nl;
 
     i = 0;
-    nl = 0;
-    while (cmds->atr[i] && !ft_strcmp(cmds->atr[i]->w, "-n"))
+    while (str[i])
     {
-        nl = 1;
+        if (str[i] == c)
+            return (1);
         i++;
     }
-    while (cmds->atr[i] && cmds->atr[i]->w)
-    {
-        printf("%s", cmds->atr[i]->w);
-        if (cmds->atr[i + 1] && cmds->atr[i + 1]->w)
-            printf(" ");
+    return (0);
+}
 
-        i++;
+void ft_env(t_data *data)
+{
+    t_list *tmp;
+
+    tmp = data->env_2;
+    while (tmp)
+    {
+        if (ft_is_char_instring(tmp->content, '='))
+            printf("%s\n", (char *)tmp->content);
+        tmp = tmp->next;
     }
-    if (!nl)
-        printf("\n");
 }

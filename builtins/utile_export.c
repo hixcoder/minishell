@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:46:44 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/21 11:55:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/21 16:54:06 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,55 @@ void ft_sort_env(t_list *env)
     }
 }
 
+t_list *ft_duplicat_env(t_list *env)
+{
+    t_list *tmp;
+    t_list *result;
+    t_list *new;
+    char *str;
+
+    tmp = env;
+    result = NULL;
+    while (tmp)
+    {
+        str = ft_strdup(tmp->content);
+        if ((new = ft_lstnew(str)) == NULL)
+            return (NULL);
+        ft_lstadd_back(&result, new);
+        tmp = tmp->next;
+    }
+    return (result);
+}
+
 int ft_print_env(t_list *env)
 {
     t_list *tmp;
+    t_list *tmp2;
+    char *str;
+    int i;
+    char *c;
 
-    tmp = env;
-    ft_sort_env(env);
+    tmp = ft_duplicat_env(env);
+    tmp2 = tmp;
+    i = 0;
+    c = "";
+    ft_sort_env(tmp);
     while (tmp)
     {
-        printf("declare -x %s\n", (char *)tmp->content);
+        printf("declare -x ");
+        i = 0;
+        c = "";
+        str = tmp->content;
+        while (str[i])
+        {
+            printf("%c", str[i]);
+            if (str[i] == '=' && (c = "\""))
+                printf("\"");
+            i++;
+        }
+        printf("%s\n", c);
         tmp = tmp->next;
     }
+    ft_lstclear(&tmp2, free);
     return (1);
 }

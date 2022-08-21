@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/21 12:59:44 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/21 16:51:15 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
 EXECUTION_FOLDER = ./builtins/
-EXECUTION_FILES  = ft_echo.c ft_cd.c ft_pwd.c ft_export.c utile_export.c export_append.c ../free/split_free.c
+EXECUTION_FILES  = ft_echo.c ft_cd.c ft_pwd.c ft_export.c utile_export.c export_append.c  ../free/split_free.c ft_env.c \
+					ft_unset.c
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
 REDIRECTIONS_FOLDER = ./redirections/
@@ -36,7 +37,7 @@ LIBFT_FILES =	ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c\
 				ft_toupper.c ft_calloc.c ft_memchr.c ft_putstr_fd.c ft_strmapi.c ft_isalnum.c\
 				ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c\
 				ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c \
-				ft_lstnew.c ft_lstlast.c ft_lstadd_back.c ft_lstadd_front.c ft_lstsize.c ft_strcat.c 
+				ft_lstnew.c ft_lstlast.c ft_lstadd_back.c ft_lstadd_front.c ft_lstsize.c ft_strcat.c ft_lstclear.c ft_lstdelone.c
 				
 SRCS_LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_FILES))
 

@@ -82,5 +82,9 @@ void ft_readline(t_data *data)
 			ft_export(data);
 		if (ft_strcmp((data->cmds)->cmd->w, "pwd") == 0)
 			ft_pwd();
+		if (ft_strcmp((data->cmds)->cmd->w, "env") == 0)
+			ft_env(data);
+		if (ft_strcmp((data->cmds)->cmd->w, "unset") == 0)
+			ft_unset(data);
 	}
 }

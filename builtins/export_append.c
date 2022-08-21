@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:58:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/21 14:28:39 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/21 15:54:58 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int ft_strncmp_app(char *str1, const char *str2)
             return (0);
         i++;
     }
-    if (str1[i] == '\0' || str2[i] == '\0')
+    if (str1[i] == '\0' && str2[i] == '\0')
         return (1);
     if ((str2[i] == '\0' && str1[i] != '=') || (str1[i] != '\0' && str1[i] != '='))
         return (0);

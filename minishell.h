@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 13:02:42 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/21 16:50:53 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,11 @@ void ft_sort_table(char **table);
 int ft_is_identifier(char *str);
 int ft_print_env(t_list *env);
 void ft_append(t_list *env, char *str);
+
+// env
+void ft_env(t_data *data);
+
+// unset
+void ft_unset(t_data *data);
 
 #endif
