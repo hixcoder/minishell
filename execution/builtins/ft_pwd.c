@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 17:30:53 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 19:21:53 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/21 18:41:37 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/21 18:42:12 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../minishell.h"
 
-size_t ft_strlen(const char *str)
+int ft_pwd()
 {
-	size_t i;
+    char cwd[PATH_MAX];
 
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
+    if (getcwd(cwd, PATH_MAX))
+    {
+        printf("%s\n", cwd);
+        return (1);
+    }
+    else
+        return (0);
 }
