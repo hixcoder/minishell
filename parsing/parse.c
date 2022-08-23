@@ -105,19 +105,19 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		ft_expander(data);
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
+		ft_expander(data);
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
 		ft_print_values(data, 2);
-		ft_print_values(data, 3);
+		// ft_print_values(data, 3);
 
 	
 		// for test:

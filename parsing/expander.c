@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:23:25 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 11:02:33 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:36:04 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char    *ft_expand(char **env, char *s)
     char    *tmp;
     int     len;
 
-    s = ft_expand_env_vars(s, env);;
+    s = ft_expand_env_vars(s, env);
     quots_nbr = ft_get_quotes_nbr(s);
 	if (quots_nbr == 0)
 		return (s);
@@ -103,6 +103,10 @@ void	ft_expander(t_data *data)
 	{
 		j = -1;
 		while (data->cmds[i].words[++j])
+        {
 			data->cmds[i].words[j]->w = ft_expand(data->env, data->cmds[i].words[j]->w);
+            if (data->cmds[i].words[j]->t == HERE_DOC)
+                j++;
+        }
 	}
 }

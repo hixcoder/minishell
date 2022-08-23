@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/05 12:14:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:48:38 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int ft_is_singl_qoted(char *s, int j)
             start = 0;
         }
     }
+    i--;
     while (s[++i])
     {
         if (s[i] == '\'')
@@ -118,6 +119,7 @@ char    *ft_expand_env_vars(char *s, char **env)
     new_s = s;
     while (s[++i])
     {
+        // printf("s[%d] = '%c' is singl qoted : %d\n",  i + 1, s[i], ft_is_singl_qoted(s, i+1));
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
         {
             tmp = get_env_var_name(&s[i+1]);
