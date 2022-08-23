@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:44:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 12:40:13 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:07:53 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
 			return (-1);
 		}
     }
-    // check if there is any special character not in this list (>, <, ", ', space, |, $, ?)
+    // check if there is any special character not in this list (>, <, ", ', space, |, $, ?, ...)
     else if (check_nbr == 2)
     {
         if (ft_check_specials(data->args) == 1)

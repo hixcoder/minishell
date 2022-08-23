@@ -61,6 +61,34 @@ void ft_print_values(t_data *data, int st)
 	}
 }
 
+// here we free the all
+void ft_free(t_command *cmds, int cmds_len)
+{
+	int j;
+	int i;
+
+	if (cmds == NULL)
+		return ;
+	j = -1;
+	while (++j < cmds_len)
+	{
+		i = -1;
+		while (cmds[j].words[++i])
+		{
+			free(cmds[j].words[i]);
+			cmds[j].words[i] = NULL;
+		}
+		i = -1;
+		while (cmds[j].cmds[++i])
+		{
+			free(cmds[j].cmds[i]);
+			cmds[j].cmds[i] = NULL;
+		}
+	}
+	free(cmds);
+	cmds = NULL;
+}
+
 void    ft_readline(t_data *data)
 {
 	while (1)
@@ -78,18 +106,12 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		
-		ft_print_values(data, 1);
-		
 		ft_expander(data);
-		// ft_print_values(data, 1);
-
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
-
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
@@ -98,6 +120,6 @@ void    ft_readline(t_data *data)
 		ft_print_values(data, 2);
 		ft_print_values(data, 3);
 
+		ft_free(data->cmds, data->cmds_len);
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 12:28:11 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:35:12 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_fill_atrs(char **tmp, t_data *data, int ind)
 	while (tmp[++i]){
 		data->cmds[ind].words[i] = malloc(sizeof(t_word));
 		data->cmds[ind].words[i]->w = tmp[i];
-		tmp[i] = NULL;
 	}
 }
 
@@ -70,7 +69,6 @@ int	ft_spliter(t_data *data)
 		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
 		atrTmp = ft_split2(ft_strtrim(cmdsTmp[i], " "), ' ');
 		ft_fill_atrs(atrTmp, data, i);
-		free(atrTmp);
 		free(cmdsTmp[i]);
 		if (data->cmds[i].words == NULL)
 			return (-1);

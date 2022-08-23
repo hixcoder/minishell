@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 10:37:34 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:55:07 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ typedef enum type
 	REDIRECT_OUT_APND, // '>>'
 	
 	MY_FILE,
-	// FILE_IN, // word after '<'
-	// FILE_OUT, // word after '>'
-	// DELIMITER, // word after '<<'
-	// FILE_OUT_APND // word after '>>'
 }	Type;
 
 typedef struct s_word
@@ -44,19 +40,12 @@ typedef struct s_word
 	Type	t;
 }   t_word;
 
-typedef struct s_redi
-{
-	t_word  *redi; 
-	t_word	*file;
-}   t_redi;
-
 // cmd : command
 // words : atributes
 typedef struct s_command
 {
 	char	**cmds;
 	t_word	**words;
-	t_redi	**redi;
 	int		fd_in;
 	int		fd_out;
 }   t_command;
