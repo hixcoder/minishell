@@ -60,7 +60,6 @@ void ft_print_values(t_data *data, int st)
 	}
 }
 
-<<<<<<< HEAD
 // here we free the all
 void ft_free(t_command *cmds, int cmds_len)
 {
@@ -90,9 +89,6 @@ void ft_free(t_command *cmds, int cmds_len)
 }
 
 void    ft_readline(t_data *data)
-=======
-void ft_readline(t_data *data)
->>>>>>> 85acab1beea9bbbe9767322e6964abf7740f8503
 {
 	while (1)
 	{
