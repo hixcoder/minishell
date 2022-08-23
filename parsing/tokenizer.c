@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:01:34 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/23 11:45:05 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:27:24 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_redi_file_check(t_data *data, int i, int j, int redi_nbr)
 			if (ft_is_redi(cmds[i].words[j]->w) == 1)
 			{
 				if (cmds[i].words[j + 1] && 
+					ft_strlen((const char *)cmds[i].words[j + 1]->w) != 0 &&
 					ft_is_redi(cmds[i].words[j + 1]->w ) == 0)
 				{
 					cmds[i].words[j + 1]->t = MY_FILE;

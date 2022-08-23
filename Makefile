@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/21 19:26:25 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/23 16:39:07 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_
 					tokenizer.c syntax_error.c spliter.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
-# execution
 EXECUTION_FOLDER = ./execution/
 EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c \
 					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c \

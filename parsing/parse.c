@@ -60,7 +60,7 @@ void ft_print_values(t_data *data, int st)
 	}
 }
 
-// here we free the all
+// here we free "data->cmds"
 void ft_free(t_command *cmds, int cmds_len)
 {
 	int j;
@@ -74,6 +74,7 @@ void ft_free(t_command *cmds, int cmds_len)
 		i = -1;
 		while (cmds[j].words[++i])
 		{
+			free(cmds[j].words[i]->w);
 			free(cmds[j].words[i]);
 			cmds[j].words[i] = NULL;
 		}
@@ -83,6 +84,7 @@ void ft_free(t_command *cmds, int cmds_len)
 			free(cmds[j].cmds[i]);
 			cmds[j].cmds[i] = NULL;
 		}
+		free(cmds[j].cmds);
 	}
 	free(cmds);
 	cmds = NULL;
@@ -103,7 +105,6 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		// ft_print_values(data, 1);
 		ft_expander(data);
 		if (ft_tokenizer(data) == -1)
 		{
@@ -115,20 +116,17 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		int k = 0;
-		if (ft_strcmp(data->cmds[k].cmds[0], "echo") == 0)
-			ft_echo((data->cmds)[k]);
-		if (ft_strcmp(data->cmds[k].cmds[0], "pwd") == 0)
-			ft_pwd();
-		if (ft_strcmp(data->cmds[k].cmds[0], "cd") == 0)
-			ft_cd(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "env") == 0)
-			ft_env(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "export") == 0)
-			ft_export(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "unset") == 0)
-			ft_unset(data, k);
+		ft_print_values(data, 2);
+		ft_print_values(data, 3);
 
+	
+		// for test:
+   		// char* argv[] = {"ls","","-la", NULL };
+  		// char* envp[] = { "some", "environment", NULL };
+  		// if (execve("/bin/ls", data->cmds->cmds, envp) == -1)
+  		// 	perror("Could not execve");
 		ft_free(data->cmds, data->cmds_len);
+		free(data->args);
+		
 	}
 }

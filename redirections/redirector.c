@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:30:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/23 11:45:35 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:04:16 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_redirector(t_data *data)
                 // ft_redirect(data, i, j);
                 j++;
             }
-            if (data->cmds[i].words[j]->t == ARG && data->cmds[i].words[j]->w != NULL)
+            if (data->cmds[i].words[j]->t == ARG && ft_strlen(data->cmds[i].words[j]->w) != 0)
                 data->cmds[i].cmds = ft_add_string(data->cmds[i].cmds, data->cmds[i].words[j]->w);
         }
 	}
