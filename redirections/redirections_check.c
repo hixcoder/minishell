@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 09:23:26 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/18 09:13:22 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:43:58 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void    ft_init_vars(t_vars *var, char *s)
 char	*ft_check_redirections(char *s)
 {
 	t_vars var;
+	int		i;
     
     ft_init_vars(&var, s);
 	while (s[++var.i])
@@ -83,6 +84,7 @@ char	*ft_check_redirections(char *s)
 		else
 			var.j++;
 	}
+	i = -1;
     free(var.c);
 	var.c = NULL;
 	return (var.new_s);

@@ -61,33 +61,29 @@ void ft_print_values(t_data *data, int st)
 }
 
 // here we free "data->cmds"
-void ft_free(t_command *cmds, int cmds_len)
+void ft_free(t_data *data)
 {
 	int j;
 	int i;
 
-	if (cmds == NULL)
+	if (data->cmds == NULL)
 		return ;
 	j = -1;
-	while (++j < cmds_len)
+	while (++j < data->cmds_len)
 	{
 		i = -1;
-		while (cmds[j].words[++i])
+		while (data->cmds[j].words[++i])
 		{
-			free(cmds[j].words[i]->w);
-			free(cmds[j].words[i]);
-			cmds[j].words[i] = NULL;
+			free(data->cmds[j].words[i]->w);
+			free(data->cmds[j].words[i]);
 		}
 		i = -1;
-		while (cmds[j].cmds[++i])
-		{
-			free(cmds[j].cmds[i]);
-			cmds[j].cmds[i] = NULL;
-		}
-		free(cmds[j].cmds);
+		while (data->cmds[j].cmds[++i])
+			free(data->cmds[j].cmds[i]);
+		free(data->cmds[j].cmds);
 	}
-	free(cmds);
-	cmds = NULL;
+	free(data->cmds);
+	free(data->args);
 }
 
 void    ft_readline(t_data *data)
@@ -97,7 +93,6 @@ void    ft_readline(t_data *data)
 		data->args = readline("Minishell ++> ");
 		if (ft_strlen(data->args) > 0)
 			add_history(data->args);
-		// printf("args : %s\n", data->args);
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
 		if (ft_spliter(data) == -1)
@@ -105,28 +100,22 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
+		ft_print_values(data, 2);
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
+		ft_print_values(data, 2);
 		ft_expander(data);
+		ft_print_values(data, 2);
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
 		ft_print_values(data, 2);
-		// ft_print_values(data, 3);
-
-	
-		// for test:
-   		// char* argv[] = {"ls","","-la", NULL };
-  		// char* envp[] = { "some", "environment", NULL };
-  		// if (execve("/bin/ls", data->cmds->cmds, envp) == -1)
-  		// 	perror("Could not execve");
-		ft_free(data->cmds, data->cmds_len);
-		free(data->args);
-		
+		ft_print_values(data, 3);
+		ft_free(data);
 	}
 }

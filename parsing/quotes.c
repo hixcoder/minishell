@@ -6,12 +6,13 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 12:14:45 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/07 09:27:45 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/24 09:21:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// check if quotes are closed or not
 int    ft_check_quotes(char *s)
 {
     int i;

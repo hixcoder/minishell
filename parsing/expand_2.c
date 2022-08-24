@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/23 22:48:38 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:58:18 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ char    *ft_expand_env_vars(char *s, char **env)
     int i;
     int j;
     char *tmp;
+    char *tmp2;
     char *new_s;
 
     i = -1;
@@ -119,13 +120,14 @@ char    *ft_expand_env_vars(char *s, char **env)
     new_s = s;
     while (s[++i])
     {
-        // printf("s[%d] = '%c' is singl qoted : %d\n",  i + 1, s[i], ft_is_singl_qoted(s, i+1));
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
         {
             tmp = get_env_var_name(&s[i+1]);
+            tmp2 = new_s;
             new_s = ft_strreplace(new_s, tmp, get_env_var_value(env, tmp), j);
             j += ft_strlen(get_env_var_value(env, tmp)) - ft_strlen(tmp) + 1;
             free(tmp);
+            free(tmp2);
             tmp = NULL;
         }
         else
