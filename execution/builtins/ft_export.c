@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:23:08 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:22:08 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:15:49 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ int ft_is_exist_env(t_list *env, const char *var)
     while (tmp)
     {
         if (ft_strncmp_env(tmp->content, var) == 0)
-            return (1); // kayn
+            return (1); // exist
         tmp = tmp->next;
     }
     return (0);
 }
 
-void update_env(t_list *env, char *par)
+int update_env(t_list *env, char *par)
 {
     t_list *tmp;
 
@@ -114,10 +114,13 @@ void update_env(t_list *env, char *par)
                 tmp->content = ft_strjoin(par, "=");
             else
                 tmp->content = ft_strdup(par);
-            return;
+            if (tmp->content == NULL)
+                return (minishell_perror(MEM), 0);
+            return (1);
         }
         tmp = tmp->next;
     }
+    return (1);
 }
 
 int ft_add_to_env(t_list *env, char *str)
@@ -125,13 +128,13 @@ int ft_add_to_env(t_list *env, char *str)
     t_list *new;
 
     if (ft_is_append(str))
-        ft_append(env, str);
+        return (ft_append(env, str));
     else if (ft_is_exist_env(env, str))
-        update_env(env, str);
+        return (update_env(env, str));
     else
     {
         if ((new = ft_lstnew(str)) == NULL)
-            return (0);
+            return (minishell_perror(MEM), 0);
         ft_lstadd_back(&env, new);
     }
     return (1);
@@ -155,5 +158,5 @@ int ft_export(t_data *data, int k)
             i++;
         }
     }
-    return 0;
+    return (1);
 }

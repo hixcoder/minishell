@@ -62,7 +62,7 @@ void ft_print_values(t_data *data, int st)
 
 void ft_readline(t_data *data)
 {
-	while (1)
+	while (data->exit_status == 0)
 	{
 		data->args = readline("Minishell ++> ");
 		if (ft_strlen(data->args) > 0)
@@ -86,5 +86,5 @@ void ft_readline(t_data *data)
 			continue;
 		}
 		ft_minishell(data);
-		}
+	}
 }

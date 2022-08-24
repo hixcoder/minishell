@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 14:13:50 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:33:09 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void ft_execve(char *path, t_data *data, int k)
 {
-    execve(path, data->cmds[k].cmds, NULL);
+
+    if (execve(path, data->cmds[k].cmds, NULL) == -1)
+    {
+        ft_putstr_fd("minishell: ", STDERR);
+        ft_putstr_fd(data->cmds[k].cmds[0], STDERR);
+        ft_putstr_fd(": command not found\n", STDERR);
+        exit(EXIT_FAILURE);
+    }
 }
 
 char *check_dir(char *bin, char *command)

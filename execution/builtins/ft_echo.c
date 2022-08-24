@@ -6,13 +6,13 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/23 14:55:13 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:48:54 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void ft_echo(t_command cmds)
+int ft_echo(t_command cmds)
 {
 
     int i;
@@ -34,4 +34,5 @@ void ft_echo(t_command cmds)
     }
     if (!nl)
         write(1, "\n", 1);
+    return (0);
 }

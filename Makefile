@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/24 14:54:23 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/24 18:46:33 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,13 @@ SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
 EXECUTION_FOLDER = ./execution/
-EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c \
+EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c ./builtins/ft_exit.c \
 					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c \
 					./builtins/ft_unset.c \
-					./executi/minishell.c ./executi/redir.c ./executi/fd_fct.c ./executi/builtins_fct.c \
+					./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c  \
 					./executi/simple_cmd.c ./executi/multiple_cmds.c \
-					./executi/exeve_fct.c
+					./executi/exeve_fct.c \
+					ft_error.c
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
 REDIRECTIONS_FOLDER = ./redirections/

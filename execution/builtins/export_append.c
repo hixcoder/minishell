@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:58:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/23 10:29:36 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:15:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ char *ft_add_char(char *src, char c)
 
     result = 0;
     lent_src = ft_strlen(src);
-    result = (char *)ft_calloc(lent_src + 2, sizeof(char));
+    if ((result = (char *)ft_calloc(lent_src + 2, sizeof(char))) == NULL)
+        return (minishell_perror(MEM));
     i = 0;
     while (i < lent_src)
     {
@@ -84,7 +85,7 @@ char *ft_add_char(char *src, char c)
     return (result);
 }
 
-void update_env_app(t_list *env, char *var, char *value)
+int update_env_app(t_list *env, char *var, char *value)
 {
     t_list *tmp;
     char *result;
@@ -96,33 +97,52 @@ void update_env_app(t_list *env, char *var, char *value)
         {
             if (ft_strchr_app(tmp->content, '=') - 1 == (int)ft_strlen(tmp->content))
                 tmp->content = ft_add_char(tmp->content, '=');
+            if (tmp->content == NULL)
+                return (minishell_perror(MEM), 0);
             result = ft_strjoin(tmp->content, value);
+            if (result == NULL)
+                return (minishell_perror(MEM), 0);
             free(tmp->content);
             tmp->content = result;
-            return;
+            return (1);
         }
         tmp = tmp->next;
     }
+    return (1);
 }
 
-void ft_append(t_list *env, char *str)
+int ft_append(t_list *env, char *str)
 {
     char *variable;
     char *value;
     char *result;
     t_list *new;
 
-    variable = ft_substr(str, 0, ft_strchr_app(str, '+') - 1);
-    value = ft_substr(str, ft_strchr_app(str, '+') + 1, ft_strlen(str));
-
+    if ((variable = ft_substr(str, 0, ft_strchr_app(str, '+') - 1)) == NULL)
+        return (minishell_perror(MEM), 0);
+    if ((value = ft_substr(str, ft_strchr_app(str, '+') + 1, ft_strlen(str))) == NULL)
+        return (minishell_perror(MEM), 0);
     if (ft_is_exist_envapp(env, variable))
-        update_env_app(env, variable, value);
+        return (update_env_app(env, variable, value));
     else
     {
-        variable = ft_add_char(variable, '=');
-        result = ft_strjoin(variable, value);
+
+        if ((variable = ft_add_char(variable, '=')) == NULL)
+            return (minishell_perror(MEM), 0);
+        if ((result = ft_strjoin(variable, value)) == NULL)
+        {
+            free(variable);
+            return (minishell_perror(MEM), 0);
+        }
         if ((new = ft_lstnew(result)) == NULL)
-            return;
+        {
+            free(variable);
+            free(result);
+            return (minishell_perror(MEM), 0);
+        }
+        free(variable);
+        free(result);
         ft_lstadd_back(&env, new);
     }
+    return (1);
 }

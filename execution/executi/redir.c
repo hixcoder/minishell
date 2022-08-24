@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:45:43 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 12:41:35 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:31:31 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void ft_redir_in(t_command cmds, int i, int *infile)
         ft_putstr_fd("minishell: ", STDERR);
         ft_putendl_fd("No such file or directory: ", STDERR);
         ft_putstr_fd(cmds.words[i]->w, STDERR);
-        ft_error("Error: open");
     }
 }
 

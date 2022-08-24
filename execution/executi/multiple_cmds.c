@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 14:54:48 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:19:44 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,11 @@ int **ft_create_pipes(int nbr_pipe)
     while (i < nbr_pipe)
     {
         tab[i] = (int *)malloc(sizeof(int) * 2);
+        pipe(tab[i]);
         i++;
     }
     tab[i] = NULL;
     return (tab);
-}
-
-void ft_run_pipe(int **pipes)
-{
-    int i;
-
-    i = 0;
-    while (pipes[i])
-    {
-        pipe(pipes[i]);
-        i++;
-    }
 }
 
 void ft_close_all_pipes(int **pipes)
@@ -85,9 +74,8 @@ void ft_multiple_cmds(t_data *data)
     int k;
     int pid;
 
-    pipes = ft_create_pipes(data->cmds_len);
+    pipes = ft_create_pipes(data->cmds_len - 1);
     k = 0;
-    ft_run_pipe(pipes);
     while (k < data->cmds_len)
     {
         pid = fork();

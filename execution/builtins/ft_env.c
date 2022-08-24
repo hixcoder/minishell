@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:11:44 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:20:47 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:33:13 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int ft_is_char_instring(char *str, char c)
     return (0);
 }
 
-void ft_env(t_data *data, int k)
+int ft_env(t_data *data, int k)
 {
     t_list *tmp;
 
@@ -39,4 +39,5 @@ void ft_env(t_data *data, int k)
             printf("%s\n", (char *)tmp->content);
         tmp = tmp->next;
     }
+    return (0);
 }

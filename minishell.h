@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 13:13:13 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:51:08 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,14 @@ typedef struct s_data
 	int cmds_len;
 	char **env;
 	t_list *env_2;
+	int exit_status;
 } t_data;
+
+enum minishell_error
+{
+	MEM = 1,
+	FORKERR = 2,
+};
 
 void ft_readline(t_data *data);
 void ft_error(char *error);
@@ -94,13 +101,13 @@ int ft_spliter(t_data *data);
 int ft_redirector(t_data *data);
 
 // echo
-void ft_echo(t_command cmds);
+int ft_echo(t_command cmds);
 // pwd
 int ft_pwd();
 // cd
 int ft_cd(t_data *data, int k);
 // env
-void ft_env(t_data *data, int k);
+int ft_env(t_data *data, int k);
 // utile exportv
 int ft_export(t_data *data, int k);
 int ft_lenstring(t_list *env);
@@ -108,28 +115,27 @@ char *env_to_string(t_list *env);
 void ft_sort_table(char **table);
 int ft_is_identifier(char *str);
 int ft_print_env(t_list *env);
-void ft_append(t_list *env, char *str);
+int ft_append(t_list *env, char *str);
 // unset
-void ft_unset(t_data *data, int k);
+int ft_unset(t_data *data, int k);
+int ft_exit(t_data *data, int k);
 
 // mi
 void ft_minishell(t_data *data);
 
 void ft_trait_redir(t_data *data, int k, int *infile, int *outfile);
 
-// fd fction
-void ft_close(int fd);
-
 // fct buil
 int ft_is_builtin(char *cmd);
 void ft_execmd_built(t_data *data, int k);
 
-// simple cmd
-void ft_simple_cmd(t_data *data);
+int ft_simple_cmd(t_data *data);
 void ft_multiple_cmds(t_data *data);
 
 void ft_execute_cmd(t_data *data, int k);
 
 // exeve ve fct
 void ft_execmd_bin(t_data *data, int k);
+// minishell
+void *minishell_perror(int err_type);
 #endif

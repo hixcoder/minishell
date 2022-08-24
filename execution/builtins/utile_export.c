@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:46:44 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/21 19:16:54 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:16:53 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ char *env_to_string(t_list *env)
 
     tmp = env;
     if (!(result = (char *)malloc(sizeof(char) * ft_lenstring(env) + 1)))
-        return (NULL);
+        return (minishell_perror(MEM));
     while (tmp)
     {
         if ((result = ft_strcat(result, (char *)tmp->content)) == NULL)
-            return (NULL);
+            return (minishell_perror(MEM));
 
         tmp = tmp->next;
     }
@@ -125,9 +125,10 @@ t_list *ft_duplicat_env(t_list *env)
     result = NULL;
     while (tmp)
     {
-        str = ft_strdup(tmp->content);
+        if (!(str = ft_strdup(tmp->content)))
+            return (minishell_perror(MEM));
         if ((new = ft_lstnew(str)) == NULL)
-            return (NULL);
+            return (minishell_perror(MEM));
         ft_lstadd_back(&result, new);
         tmp = tmp->next;
     }
@@ -142,10 +143,11 @@ int ft_print_env(t_list *env)
     int i;
     char *c;
 
-    tmp = ft_duplicat_env(env);
-    tmp2 = tmp;
     i = 0;
     c = "";
+    if (((tmp = ft_duplicat_env(env)) == NULL))
+        return (minishell_perror(MEM), 0);
+    tmp2 = tmp;
     ft_sort_env(tmp);
     while (tmp)
     {
