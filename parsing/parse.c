@@ -67,7 +67,6 @@ void ft_readline(t_data *data)
 		data->args = readline("Minishell ++> ");
 		if (ft_strlen(data->args) > 0)
 			add_history(data->args);
-		// printf("args : %s\n", data->args);
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
 		if (ft_spliter(data) == -1)
@@ -75,34 +74,17 @@ void ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		// ft_print_values(data, 1);
 		ft_expander(data);
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
-
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		int k = 0;
-		if (ft_strcmp(data->cmds[k].cmds[0], "echo") == 0)
-			ft_echo((data->cmds)[k]);
-		if (ft_strcmp(data->cmds[k].cmds[0], "pwd") == 0)
-			ft_pwd();
-		if (ft_strcmp(data->cmds[k].cmds[0], "cd") == 0)
-			ft_cd(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "env") == 0)
-			ft_env(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "export") == 0)
-			ft_export(data, k);
-		if (ft_strcmp(data->cmds[k].cmds[0], "unset") == 0)
-			ft_unset(data, k);
-
-		// ft_print_values(data, 2);
-		// ft_print_values(data, 3);
-	}
+		ft_minishell(data);
+		}
 }

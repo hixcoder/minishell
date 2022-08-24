@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/23 14:55:13 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/22 16:21:45 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/24 13:04:50 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void ft_echo(t_command cmds)
+void ft_execute_cmd(t_data *data, int k)
+{
+    if (ft_is_builtin(data->cmds[k].cmds[0]))
+        ft_execmd_built(data, k);
+    else
+        ft_execmd_bin(data, k);
+}
+
+void ft_minishell(t_data *data)
 {
 
-    int i;
-    int nl;
-
-    i = 1;
-    nl = 0;
-    if (cmds.cmds[i] && !ft_strcmp(cmds.cmds[i], "-n"))
-    {
-        nl = 1;
-        i++;
-    }
-    while (cmds.cmds[i])
-    {
-        ft_putstr_fd(cmds.cmds[i], 1);
-        if (cmds.cmds[i + 1])
-            write(1, " ", 1);
-        i++;
-    }
-    if (!nl)
-        write(1, "\n", 1);
+    if (data->cmds_len == 1)
+        ft_simple_cmd(data);
+    else if (data->cmds_len > 1)
+        ft_multiple_cmds(data);
 }

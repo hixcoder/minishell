@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/22 11:23:13 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 13:13:13 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <dirent.h>
 #include <sys/wait.h>
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <fcntl.h>
 #include "./libft/libft.h"
+
+#define STDIN 0
+#define STDOUT 1
+#define STDERR 2
 
 // our types
 typedef enum type
@@ -30,7 +36,6 @@ typedef enum type
 	REDIRECT_OUT,	   // '>'
 	HERE_DOC,		   // '<<'
 	REDIRECT_OUT_APND, // '>>'
-
 	MY_FILE,
 	// FILE_IN, // word after '<'
 	// FILE_OUT, // word after '>'
@@ -57,14 +62,12 @@ typedef struct s_command
 	char **cmds; //
 	t_word **words;
 	t_redi **redi;
-	int fd_in;
-	int fd_out;
 } t_command;
 
 typedef struct s_data
 {
 	char *args;
-	t_command *cmds; // [echo "hello world", echo "hello world"]
+	t_command *cmds;
 	int cmds_len;
 	char **env;
 	t_list *env_2;
@@ -96,10 +99,8 @@ void ft_echo(t_command cmds);
 int ft_pwd();
 // cd
 int ft_cd(t_data *data, int k);
-
 // env
 void ft_env(t_data *data, int k);
-
 // utile exportv
 int ft_export(t_data *data, int k);
 int ft_lenstring(t_list *env);
@@ -108,8 +109,27 @@ void ft_sort_table(char **table);
 int ft_is_identifier(char *str);
 int ft_print_env(t_list *env);
 void ft_append(t_list *env, char *str);
-
 // unset
 void ft_unset(t_data *data, int k);
 
+// mi
+void ft_minishell(t_data *data);
+
+void ft_trait_redir(t_data *data, int k, int *infile, int *outfile);
+
+// fd fction
+void ft_close(int fd);
+
+// fct buil
+int ft_is_builtin(char *cmd);
+void ft_execmd_built(t_data *data, int k);
+
+// simple cmd
+void ft_simple_cmd(t_data *data);
+void ft_multiple_cmds(t_data *data);
+
+void ft_execute_cmd(t_data *data, int k);
+
+// exeve ve fct
+void ft_execmd_bin(t_data *data, int k);
 #endif

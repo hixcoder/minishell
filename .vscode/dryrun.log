@@ -1,41 +1,38 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/ahammam/Desktop/minishell'
 gcc  -Wall -Wextra -Werror -g  -c main.c -o main.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/parse.c -o parsing/parse.o
 gcc  -Wall -Wextra -Werror -g  -c parsing/quotes.c -o parsing/quotes.o
 gcc  -Wall -Wextra -Werror -g  -c parsing/ft_split2.c -o parsing/ft_split2.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/utiles.c -o parsing/utiles.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/expander.c -o parsing/expander.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/expand_2.c -o parsing/expand_2.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/ft_strreplace.c -o parsing/ft_strreplace.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/tokenizer.c -o parsing/tokenizer.o
- 
 gcc  -Wall -Wextra -Werror -g  -c parsing/syntax_error.c -o parsing/syntax_error.o
 gcc  -Wall -Wextra -Werror -g  -c parsing/spliter.c -o parsing/spliter.o
 gcc  -Wall -Wextra -Werror -g  -c redirections/redirections_check.c -o redirections/redirections_check.o
 gcc  -Wall -Wextra -Werror -g  -c redirections/redirector.c -o redirections/redirector.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_echo.c -o execution/./builtins/ft_echo.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_pwd.c -o execution/./builtins/ft_pwd.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_cd.c -o execution/./builtins/ft_cd.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_env.c -o execution/./builtins/ft_env.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_export.c -o execution/./builtins/ft_export.o
- 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/utile_export.c -o execution/./builtins/utile_export.o
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/export_append.c -o execution/./builtins/export_append.o
+ 
 gcc  -Wall -Wextra -Werror -g  -c execution/./builtins/ft_unset.c -o execution/./builtins/ft_unset.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/minishell.c -o execution/./executi/minishell.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/redir.c -o execution/./executi/redir.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/fd_fct.c -o execution/./executi/fd_fct.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/builtins_fct.c -o execution/./executi/builtins_fct.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/simple_cmd.c -o execution/./executi/simple_cmd.o
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/multiple_cmds.c -o execution/./executi/multiple_cmds.o
+ 
+gcc  -Wall -Wextra -Werror -g  -c execution/./executi/exeve_fct.c -o execution/./executi/exeve_fct.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_isdigit.c -o libft/ft_isdigit.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_memset.c -o libft/ft_memset.o
+ 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strjoin.c -o libft/ft_strjoin.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strtrim.c -o libft/ft_strtrim.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_isprint.c -o libft/ft_isprint.o
@@ -44,42 +41,29 @@ gcc  -Wall -Wextra -Werror -g  -c libft/ft_strlcat.c -o libft/ft_strlcat.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_substr.c -o libft/ft_substr.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_itoa.c -o libft/ft_itoa.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_atoi.c -o libft/ft_atoi.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_putendl_fd.c -o libft/ft_putendl_fd.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strlcpy.c -o libft/ft_strlcpy.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_tolower.c -o libft/ft_tolower.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_bzero.c -o libft/ft_bzero.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_putnbr_fd.c -o libft/ft_putnbr_fd.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strlen.c -o libft/ft_strlen.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_toupper.c -o libft/ft_toupper.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_calloc.c -o libft/ft_calloc.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_memchr.c -o libft/ft_memchr.o
-gcc  -Wall -Wextra -Werror -g  -c libft/ft_putstr_fd.c -o libft/ft_putstr_fd.o
  
+gcc  -Wall -Wextra -Werror -g  -c libft/ft_putstr_fd.c -o libft/ft_putstr_fd.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strmapi.c -o libft/ft_strmapi.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_isalnum.c -o libft/ft_isalnum.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_memcmp.c -o libft/ft_memcmp.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_split.c -o libft/ft_split.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strncmp.c -o libft/ft_strncmp.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_isalpha.c -o libft/ft_isalpha.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_memcpy.c -o libft/ft_memcpy.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strchr.c -o libft/ft_strchr.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strnstr.c -o libft/ft_strnstr.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_isascii.c -o libft/ft_isascii.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_memmove.c -o libft/ft_memmove.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strdup.c -o libft/ft_strdup.o
@@ -87,21 +71,19 @@ gcc  -Wall -Wextra -Werror -g  -c libft/ft_strrchr.c -o libft/ft_strrchr.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_striteri.c -o libft/ft_striteri.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_add_string.c -o libft/ft_add_string.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strcmp.c -o libft/ft_strcmp.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_strcat.c -o libft/ft_strcat.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstnew.c -o libft/ft_lstnew.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstlast.c -o libft/ft_lstlast.o
+ 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstadd_back.c -o libft/ft_lstadd_back.o
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstadd_front.c -o libft/ft_lstadd_front.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstsize.c -o libft/ft_lstsize.o
  
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstclear.c -o libft/ft_lstclear.o
- 
 gcc  -Wall -Wextra -Werror -g  -c libft/ft_lstdelone.c -o libft/ft_lstdelone.o
+ 
 echo "|+| make the libft.a library   ==> \033[0;92mDONE\033[0m"	
 /Library/Developer/CommandLineTools/usr/bin/make -C ./libft/
  
@@ -109,44 +91,59 @@ make[1]: Entering directory `/Users/ahammam/Desktop/minishell/libft'
 cc -Wall -Wextra -Werror -g -c ft_isdigit.c -o ft_isdigit.o
 cc -Wall -Wextra -Werror -g -c ft_memset.c -o ft_memset.o
 cc -Wall -Wextra -Werror -g -c ft_strjoin.c -o ft_strjoin.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_strtrim.c -o ft_strtrim.o
 cc -Wall -Wextra -Werror -g -c ft_isprint.c -o ft_isprint.o
 cc -Wall -Wextra -Werror -g -c ft_putchar_fd.c -o ft_putchar_fd.o
 cc -Wall -Wextra -Werror -g -c ft_strlcat.c -o ft_strlcat.o
 cc -Wall -Wextra -Werror -g -c ft_substr.c -o ft_substr.o
-cc -Wall -Wextra -Werror -g -c ft_itoa.c -o ft_itoa.o
-cc -Wall -Wextra -Werror -g -c ft_atoi.c -o ft_atoi.o
-cc -Wall -Wextra -Werror -g -c ft_putendl_fd.c -o ft_putendl_fd.o
  
+cc -Wall -Wextra -Werror -g -c ft_itoa.c -o ft_itoa.o
+ 
+cc -Wall -Wextra -Werror -g -c ft_atoi.c -o ft_atoi.o
+ 
+cc -Wall -Wextra -Werror -g -c ft_putendl_fd.c -o ft_putendl_fd.o
 cc -Wall -Wextra -Werror -g -c ft_strlcpy.c -o ft_strlcpy.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_tolower.c -o ft_tolower.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_bzero.c -o ft_bzero.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_putnbr_fd.c -o ft_putnbr_fd.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_strlen.c -o ft_strlen.o
 cc -Wall -Wextra -Werror -g -c ft_toupper.c -o ft_toupper.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_calloc.c -o ft_calloc.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_memchr.c -o ft_memchr.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_putstr_fd.c -o ft_putstr_fd.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_strmapi.c -o ft_strmapi.o
 cc -Wall -Wextra -Werror -g -c ft_isalnum.c -o ft_isalnum.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_memcmp.c -o ft_memcmp.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_split.c -o ft_split.o
 cc -Wall -Wextra -Werror -g -c ft_strncmp.c -o ft_strncmp.o
 cc -Wall -Wextra -Werror -g -c ft_isalpha.c -o ft_isalpha.o
 cc -Wall -Wextra -Werror -g -c ft_memcpy.c -o ft_memcpy.o
 cc -Wall -Wextra -Werror -g -c ft_strchr.c -o ft_strchr.o
 cc -Wall -Wextra -Werror -g -c ft_strnstr.c -o ft_strnstr.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_isascii.c -o ft_isascii.o
 cc -Wall -Wextra -Werror -g -c ft_memmove.c -o ft_memmove.o
 cc -Wall -Wextra -Werror -g -c ft_strdup.c -o ft_strdup.o
+ 
 cc -Wall -Wextra -Werror -g -c ft_strrchr.c -o ft_strrchr.o
 cc -Wall -Wextra -Werror -g -c ft_striteri.c -o ft_striteri.o
 ar rcs libft.a ft_isdigit.o ft_memset.o ft_strjoin.o ft_strtrim.o ft_isprint.o ft_putchar_fd.o ft_strlcat.o ft_substr.o ft_itoa.o ft_atoi.o ft_putendl_fd.o ft_strlcpy.o ft_tolower.o ft_bzero.o ft_putnbr_fd.o ft_strlen.o ft_toupper.o ft_calloc.o ft_memchr.o ft_putstr_fd.o ft_strmapi.o ft_isalnum.o ft_memcmp.o ft_split.o ft_strncmp.o ft_isalpha.o ft_memcpy.o ft_strchr.o ft_strnstr.o ft_isascii.o ft_memmove.o ft_strdup.o ft_strrchr.o ft_striteri.o
 mv libft.a ..
 make[1]: Leaving directory `/Users/ahammam/Desktop/minishell/libft'
- 
 echo "|+| make the minishell program ==> \033[0;92mDONE\033[0m"
-gcc  -Wall -Wextra -Werror -g  main.o ./parsing/parse.o ./parsing/quotes.o ./parsing/ft_split2.o ./parsing/utiles.o ./parsing/expander.o ./parsing/expand_2.o ./parsing/ft_strreplace.o ./parsing/tokenizer.o ./parsing/syntax_error.o ./parsing/spliter.o ./redirections/redirections_check.o ./redirections/redirector.o ./execution/./builtins/ft_echo.o ./execution/./builtins/ft_pwd.o ./execution/./builtins/ft_cd.o ./execution/./builtins/ft_env.o ./execution/./builtins/ft_export.o ./execution/./builtins/utile_export.o ./execution/./builtins/export_append.o ./execution/./builtins/ft_unset.o ./libft/ft_isdigit.o ./libft/ft_memset.o ./libft/ft_strjoin.o ./libft/ft_strtrim.o ./libft/ft_isprint.o ./libft/ft_putchar_fd.o ./libft/ft_strlcat.o ./libft/ft_substr.o ./libft/ft_itoa.o ./libft/ft_atoi.o ./libft/ft_putendl_fd.o ./libft/ft_strlcpy.o ./libft/ft_tolower.o ./libft/ft_bzero.o ./libft/ft_putnbr_fd.o ./libft/ft_strlen.o ./libft/ft_toupper.o ./libft/ft_calloc.o ./libft/ft_memchr.o ./libft/ft_putstr_fd.o ./libft/ft_strmapi.o ./libft/ft_isalnum.o ./libft/ft_memcmp.o ./libft/ft_split.o ./libft/ft_strncmp.o ./libft/ft_isalpha.o ./libft/ft_memcpy.o ./libft/ft_strchr.o ./libft/ft_strnstr.o ./libft/ft_isascii.o ./libft/ft_memmove.o ./libft/ft_strdup.o ./libft/ft_strrchr.o ./libft/ft_striteri.o ./libft/ft_add_string.o ./libft/ft_strcmp.o ./libft/ft_strcat.o ./libft/ft_lstnew.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstclear.o ./libft/ft_lstdelone.o libft.a -lreadline -o minishell
+gcc  -Wall -Wextra -Werror -g  main.o ./parsing/parse.o ./parsing/quotes.o ./parsing/ft_split2.o ./parsing/utiles.o ./parsing/expander.o ./parsing/expand_2.o ./parsing/ft_strreplace.o ./parsing/tokenizer.o ./parsing/syntax_error.o ./parsing/spliter.o ./redirections/redirections_check.o ./redirections/redirector.o ./execution/./builtins/ft_echo.o ./execution/./builtins/ft_pwd.o ./execution/./builtins/ft_cd.o ./execution/./builtins/ft_env.o ./execution/./builtins/ft_export.o ./execution/./builtins/utile_export.o ./execution/./builtins/export_append.o ./execution/./builtins/ft_unset.o ./execution/./executi/minishell.o ./execution/./executi/redir.o ./execution/./executi/fd_fct.o ./execution/./executi/builtins_fct.o ./execution/./executi/simple_cmd.o ./execution/./executi/multiple_cmds.o ./execution/./executi/exeve_fct.o ./libft/ft_isdigit.o ./libft/ft_memset.o ./libft/ft_strjoin.o ./libft/ft_strtrim.o ./libft/ft_isprint.o ./libft/ft_putchar_fd.o ./libft/ft_strlcat.o ./libft/ft_substr.o ./libft/ft_itoa.o ./libft/ft_atoi.o ./libft/ft_putendl_fd.o ./libft/ft_strlcpy.o ./libft/ft_tolower.o ./libft/ft_bzero.o ./libft/ft_putnbr_fd.o ./libft/ft_strlen.o ./libft/ft_toupper.o ./libft/ft_calloc.o ./libft/ft_memchr.o ./libft/ft_putstr_fd.o ./libft/ft_strmapi.o ./libft/ft_isalnum.o ./libft/ft_memcmp.o ./libft/ft_split.o ./libft/ft_strncmp.o ./libft/ft_isalpha.o ./libft/ft_memcpy.o ./libft/ft_strchr.o ./libft/ft_strnstr.o ./libft/ft_isascii.o ./libft/ft_memmove.o ./libft/ft_strdup.o ./libft/ft_strrchr.o ./libft/ft_striteri.o ./libft/ft_add_string.o ./libft/ft_strcmp.o ./libft/ft_strcat.o ./libft/ft_lstnew.o ./libft/ft_lstlast.o ./libft/ft_lstadd_back.o ./libft/ft_lstadd_front.o ./libft/ft_lstsize.o ./libft/ft_lstclear.o ./libft/ft_lstdelone.o libft.a -lreadline -o minishell
+make clean
 clear
 make: Leaving directory `/Users/ahammam/Desktop/minishell'
  

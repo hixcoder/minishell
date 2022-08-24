@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:07:43 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 19:21:46 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/23 18:07:02 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int ft_toupper(int c);
 
 int ft_strcmp(const char *s1, const char *s2);
 char *ft_strcat(char *dest, char *src);
+char **ft_split(char const *s, char c);
 
 t_list *ft_lstnew(void *content);
 void ft_lstadd_front(t_list **lst, t_list *new);
