@@ -3,47 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
+#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/25 18:50:35 by ubunto           ###   ########.fr        #
+#    Updated: 2022/08/25 22:48:39 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-# madatory
+#parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
-					tokenizer.c syntax_error.c spliter.c ft_split4.c 
+					tokenizer.c syntax_error.c spliter.c ft_split4.c herdoc.c
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
+# execution
 EXECUTION_FOLDER = ./execution/
 EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c \
 					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c \
 					./builtins/ft_unset.c
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
+# redirection
 REDIRECTIONS_FOLDER = ./redirections/
 REDIRECTIONS_FILES  = redirections_check.c redirector.c
 SRCS_REDIRECTIONS = $(addprefix $(REDIRECTIONS_FOLDER), $(REDIRECTIONS_FILES))
 
+# all sources
 SRCS = main.c $(SRCS_PARSING) $(SRCS_REDIRECTIONS) $(SRCS_EXECUTION)
+ALL_OBJ = ${SRCS:.c=.o}
 
-
+# external libs
 LIBFT_FOLDER = ./libft/
-LIBFT_FILES =	ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c\
-				ft_putchar_fd.c ft_strlcat.c ft_substr.c ft_itoa.c ft_atoi.c ft_putendl_fd.c\
-				ft_strlcpy.c ft_tolower.c ft_bzero.c  ft_putnbr_fd.c ft_strlen.c\
-				ft_toupper.c ft_calloc.c ft_memchr.c ft_putstr_fd.c ft_strmapi.c ft_isalnum.c\
-				ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c\
-				ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c ft_add_string.c \
-				ft_strcmp.c ft_strcat.c \
-				ft_lstnew.c ft_lstlast.c ft_lstadd_back.c ft_lstadd_front.c ft_lstsize.c ft_lstclear.c ft_lstdelone.c
-SRCS_LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_FILES))
-
-ALL_SRCS = $(SRCS) $(SRCS_LIBFT)
-ALL_OBJ = ${ALL_SRCS:.c=.o}
 
 INCLUDES = minishell.h ./libft/libft.h
 LIBS = libft.a
@@ -66,6 +58,8 @@ all : $(NAME)
 
 clean :
 	@rm -f $(ALL_OBJ) $(LIBS)
+	@rm -f $(ALL_OBJ) $(LIBS)
+	@rm -f ./libft/*.o
 	@echo "|-| remove object files ==> ${RED}DONE${RESET}"
 
 fclean : clean

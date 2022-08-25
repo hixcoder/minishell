@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 18:50:58 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/25 22:37:36 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <fcntl.h>
 #include "./libft/libft.h"
 
 // our types
@@ -46,8 +47,7 @@ typedef struct s_command
 {
 	char	**cmds;
 	t_word	**words;
-	int		fd_in;
-	int		fd_out;
+	int		fd_herdoc;
 }   t_command;
 
 typedef struct s_data
@@ -102,5 +102,6 @@ void ft_append(t_list *env, char *str);
 void ft_unset(t_data *data, int k);
 
 char	**ft_strsplit(char const *s, char c);
+void ft_herdoc(t_data *data, int i);
 
 #endif

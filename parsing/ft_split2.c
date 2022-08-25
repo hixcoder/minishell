@@ -64,10 +64,10 @@ static char	**ft_fillrows(char **dst, const char *s, char c)
 		if (s[i] != c)
 		{
 			len = ft_prdctlen(&s[i], c) + i;
-			printf("\n\ns[i] = |%s|\n", &s[i]);
-			printf("ft_prdctlen = %d\n", len -i);
-			printf("len = %d\n", len);
-			printf("i = %d\n\n\n", i);
+			// printf("\n\ns[i] = |%s|\n", &s[i]);
+			// printf("ft_prdctlen = %d\n", len -i);
+			// printf("len = %d\n", len);
+			// printf("i = %d\n\n\n", i);
 			dst[row] = malloc(sizeof(char) * (len  - i));
 			if (dst[row] == NULL)
 				return (ft_free(dst));
