@@ -1,0 +1,486 @@
+==121167== Memcheck, a memory error detector
+==121167== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==121167== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==121167== Command: ./minishell
+==121167== Parent PID: 117570
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x109DA3: ft_fillrows (ft_split2.c:73)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b102db is 0 bytes after a block of size 11 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x10B6F1: ft_add_spaces (redirections_check.c:49)
+==121167==    by 0x10B840: ft_check_redirections (redirections_check.c:84)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10543 is 0 bytes after a block of size 3 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10B697: ft_add_spaces (redirections_check.c:44)
+==121167==    by 0x10B840: ft_check_redirections (redirections_check.c:84)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A7E3: ft_strreplace (ft_strreplace.c:63)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b102db is 0 bytes after a block of size 11 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A819: ft_strreplace (ft_strreplace.c:68)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10543 is 0 bytes after a block of size 3 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10B697: ft_add_spaces (redirections_check.c:44)
+==121167==    by 0x10B840: ft_check_redirections (redirections_check.c:84)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A6CB: ft_make_new_string (ft_strreplace.c:37)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b102db is 0 bytes after a block of size 11 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A775: ft_make_new_string (ft_strreplace.c:46)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b102db is 0 bytes after a block of size 11 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x10A7A1: ft_make_new_string (ft_strreplace.c:51)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b1059e is 0 bytes after a block of size 14 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10A83E: ft_strreplace (ft_strreplace.c:70)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10B86B: ft_check_redirections (redirections_check.c:86)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10543 is 0 bytes after a block of size 3 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10B697: ft_add_spaces (redirections_check.c:44)
+==121167==    by 0x10B840: ft_check_redirections (redirections_check.c:84)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10B8BD: ft_check_redirections (redirections_check.c:78)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b102db is 0 bytes after a block of size 11 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x109DA3: ft_fillrows (ft_split2.c:73)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10D7A6: ft_strtrim (ft_strtrim.c:41)
+==121167==    by 0x10B254: ft_spliter (spliter.c:77)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b103e2 is 0 bytes after a block of size 18 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B138: ft_spliter (spliter.c:59)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E2FD: ft_memcmp (ft_memcmp.c:30)
+==121167==    by 0x10A995: ft_tokenize (tokenizer.c:32)
+==121167==    by 0x10AC90: ft_tokenizer (tokenizer.c:85)
+==121167==    by 0x10993F: ft_readline (parse.c:105)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10791 is 0 bytes after a block of size 1 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E2FD: ft_memcmp (ft_memcmp.c:30)
+==121167==    by 0x10A965: ft_tokenize (tokenizer.c:30)
+==121167==    by 0x10AC90: ft_tokenizer (tokenizer.c:85)
+==121167==    by 0x10993F: ft_readline (parse.c:105)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10831 is 0 bytes after a block of size 1 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10AAFA: ft_redi_file_check (tokenizer.c:56)
+==121167==    by 0x10AD08: ft_tokenizer (tokenizer.c:89)
+==121167==    by 0x10993F: ft_readline (parse.c:105)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A63D: ft_expand_env_vars (expand_2.c:128)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x109F59: ft_get_quotes_nbr (expander.c:30)
+==121167==    by 0x10A0A1: ft_expand (expander.c:85)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A30A: ft_is_singl_qoted (expand_2.c:42)
+==121167==    by 0x10A58C: ft_expand_env_vars (expand_2.c:131)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A39C: get_env_var_name (expand_2.c:65)
+==121167==    by 0x10A5AC: ft_expand_env_vars (expand_2.c:133)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A445: get_env_var_name (expand_2.c:77)
+==121167==    by 0x10A5AC: ft_expand_env_vars (expand_2.c:133)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A7E3: ft_strreplace (ft_strreplace.c:63)
+==121167==    by 0x10A5DE: ft_expand_env_vars (expand_2.c:135)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A6CB: ft_make_new_string (ft_strreplace.c:37)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10A5DE: ft_expand_env_vars (expand_2.c:135)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A775: ft_make_new_string (ft_strreplace.c:46)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10A5DE: ft_expand_env_vars (expand_2.c:135)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b107e2 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x10A7A1: ft_make_new_string (ft_strreplace.c:51)
+==121167==    by 0x10A863: ft_strreplace (ft_strreplace.c:73)
+==121167==    by 0x10A5DE: ft_expand_env_vars (expand_2.c:135)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b116d1 is 0 bytes after a block of size 1 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10A83E: ft_strreplace (ft_strreplace.c:70)
+==121167==    by 0x10A5DE: ft_expand_env_vars (expand_2.c:135)
+==121167==    by 0x10A091: ft_expand (expander.c:84)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10A0BC: ft_expand (expander.c:88)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10cb9 is 0 bytes after a block of size 9 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10A046: ft_remove_quotes (expander.c:59)
+==121167==    by 0x10A0FA: ft_expand (expander.c:91)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10cb9 is 0 bytes after a block of size 9 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid write of size 1
+==121167==    at 0x10A062: ft_remove_quotes (expander.c:72)
+==121167==    by 0x10A0FA: ft_expand (expander.c:91)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b11727 is 0 bytes after a block of size 7 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10A0D5: ft_expand (expander.c:89)
+==121167==    by 0x10A1A4: ft_expander (expander.c:107)
+==121167==    by 0x109963: ft_readline (parse.c:110)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10E05E: ft_strlen (ft_strlen.c:22)
+==121167==    by 0x10BA4D: ft_redirector (redirector.c:46)
+==121167==    by 0x10996F: ft_readline (parse.c:111)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10EAF9: ft_strlen1 (ft_strdup.c:20)
+==121167==    by 0x10EB27: ft_strdup (ft_strdup.c:32)
+==121167==    by 0x10ED80: ft_add_string (ft_add_string.c:36)
+==121167==    by 0x10BAD3: ft_redirector (redirector.c:47)
+==121167==    by 0x10996F: ft_readline (parse.c:111)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x10EB7D: ft_strdup (ft_strdup.c:36)
+==121167==    by 0x10ED80: ft_add_string (ft_add_string.c:36)
+==121167==    by 0x10BAD3: ft_redirector (redirector.c:47)
+==121167==    by 0x10996F: ft_readline (parse.c:111)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== Invalid read of size 1
+==121167==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x4926D14: __vfprintf_internal (vfprintf-internal.c:1688)
+==121167==    by 0x490FD3E: printf (printf.c:33)
+==121167==    by 0x1095B8: ft_print_values (parse.c:52)
+==121167==    by 0x109998: ft_readline (parse.c:116)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167==  Address 0x4b10742 is 0 bytes after a block of size 2 alloc'd
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== 
+==121167== Process terminating with default action of signal 2 (SIGINT)
+==121167==    at 0x48F13DB: kill (syscall-template.S:78)
+==121167==    by 0x488B7A2: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==121167==    by 0x488DC8E: rl_getc (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==121167==    by 0x488E502: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==121167==    by 0x4873C81: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==121167==    by 0x48744EC: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==121167==    by 0x1098AE: ft_readline (parse.c:95)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== HEAP SUMMARY:
+==121167==     in use at exit: 204,800 bytes in 224 blocks
+==121167==   total heap usage: 515 allocs, 291 frees, 226,791 bytes allocated
+==121167== 
+==121167== 14 bytes in 1 blocks are definitely lost in loss record 7 of 64
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x10A83E: ft_strreplace (ft_strreplace.c:70)
+==121167==    by 0x10B85B: ft_check_redirections (redirections_check.c:85)
+==121167==    by 0x10B22B: ft_spliter (spliter.c:75)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== 27 bytes in 4 blocks are definitely lost in loss record 15 of 64
+==121167==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==121167==    by 0x109CFD: ft_fillrows (ft_split2.c:67)
+==121167==    by 0x109E7E: ft_split2 (ft_split2.c:95)
+==121167==    by 0x10B269: ft_spliter (spliter.c:78)
+==121167==    by 0x109918: ft_readline (parse.c:100)
+==121167==    by 0x1093CA: main (main.c:42)
+==121167== 
+==121167== LEAK SUMMARY:
+==121167==    definitely lost: 41 bytes in 5 blocks
+==121167==    indirectly lost: 0 bytes in 0 blocks
+==121167==      possibly lost: 0 bytes in 0 blocks
+==121167==    still reachable: 204,759 bytes in 219 blocks
+==121167==         suppressed: 0 bytes in 0 blocks
+==121167== Reachable blocks (those to which a pointer was found) are not shown.
+==121167== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==121167== 
+==121167== For lists of detected and suppressed errors, rerun with: -s
+==121167== ERROR SUMMARY: 127 errors from 32 contexts (suppressed: 0 from 0)

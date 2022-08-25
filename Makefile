@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
+#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/23 16:39:07 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/25 18:50:35 by ubunto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minishell
 # madatory
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
-					tokenizer.c syntax_error.c spliter.c 
+					tokenizer.c syntax_error.c spliter.c ft_split4.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 EXECUTION_FOLDER = ./execution/
