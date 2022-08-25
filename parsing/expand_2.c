@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 10:21:34 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/25 16:26:54 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,20 @@ char    *get_env_var_value(char **env, char *var_name)
 {
     int i;
     char *tmp;
-    char *tmp2;
     int var_name_len;
+    char *var_name2;
     
+    // dragon cleaner
     i = -1;
-    tmp2 = ft_strtrim(var_name, "$");
-    var_name_len = ft_strlen(tmp2);
+    // printf("var_name = %s\n", var_name);
+    // printf("var_name+1 = %s\n", var_name+1);
+    // var_name2 = ft_strtrim(var_name, "$");
+    var_name2 = var_name + 1;
+    // printf("var_name2 = %s\n", var_name2);
+    var_name_len = ft_strlen(var_name2);
     while (env[++i])
     {
-        tmp = ft_strnstr(env[i], tmp2, var_name_len);
+        tmp = ft_strnstr(env[i], var_name2, var_name_len);
         if (tmp != NULL)
         {
             if (tmp[var_name_len] == '=')
@@ -111,28 +116,26 @@ char    *ft_expand_env_vars(char *s, char **env)
 {
     int i;
     int j;
-    char *tmp;
-    char *tmp2;
-    char *tmp3;
+    char *var_name;
+    char *var_value;
     char *new_s;
 
     i = -1;
     j = 0;
-    tmp = NULL;
+    var_name = NULL;
     new_s = s;
+     // dragon cleaner
     while (s[++i])
     {
+        // printf("s[%d] = '%c' is singl qoted : %d\n",  i + 1, s[i], ft_is_singl_qoted(s, i+1));
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
         {
-            tmp = get_env_var_name(&s[i+1]);
-            tmp2 = new_s;
-            tmp3 = get_env_var_value(env, tmp);
-            new_s = ft_strreplace(new_s, tmp, tmp3, j);
-            j += ft_strlen(tmp3) - ft_strlen(tmp) + 1;
-            free(tmp);
-            free(tmp2);
-            // free(tmp3);
-            // tmp = NULL;
+            var_name = get_env_var_name(&s[i+1]);
+            var_value = get_env_var_value(env, var_name);
+            new_s = ft_strreplace(new_s, var_name, var_value, j);
+            j += ft_strlen(var_value) - ft_strlen(var_name) + 1;
+            free(var_name);
+            var_name = NULL;
         }
         else
             j++;

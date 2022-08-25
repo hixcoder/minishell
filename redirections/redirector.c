@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:30:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 22:26:43 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/25 17:49:51 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ int	ft_redirector(t_data *data)
 {
     int i;
     int j;
-    char **tmp;
 
     i = -1;
 	while (++i < data->cmds_len)
 	{
         if (!(data->cmds[i].cmds = malloc(sizeof(char *))))
             return (-1);
-        
         data->cmds[i].cmds[0] = NULL;
 		j = -1;
 		while (data->cmds[i].words[++j])
@@ -46,11 +44,7 @@ int	ft_redirector(t_data *data)
                 j++;
             }
             if (data->cmds[i].words[j]->t == ARG && ft_strlen(data->cmds[i].words[j]->w) != 0)
-            {
-                tmp = data->cmds[i].cmds;
-                data->cmds[i].cmds = ft_add_string(tmp, data->cmds[i].words[j]->w);
-                free(tmp);
-            }
+                data->cmds[i].cmds = ft_add_string(data->cmds[i].cmds, data->cmds[i].words[j]->w);
         }
 	}
     return (0);

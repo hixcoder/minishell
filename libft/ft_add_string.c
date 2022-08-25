@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 13:38:52 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 22:51:50 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/25 17:50:41 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ char    **ft_add_string(char **s, char *w)
         return (NULL);
     i = -1;
     while(s[++i])
+    {
         new_tmp[i] = ft_strdup(s[i]);
-    new_tmp[tmplen] = w;
+        free(s[i]);
+    }
+    new_tmp[tmplen] = ft_strdup(w);
     new_tmp[tmplen + 1] = NULL;
+    free(s);
     return (new_tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:23:25 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 12:21:13 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:36:04 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,17 @@ char    *ft_expand(char **env, char *s)
 {
 	int     quots_nbr;
     char    *tmp;
-    char    *new_s;
     int     len;
 
-    tmp = ft_expand_env_vars(s, env);
-    quots_nbr = ft_get_quotes_nbr(tmp);
+    s = ft_expand_env_vars(s, env);
+    quots_nbr = ft_get_quotes_nbr(s);
 	if (quots_nbr == 0)
 		return (s);
-    len = ft_strlen(tmp) - quots_nbr;
-    if (!(new_s = (char *) malloc(sizeof(char) * len)))
+    len = ft_strlen(s) - quots_nbr;
+    if (!(tmp = (char *) malloc(sizeof(char) * len)))
         return (NULL);
-    new_s = ft_remove_quotes(tmp, new_s);
-    free(tmp);
-    return (new_s);
+    tmp = ft_remove_quotes(s, tmp);
+    return (tmp);
 }
 
 // this function expand all strings inside the 2D array: data->cmds to there env values

@@ -54,7 +54,7 @@ void ft_print_values(t_data *data, int st)
 		else if (st == 3)
 		{
 			while (data->cmds[j].cmds[++k])
-				printf("data->cmds[%d].cmds[%d] : |%s| \n", j, k, data->cmds[j].cmds[k]);
+				printf("data->cmds[%d].cmds[%d] : %s \n", j, k, data->cmds[j].cmds[k]);
 		}
 		printf("\n");
 	}
@@ -65,26 +65,27 @@ void ft_free(t_data *data)
 {
 	int j;
 	int i;
+	t_command *cmds;
 
-	if (data->cmds == NULL)
+	cmds = data->cmds;
+	if (cmds == NULL)
 		return ;
 	j = -1;
 	while (++j < data->cmds_len)
 	{
 		i = -1;
-		while (data->cmds[j].words[++i])
+		while (cmds[j].words[++i])
 		{
-			free(data->cmds[j].words[i]->w);
-			free(data->cmds[j].words[i]);
+			free(cmds[j].words[i]->w);
+			free(cmds[j].words[i]);
 		}
+		free(cmds[j].words);
 		i = -1;
-		while (data->cmds[j].cmds[++i])
-			free(data->cmds[j].cmds[i]);
-		free(data->cmds[j].cmds);
-		free(data->cmds[j].words);
+		while (cmds[j].cmds[++i])
+			free(cmds[j].cmds[i]);
+		free(cmds[j].cmds);
 	}
-	free(data->cmds);
-	free(data->args);
+	free(cmds);
 }
 
 void    ft_readline(t_data *data)
@@ -114,6 +115,7 @@ void    ft_readline(t_data *data)
 		}
 		ft_print_values(data, 2);
 		ft_print_values(data, 3);
-		// ft_free(data);
+
+		ft_free(data);
 	}
 }

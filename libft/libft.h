@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:07:43 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 11:03:56 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/21 19:21:46 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void *ft_calloc(size_t count, size_t size);
 int ft_isalnum(int c);
 int ft_isalpha(int c);
 int ft_isascii(int c);
-int ft_strchr2(char *s, char c);
 int ft_isdigit(int c);
 int ft_isprint(int c);
 void *ft_memchr(const void *s, int c, size_t n);

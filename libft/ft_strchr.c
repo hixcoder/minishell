@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 09:49:19 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 11:03:50 by ubunto           ###   ########.fr       */
+/*   Updated: 2021/11/13 11:49:50 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,4 @@ char	*ft_strchr(const char *s, int c)
 	if (uc == '\0' && ps[i] == uc)
 		return (&ps[i]);
 	return (0);
-}
-
-// this function returns the index of 'c' in string 's', and if it's not exist return -1
-int	ft_strchr2(char *s, char c)
-{
-	int		i;
-
-	i = -1;
-	while (s[++i])
-	{
-		if (s[i] == c)
-			return (i);
-	}
-	return (-1);
 }

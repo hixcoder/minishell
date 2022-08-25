@@ -8,6 +8,8 @@ env
 exit
 
 
+ls > $j<dd | '"$USER"' << $jj | ls >> ll -la| "ls < file" $USER
+
 
 ✅   ❌
 
@@ -21,7 +23,7 @@ split tests:
 [✅]==} echo "cat lol.c | cat > lol.c"
 [✅]==} echo '$USER'
 [✅]==} c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
-[✅]==} ljkl |"       "
+
 -----------------------------------------------
 
 -------------
@@ -48,7 +50,6 @@ expand tests:
 "'"'$xx '$xx    ✅
 $a'$xx '$xx     ✅
 '$$$'           ✅
-ls ''           ❌
 -----------------------------------------------
 
 
@@ -73,7 +74,7 @@ syntax error:
 [✅]==} check this " ff | | fdf"
 [✅]==} check this "ls  +lll"
 [✅]==} ls >>>l
-[✅]==} ls > | grep l   
+[✅]==} ls > | grep l
 
 
 

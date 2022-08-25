@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 11:11:22 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/25 18:11:22 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ int ft_spliter(t_data *data)
 {
 	char **cmdsTmp;
 	char **atrTmp;
-	char *tmp;
+	char	*args2;
+	char	*cmdsTmp2;
 	int i;
 
-	tmp = ft_strtrim(data->args, " ");
-	cmdsTmp = ft_split2(tmp, '|');
-	free(tmp);
+	args2 = ft_strtrim(data->args, " ");
+	cmdsTmp = ft_split2(args2, '|');
+	free(args2);
 	i = -1;
 	while (cmdsTmp[++i])
 	{
@@ -69,17 +70,18 @@ int ft_spliter(t_data *data)
 	i = -1;
 	while (cmdsTmp[++i])
 	{
+		// dragon cleaner
 		cmdsTmp[i] = ft_check_redirections(cmdsTmp[i]);
-		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
-		tmp = ft_strtrim(cmdsTmp[i], " ");
-		atrTmp = ft_split2(tmp, ' ');
-		free(tmp);
+		// printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
+		cmdsTmp2 = ft_strtrim(cmdsTmp[i], " ");
+		atrTmp = ft_split2(cmdsTmp2, ' ');
+		free(cmdsTmp2);
 		ft_fill_atrs(atrTmp, data, i);
 		free(cmdsTmp[i]);
-		free(atrTmp);
 		if (data->cmds[i].words == NULL)
 			return (-1);
 	}
+	free(atrTmp);
 	free(cmdsTmp);
 	return (0);
 }
