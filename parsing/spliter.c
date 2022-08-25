@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spliter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 13:31:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/25 11:11:22 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ int ft_spliter(t_data *data)
 {
 	char **cmdsTmp;
 	char **atrTmp;
+	char *tmp;
 	int i;
 
-	cmdsTmp = ft_split2(ft_strtrim(data->args, " "), '|');
+	tmp = ft_strtrim(data->args, " ");
+	cmdsTmp = ft_split2(tmp, '|');
+	free(tmp);
 	i = -1;
 	while (cmdsTmp[++i])
 	{
@@ -67,8 +70,10 @@ int ft_spliter(t_data *data)
 	while (cmdsTmp[++i])
 	{
 		cmdsTmp[i] = ft_check_redirections(cmdsTmp[i]);
-		// printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
-		atrTmp = ft_split2(ft_strtrim(cmdsTmp[i], " "), ' ');
+		printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
+		tmp = ft_strtrim(cmdsTmp[i], " ");
+		atrTmp = ft_split2(tmp, ' ');
+		free(tmp);
 		ft_fill_atrs(atrTmp, data, i);
 		free(cmdsTmp[i]);
 		free(atrTmp);

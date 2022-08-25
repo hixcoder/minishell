@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_check.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 09:23:26 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 11:43:58 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:38:47 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void    ft_init_vars(t_vars *var, char *s)
 char	*ft_check_redirections(char *s)
 {
 	t_vars var;
-	int		i;
+	char	*tmp;
     
     ft_init_vars(&var, s);
 	while (s[++var.i])
@@ -77,14 +77,15 @@ char	*ft_check_redirections(char *s)
 		var.tmp_d = is_delimiter(var.c, &s[var.i]);
 		if (var.tmp_d != NULL && is_insid_qots(s, var.i) == 0)
 		{
-			var.new_s = ft_strreplace(var.new_s, var.tmp_d, ft_add_spaces(var.tmp_d), var.j);
-			var.j += ft_strlen(ft_add_spaces(var.tmp_d));
+			tmp = ft_add_spaces(var.tmp_d);
+			var.new_s = ft_strreplace(var.new_s, var.tmp_d, tmp, var.j);
+			var.j += ft_strlen(tmp);
+			free(tmp);
 			var.i += ft_strlen(var.tmp_d) - 1;
 		}
 		else
 			var.j++;
 	}
-	i = -1;
     free(var.c);
 	var.c = NULL;
 	return (var.new_s);

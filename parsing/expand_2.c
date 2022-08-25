@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 12:58:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/25 10:21:34 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,15 @@ char    *get_env_var_value(char **env, char *var_name)
 {
     int i;
     char *tmp;
+    char *tmp2;
     int var_name_len;
     
     i = -1;
-    var_name = ft_strtrim(var_name, "$");
-    var_name_len = ft_strlen(var_name);
+    tmp2 = ft_strtrim(var_name, "$");
+    var_name_len = ft_strlen(tmp2);
     while (env[++i])
     {
-        tmp = ft_strnstr(env[i], var_name, var_name_len);
+        tmp = ft_strnstr(env[i], tmp2, var_name_len);
         if (tmp != NULL)
         {
             if (tmp[var_name_len] == '=')
@@ -112,6 +113,7 @@ char    *ft_expand_env_vars(char *s, char **env)
     int j;
     char *tmp;
     char *tmp2;
+    char *tmp3;
     char *new_s;
 
     i = -1;
@@ -124,11 +126,13 @@ char    *ft_expand_env_vars(char *s, char **env)
         {
             tmp = get_env_var_name(&s[i+1]);
             tmp2 = new_s;
-            new_s = ft_strreplace(new_s, tmp, get_env_var_value(env, tmp), j);
-            j += ft_strlen(get_env_var_value(env, tmp)) - ft_strlen(tmp) + 1;
+            tmp3 = get_env_var_value(env, tmp);
+            new_s = ft_strreplace(new_s, tmp, tmp3, j);
+            j += ft_strlen(tmp3) - ft_strlen(tmp) + 1;
             free(tmp);
             free(tmp2);
-            tmp = NULL;
+            // free(tmp3);
+            // tmp = NULL;
         }
         else
             j++;

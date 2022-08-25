@@ -81,6 +81,7 @@ void ft_free(t_data *data)
 		while (data->cmds[j].cmds[++i])
 			free(data->cmds[j].cmds[i]);
 		free(data->cmds[j].cmds);
+		free(data->cmds[j].words);
 	}
 	free(data->cmds);
 	free(data->args);
@@ -100,15 +101,12 @@ void    ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		ft_print_values(data, 2);
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		ft_print_values(data, 2);
 		ft_expander(data);
-		ft_print_values(data, 2);
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
@@ -116,6 +114,6 @@ void    ft_readline(t_data *data)
 		}
 		ft_print_values(data, 2);
 		ft_print_values(data, 3);
-		ft_free(data);
+		// ft_free(data);
 	}
 }

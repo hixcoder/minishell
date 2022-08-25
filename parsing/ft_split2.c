@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split2.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:19:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2021/11/11 20:26:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/25 11:03:04 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	ft_rowlen(char const *s, char c)
 			row++;
 		j++;
 	}
+	printf("==========> %d\n", row);
 	return (row);
 }
 
@@ -83,9 +84,18 @@ char	**ft_split2(char const *s, char c)
 {
 	int		row;
 	char	**dst;
+	// int		c_index;
 
 	if (!s)
 		return (NULL);
+	// c_index = ft_strchr2(s, c);
+	// if (c_index > -1)
+	// {
+	// 	if (is_insid_qots(s, c_index) == 1)
+	// 		return (NULL);
+	// }
+	// else
+	// 	return (NULL);
 	row = ft_rowlen(s, c);
 	dst = (char **)malloc(sizeof(char *) * row);
 	if (dst == NULL)
