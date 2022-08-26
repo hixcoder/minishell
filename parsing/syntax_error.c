@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:44:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 15:16:51 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/26 11:31:39 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
     {
         if (ft_check_quotes(data->args) == 1)
         {
+            
             printf("syntax error: unclosed quotes\n");
             return (-1);
         }
@@ -78,6 +79,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
     {
         if (ft_check_specials(data->args) == 1)
         {
+            
             printf("syntax error: unhandled special character\n");
             return (-1);
         }

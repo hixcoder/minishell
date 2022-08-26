@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 22:37:36 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:58:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <readline/history.h>
 #include <fcntl.h>
 #include "./libft/libft.h"
+#include "./get_next_line/get_next_line.h"
 
 // our types
 typedef enum type
@@ -101,7 +102,12 @@ void ft_append(t_list *env, char *str);
 // unset
 void ft_unset(t_data *data, int k);
 
+
+// remove it
 char	**ft_strsplit(char const *s, char c);
-void ft_herdoc(t_data *data, int i);
+
+
+
+void ft_herdoc(t_data *data);
 
 #endif

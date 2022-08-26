@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/25 22:48:39 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/26 10:21:23 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minishell
 #parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
-					tokenizer.c syntax_error.c spliter.c ft_split4.c herdoc.c
+					tokenizer.c syntax_error.c spliter.c ft_split4.c herdoc.c   
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
@@ -36,9 +36,10 @@ ALL_OBJ = ${SRCS:.c=.o}
 
 # external libs
 LIBFT_FOLDER = ./libft/
+GET_NEXT_LINE_FOLDER = ./get_next_line/
 
 INCLUDES = minishell.h ./libft/libft.h
-LIBS = libft.a
+LIBS = libft.a get_next_line.a
 
 # -g for the debugger
 FLAGS = -Wall -Wextra -Werror -g 
@@ -49,7 +50,8 @@ CC = gcc
 	
 $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the libft.a library   ==> ${GREEN}DONE${RESET}"	
-	@$(MAKE) -C $(LIBFT_FOLDER)
+	@$(MAKE) -C  $(LIBFT_FOLDER)
+	@$(MAKE) -C  $(GET_NEXT_LINE_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) -lreadline -o $(NAME)
 	clear
@@ -59,7 +61,8 @@ all : $(NAME)
 clean :
 	@rm -f $(ALL_OBJ) $(LIBS)
 	@rm -f $(ALL_OBJ) $(LIBS)
-	@rm -f ./libft/*.o
+	@$(MAKE) -C $(LIBFT_FOLDER) clean
+	@$(MAKE) -C  $(GET_NEXT_LINE_FOLDER) clean
 	@echo "|-| remove object files ==> ${RED}DONE${RESET}"
 
 fclean : clean
