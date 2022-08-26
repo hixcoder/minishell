@@ -64,6 +64,7 @@ void ft_readline(t_data *data)
 {
 	while (data->exit_status == 0)
 	{
+		signal(SIGINT, &ft_signal_int_handler);
 		data->args = readline("Minishell ++> ");
 		if (ft_strlen(data->args) > 0)
 			add_history(data->args);

@@ -4,17 +4,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software; see the source for copying conditions.
 # There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
+ 
 
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed Aug 24 18:46:39 2022
+# Make data base, printed on Fri Aug 26 08:27:29 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
 ?F = $(notdir $?)
 # automatic
@@ -26,6 +26,7 @@ INCLUDES = minishell.h ./libft/libft.h
 # automatic
 @F = $(notdir $@)
 # makefile
+ 
 CURDIR := /Users/ahammam/Desktop/minishell
 # makefile
 SHELL = /bin/sh
@@ -54,15 +55,17 @@ REDIRECTIONS_FOLDER = ./redirections/
 # makefile (from `Makefile', line 50)
 ALL_SRCS = $(SRCS) $(SRCS_LIBFT)
 # environment
+LaunchInstanceID = E4E19F4E-474B-4954-9289-2303CA3AD48E
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JjyzG4BTvD/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.nKxOPzHPGl/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.ffT3b41nmg/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.RKUiDxQxIw/org.xquartz:0
 # environment
 CONDA_EXE = /Users/ahammam/opt/anaconda3/bin/conda
 # environment
@@ -82,7 +85,7 @@ MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /De
 # makefile (from `Makefile', line 30)
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/ahammam/Library/Application Support/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
+VSCODE_CODE_CACHE_PATH = /Users/ahammam/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = ahammam
 # environment
@@ -132,7 +135,6 @@ LESS = -R
 # environment
 CONDA_SHLVL = 1
 # default
- 
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
@@ -141,7 +143,7 @@ TMPDIR = /var/folders/1h/tyl226416d9ds5lh7hf5b9n80000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/ahammam/Library/Application Support/Code/1.70.1-main.sock
+VSCODE_IPC_HOOK = /Users/ahammam/Library/Application Support/Code/1.70.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile (from `Makefile', line 86)
@@ -153,7 +155,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.16718482.16718488
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.17521551.17521563
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -176,10 +178,12 @@ RESET = \033[0m
 CONDA_PYTHON_EXE = /Users/ahammam/opt/anaconda3/bin/python
 # makefile (from `Makefile', line 54)
 LIBS = libft.a
+# environment
+SECURITYSESSIONID = 186a5
 # automatic
 ^F = $(notdir $^)
 # makefile (from `Makefile', line 23)
-EXECUTION_FILES = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c ./builtins/ft_exit.c ./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c ./builtins/ft_unset.c ./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c ./executi/simple_cmd.c ./executi/multiple_cmds.c ./executi/exeve_fct.c ft_error.c
+EXECUTION_FILES = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c ./builtins/ft_exit.c ./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c ./builtins/ft_unset.c ./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c ./executi/simple_cmd.c ./executi/multiple_cmds.c ./executi/exeve_fct.c ft_error.c signal.c
 # makefile (from `Makefile', line 16)
 PARSING_FOLDER = ./parsing/
 # default
@@ -195,13 +199,13 @@ SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 # environment
 CONDA_PREFIX = /Users/ahammam/opt/anaconda3
 # environment
-VSCODE_PID = 34938
+VSCODE_PID = 442
 # environment
 _CE_CONDA = 
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=93/1024=9%, Rehash=0, Collisions=8/138=6%
+# Load=95/1024=9%, Rehash=0, Collisions=8/140=6%
 
 # Pattern-specific Variable Values
 
@@ -209,13 +213,10 @@ LANG = C
 
 # Directories
 
-# . (device 16777230, inode 17224808): 14 files, no impossibilities.
-# parsing (device 16777230, inode 17224931): 23 files, no impossibilities so far.
-# execution/./builtins (device 16777230, inode 17427860): 17 files, no impossibilities so far.
-# redirections (device 16777230, inode 17427903): 7 files, no impossibilities so far.
-# libft (device 16777230, inode 17224879): 38 files, no impossibilities so far.
+# . (device 16777229, inode 17224808): 17 files, no impossibilities.
+# libft (device 16777229, inode 17224879): 21 files, no impossibilities so far.
 
-# 99 files, no impossibilities in 5 directories.
+# 38 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -227,6 +228,12 @@ LANG = C
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+# Not a target:
+execution/signal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_lstadd_back.o:
@@ -273,17 +280,11 @@ libft/ft_itoa.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-parsing/tokenizer.o: parsing/tokenizer.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/tokenizer'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/tokenizer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_memcmp.o:
@@ -292,52 +293,31 @@ libft/ft_memcmp.o:
 #  File has not been updated.
 
 # Not a target:
+ 
 libft/ft_strlen.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-parsing/expander.o: parsing/expander.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/expander'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/expander.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-parsing/syntax_error.o: parsing/syntax_error.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/syntax_error'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/syntax_error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:43:04
+#  Last modified 2022-08-25 16:48:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-parsing/expander.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -397,23 +377,17 @@ libft/ft_lstclear.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:46:33
+#  Last modified 2022-08-25 15:33:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-parsing/utiles.o: parsing/utiles.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/utiles'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/utiles.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_strlcat.o:
@@ -428,25 +402,10 @@ execution/./executi/minishell.o:
 #  File has not been updated.
 
 # Not a target:
-parsing/parse.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:44:25
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-parsing/ft_split2.o: parsing/ft_split2.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/ft_split2'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+parsing/ft_split2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_strjoin.o:
@@ -455,28 +414,10 @@ libft/ft_strjoin.o:
 #  File has not been updated.
 
 # Not a target:
-parsing/spliter.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 execution/./builtins/utile_export.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-parsing/expand_2.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_bzero.o:
@@ -497,23 +438,14 @@ libft/ft_strcat.o:
 #  File has not been updated.
 
 # Not a target:
-execution/./builtins/ft_cd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:33:59
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 libft/ft_striteri.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-minishell: main.o parsing/parse.o parsing/quotes.o parsing/ft_split2.o parsing/utiles.o parsing/expander.o parsing/expand_2.o parsing/ft_strreplace.o parsing/tokenizer.o parsing/syntax_error.o parsing/spliter.o redirections/redirections_check.o redirections/redirector.o execution/./builtins/ft_echo.o execution/./builtins/ft_pwd.o execution/./builtins/ft_cd.o execution/./builtins/ft_env.o execution/./builtins/ft_exit.o execution/./builtins/ft_export.o execution/./builtins/utile_export.o execution/./builtins/export_append.o execution/./builtins/ft_unset.o execution/./executi/minishell.o execution/./executi/redir.o execution/./executi/builtins_fct.o execution/./executi/simple_cmd.o execution/./executi/multiple_cmds.o execution/./executi/exeve_fct.o execution/ft_error.o libft/ft_isdigit.o libft/ft_memset.o libft/ft_strjoin.o libft/ft_strtrim.o libft/ft_isprint.o libft/ft_putchar_fd.o libft/ft_strlcat.o libft/ft_substr.o libft/ft_itoa.o libft/ft_atoi.o libft/ft_putendl_fd.o libft/ft_strlcpy.o libft/ft_tolower.o libft/ft_bzero.o libft/ft_putnbr_fd.o libft/ft_strlen.o libft/ft_toupper.o libft/ft_calloc.o libft/ft_memchr.o libft/ft_putstr_fd.o libft/ft_strmapi.o libft/ft_isalnum.o libft/ft_memcmp.o libft/ft_split.o libft/ft_strncmp.o libft/ft_isalpha.o libft/ft_memcpy.o libft/ft_strchr.o libft/ft_strnstr.o libft/ft_isascii.o libft/ft_memmove.o libft/ft_strdup.o libft/ft_strrchr.o libft/ft_striteri.o libft/ft_add_string.o libft/ft_strcmp.o libft/ft_strcat.o libft/ft_lstnew.o libft/ft_lstlast.o libft/ft_lstadd_back.o libft/ft_lstadd_front.o libft/ft_lstsize.o libft/ft_lstclear.o libft/ft_lstdelone.o
+minishell: main.o parsing/parse.o parsing/quotes.o parsing/ft_split2.o parsing/utiles.o parsing/expander.o parsing/expand_2.o parsing/ft_strreplace.o parsing/tokenizer.o parsing/syntax_error.o parsing/spliter.o redirections/redirections_check.o redirections/redirector.o execution/./builtins/ft_echo.o execution/./builtins/ft_pwd.o execution/./builtins/ft_cd.o execution/./builtins/ft_env.o execution/./builtins/ft_exit.o execution/./builtins/ft_export.o execution/./builtins/utile_export.o execution/./builtins/export_append.o execution/./builtins/ft_unset.o execution/./executi/minishell.o execution/./executi/redir.o execution/./executi/builtins_fct.o execution/./executi/simple_cmd.o execution/./executi/multiple_cmds.o execution/./executi/exeve_fct.o execution/ft_error.o execution/signal.o libft/ft_isdigit.o libft/ft_memset.o libft/ft_strjoin.o libft/ft_strtrim.o libft/ft_isprint.o libft/ft_putchar_fd.o libft/ft_strlcat.o libft/ft_substr.o libft/ft_itoa.o libft/ft_atoi.o libft/ft_putendl_fd.o libft/ft_strlcpy.o libft/ft_tolower.o libft/ft_bzero.o libft/ft_putnbr_fd.o libft/ft_strlen.o libft/ft_toupper.o libft/ft_calloc.o libft/ft_memchr.o libft/ft_putstr_fd.o libft/ft_strmapi.o libft/ft_isalnum.o libft/ft_memcmp.o libft/ft_split.o libft/ft_strncmp.o libft/ft_isalpha.o libft/ft_memcpy.o libft/ft_strchr.o libft/ft_strnstr.o libft/ft_isascii.o libft/ft_memmove.o libft/ft_strdup.o libft/ft_strrchr.o libft/ft_striteri.o libft/ft_add_string.o libft/ft_strcmp.o libft/ft_strcat.o libft/ft_lstnew.o libft/ft_lstlast.o libft/ft_lstadd_back.o libft/ft_lstadd_front.o libft/ft_lstsize.o libft/ft_lstclear.o libft/ft_lstdelone.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-08-25 23:51:16
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -527,17 +459,11 @@ minishell: main.o parsing/parse.o parsing/quotes.o parsing/ft_split2.o parsing/u
 	clear
 	
 
-redirections/redirections_check.o: redirections/redirections_check.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `redirections/redirections_check'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+redirections/redirections_check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_lstnew.o:
@@ -555,75 +481,22 @@ fclean: clean
 	
 
 # Not a target:
-parsing/tokenizer.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-redirections/redirector.o: redirections/redirector.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `redirections/redirector'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
-
- 
-execution/./builtins/ft_env.o: execution/./builtins/ft_env.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `execution/./builtins/ft_env'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+redirections/redirector.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-parsing/syntax_error.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+execution/./builtins/ft_env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-execution/./builtins/ft_exit.o: execution/./builtins/ft_exit.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `execution/./builtins/ft_exit'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := execution/./builtins/ft_exit.o
-# automatic
-# % := 
-# automatic
-# * := execution/./builtins/ft_exit
-# automatic
-# + := execution/./builtins/ft_exit.c minishell.h libft/libft.h
-# automatic
-# | := 
-# automatic
-# < := execution/./builtins/ft_exit.c
-# automatic
-# ^ := execution/./builtins/ft_exit.c minishell.h libft/libft.h
-# automatic
-# ? := execution/./builtins/ft_exit.c minishell.h libft/libft.h
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+execution/./builtins/ft_exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_putnbr_fd.o:
@@ -631,17 +504,11 @@ libft/ft_putnbr_fd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-parsing/ft_strreplace.o: parsing/ft_strreplace.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/ft_strreplace'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/ft_strreplace.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_isascii.o:
@@ -679,29 +546,18 @@ execution/ft_error.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-execution/./builtins/ft_pwd.o: execution/./builtins/ft_pwd.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `execution/./builtins/ft_pwd'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+execution/./builtins/ft_pwd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
 
-parsing/quotes.o: parsing/quotes.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/quotes'
-#  Last modified 2022-08-24 18:45:29
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/quotes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_isalpha.o:
@@ -721,28 +577,10 @@ execution/./builtins/ft_unset.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-parsing/utiles.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
 re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-parsing/ft_split2.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 clean:
 #  Implicit rule search has not been done.
@@ -820,15 +658,6 @@ libft/ft_lstdelone.o:
 #  File has not been updated.
 
 # Not a target:
-redirections/redirections_check.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 execution/./executi/simple_cmd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -855,48 +684,36 @@ libft/ft_strchr.o:
 main.o: main.c minishell.h libft/libft.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-08-24 18:45:29
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := main.o
+# automatic
+# % := 
+# automatic
+# * := main
+# automatic
+# + := main.c minishell.h libft/libft.h
+# automatic
+# | := 
+# automatic
+# < := main.c
+# automatic
+# ^ := main.c minishell.h libft/libft.h
+# automatic
+# ? := main.c minishell.h libft/libft.h
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  commands to execute (from `Makefile', line 61):
 	$(CC) ${FLAGS} -c $< -o $@
 	
-
-# Not a target:
-redirections/redirector.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
- 
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-execution/./builtins/ft_env.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:33:13
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_toupper.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-execution/./builtins/ft_exit.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:44:08
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/libft.h:
@@ -920,64 +737,25 @@ libft/ft_putstr_fd.o:
 #  File has not been updated.
 
 # Not a target:
-parsing/ft_strreplace.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-execution/./builtins/ft_echo.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:45:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 minishell.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 18:39:58
+#  Last modified 2022-08-25 23:23:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-execution/./builtins/ft_cd.o: execution/./builtins/ft_cd.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `execution/./builtins/ft_cd'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
 
 # Not a target:
-execution/./builtins/ft_pwd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:45:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+execution/./builtins/ft_cd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-execution/./builtins/ft_echo.o: execution/./builtins/ft_echo.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `execution/./builtins/ft_echo'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+execution/./builtins/ft_echo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_putchar_fd.o:
@@ -986,55 +764,28 @@ libft/ft_putchar_fd.o:
 #  File has not been updated.
 
 # Not a target:
-parsing/quotes.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-24 16:03:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 libft/ft_atoi.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-parsing/parse.o: parsing/parse.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/parse'
-#  Last modified 2022-08-24 18:45:29
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/parse.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-parsing/spliter.o: parsing/spliter.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/spliter'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/spliter.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-parsing/expand_2.o: parsing/expand_2.c minishell.h libft/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing/expand_2'
-#  Last modified 2022-08-24 18:45:30
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
-	
+# Not a target:
+parsing/expand_2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 libft/ft_strtrim.o:
@@ -1043,7 +794,7 @@ libft/ft_strtrim.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=101/1024=10%, Rehash=0, Collisions=18/317=6%
+# Load=85/1024=8%, Rehash=0, Collisions=9/183=5%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -1055,6 +806,6 @@ libft/ft_strtrim.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Aug 24 18:46:39 2022
+# Finished Make data base on Fri Aug 26 08:27:29 2022
 
  

@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/24 18:46:33 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/25 15:33:43 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c .
 					./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c  \
 					./executi/simple_cmd.c ./executi/multiple_cmds.c \
 					./executi/exeve_fct.c \
-					ft_error.c
+					ft_error.c signal.c
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
 REDIRECTIONS_FOLDER = ./redirections/

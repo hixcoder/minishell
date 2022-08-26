@@ -12,10 +12,10 @@
 
 #include "../minishell.h"
 
-static int	ft_rowlen(char const *s, char c)
+static int ft_rowlen(char const *s, char c)
 {
-	int	j;
-	int	row;
+	int j;
+	int row;
 
 	j = 0;
 	row = 1;
@@ -26,12 +26,13 @@ static int	ft_rowlen(char const *s, char c)
 			row++;
 		j++;
 	}
+
 	return (row);
 }
 
-static int	ft_prdctlen(char const *s, char c)
+static int ft_prdctlen(char const *s, char c)
 {
-	int	len;
+	int len;
 
 	len = 0;
 	while (s[len] && (s[len] != c || is_insid_qots(s, len) == 1))
@@ -39,9 +40,9 @@ static int	ft_prdctlen(char const *s, char c)
 	return (len);
 }
 
-static char	**ft_free(char **dst)
+static char **ft_free(char **dst)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (dst[i])
@@ -50,12 +51,12 @@ static char	**ft_free(char **dst)
 	return (NULL);
 }
 
-static char	**ft_fillrows(char **dst, const char *s, char c)
+static char **ft_fillrows(char **dst, const char *s, char c)
 {
-	int	row;
-	int	j;
-	int	len;
-	int	i;
+	int row;
+	int j;
+	int len;
+	int i;
 
 	row = 0;
 	i = 0;
@@ -79,10 +80,10 @@ static char	**ft_fillrows(char **dst, const char *s, char c)
 	return (dst);
 }
 
-char	**ft_split2(char const *s, char c)
+char **ft_split2(char const *s, char c)
 {
-	int		row;
-	char	**dst;
+	int row;
+	char **dst;
 
 	if (!s)
 		return (NULL);

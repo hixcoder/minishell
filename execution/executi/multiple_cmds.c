@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:19:44 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/26 08:53:21 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void ft_run_cmd(t_data *data, int k, int **pipes)
         dup2(infile, STDIN_FILENO);
     if (outfile == 1)
     {
-        if (k < data->cmds_len - 1) //(pipes[k - 1] != NULL)
+        if (k < data->cmds_len - 1)
             dup2(pipes[k][1], 1);
     }
     else
@@ -78,11 +78,21 @@ void ft_multiple_cmds(t_data *data)
     k = 0;
     while (k < data->cmds_len)
     {
-        pid = fork();
-        if (pid == 0)
+        data->cmds[k].path_bin = ft_get_bin(data, k);
+        if (ft_is_builtin(data->cmds[k].cmds[0]) || data->cmds[k].path_bin != NULL)
         {
-            ft_run_cmd(data, k, pipes);
-            exit(EXIT_SUCCESS);
+            pid = fork();
+            if (pid == 0)
+            {
+                ft_run_cmd(data, k, pipes);
+                exit(EXIT_SUCCESS);
+            }
+        }
+        else
+        {
+            ft_putstr_fd("minishell: ", STDERR);
+            ft_putstr_fd(data->cmds[k].cmds[0], STDERR);
+            ft_putstr_fd(": command not found\n", STDERR);
         }
         k++;
     }

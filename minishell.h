@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/24 18:51:08 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/26 08:44:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ typedef struct s_redi
 	t_word *file;
 } t_redi;
 
-// cmd : command
-// words : atributes
 typedef struct s_command
 {
 	char **cmds; //
 	t_word **words;
 	t_redi **redi;
+	char *path_bin;
 } t_command;
 
 typedef struct s_data
@@ -133,9 +132,12 @@ int ft_simple_cmd(t_data *data);
 void ft_multiple_cmds(t_data *data);
 
 void ft_execute_cmd(t_data *data, int k);
-
+char *ft_get_bin(t_data *data, int k);
 // exeve ve fct
 void ft_execmd_bin(t_data *data, int k);
 // minishell
 void *minishell_perror(int err_type);
+
+// signal
+void ft_signal_int_handler(int sig);
 #endif
