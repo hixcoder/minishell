@@ -64,10 +64,15 @@ void ft_readline(t_data *data)
 {
 	while (data->exit_status == 0)
 	{
-		signal(SIGINT, &ft_signal_int_handler);
+		signal(SIGINT, &ft_signal_handler);
+		signal(SIGQUIT, &ft_signal_handler);
 		data->args = readline("Minishell ++> ");
-		if (ft_strlen(data->args) > 0)
-			add_history(data->args);
+		if (data->args == NULL)
+		{
+			ft_putstr_fd("exit\n", 2);
+			break;
+		}
+		add_history(data->args);
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
 		if (ft_spliter(data) == -1)

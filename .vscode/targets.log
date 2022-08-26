@@ -4,12 +4,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software; see the source for copying conditions.
 # There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
- 
 
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Fri Aug 26 08:27:29 2022
+# Make data base, printed on Fri Aug 26 09:36:24 2022
 
 # Variables
 
@@ -26,10 +25,10 @@ INCLUDES = minishell.h ./libft/libft.h
 # automatic
 @F = $(notdir $@)
 # makefile
- 
 CURDIR := /Users/ahammam/Desktop/minishell
 # makefile
 SHELL = /bin/sh
+ 
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
@@ -42,6 +41,8 @@ MAKEFILE_LIST :=  Makefile
 SRCS_LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_FILES))
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
+# makefile (from `Makefile', line 59)
+READLINE = -lreadline -L/opt/homebrew/opt/readline/lib
 # environment
 VSCODE_CWD = /
 # makefile (from `Makefile', line 17)
@@ -55,9 +56,9 @@ REDIRECTIONS_FOLDER = ./redirections/
 # makefile (from `Makefile', line 50)
 ALL_SRCS = $(SRCS) $(SRCS_LIBFT)
 # environment
-LaunchInstanceID = E4E19F4E-474B-4954-9289-2303CA3AD48E
-# environment
 ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 60)
+INCLUDES2 = -I/opt/homebrew/opt/readline/include
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
@@ -74,7 +75,7 @@ PWD = /Users/ahammam/Desktop/minishell
 LIBFT_FILES = ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c ft_putchar_fd.c ft_strlcat.c ft_substr.c ft_itoa.c ft_atoi.c ft_putendl_fd.c ft_strlcpy.c ft_tolower.c ft_bzero.c  ft_putnbr_fd.c ft_strlen.c ft_toupper.c ft_calloc.c ft_memchr.c ft_putstr_fd.c ft_strmapi.c ft_isalnum.c ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c ft_add_string.c ft_strcmp.c ft_strcat.c ft_lstnew.c ft_lstlast.c ft_lstadd_back.c ft_lstadd_front.c ft_lstsize.c ft_lstclear.c ft_lstdelone.c
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# makefile (from `Makefile', line 85)
+# makefile (from `Makefile', line 87)
 GREEN = \033[0;92m
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -113,7 +114,7 @@ SRCS = main.c $(SRCS_PARSING) $(SRCS_REDIRECTIONS) $(SRCS_EXECUTION)
 # environment
 SHLVL = 1
 # makefile (from `Makefile', line 58)
-CC = gcc 
+CC = gcc
 # makefile (from `Makefile', line 51)
 ALL_OBJ = ${ALL_SRCS:.c=.o}
 # default
@@ -146,7 +147,8 @@ TMPDIR = /var/folders/1h/tyl226416d9ds5lh7hf5b9n80000gn/T/
 VSCODE_IPC_HOOK = /Users/ahammam/Library/Application Support/Code/1.70.2-main.sock
 # environment
 MallocNanoZone = 0
-# makefile (from `Makefile', line 86)
+ 
+# makefile (from `Makefile', line 88)
 RED = \033[0;91m
 # makefile
 MAKEFLAGS = Rrqp
@@ -172,14 +174,12 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# makefile (from `Makefile', line 87)
+# makefile (from `Makefile', line 89)
 RESET = \033[0m
 # environment
 CONDA_PYTHON_EXE = /Users/ahammam/opt/anaconda3/bin/python
 # makefile (from `Makefile', line 54)
 LIBS = libft.a
-# environment
-SECURITYSESSIONID = 186a5
 # automatic
 ^F = $(notdir $^)
 # makefile (from `Makefile', line 23)
@@ -199,13 +199,13 @@ SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 # environment
 CONDA_PREFIX = /Users/ahammam/opt/anaconda3
 # environment
-VSCODE_PID = 442
+VSCODE_PID = 17962
 # environment
 _CE_CONDA = 
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=95/1024=9%, Rehash=0, Collisions=8/140=6%
+# Load=95/1024=9%, Rehash=0, Collisions=8/141=6%
 
 # Pattern-specific Variable Values
 
@@ -221,8 +221,8 @@ LANG = C
 # Implicit Rules
 
 %.o: %.c minishell.h ./libft/libft.h
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
+#  commands to execute (from `Makefile', line 63):
+	$(CC) ${FLAGS} -c $< -o $@ $(INCLUDES2)
 	
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -266,7 +266,7 @@ all: minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 # Not a target:
 libft/ft_memcpy.o:
@@ -293,7 +293,6 @@ libft/ft_memcmp.o:
 #  File has not been updated.
 
 # Not a target:
- 
 libft/ft_strlen.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -361,6 +360,7 @@ libft/ft_strrchr.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # Not a target:
 libft/ft_split.o:
@@ -377,7 +377,7 @@ libft/ft_lstclear.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 15:33:43
+#  Last modified 2022-08-26 09:35:48
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -445,16 +445,16 @@ libft/ft_striteri.o:
 
 minishell: main.o parsing/parse.o parsing/quotes.o parsing/ft_split2.o parsing/utiles.o parsing/expander.o parsing/expand_2.o parsing/ft_strreplace.o parsing/tokenizer.o parsing/syntax_error.o parsing/spliter.o redirections/redirections_check.o redirections/redirector.o execution/./builtins/ft_echo.o execution/./builtins/ft_pwd.o execution/./builtins/ft_cd.o execution/./builtins/ft_env.o execution/./builtins/ft_exit.o execution/./builtins/ft_export.o execution/./builtins/utile_export.o execution/./builtins/export_append.o execution/./builtins/ft_unset.o execution/./executi/minishell.o execution/./executi/redir.o execution/./executi/builtins_fct.o execution/./executi/simple_cmd.o execution/./executi/multiple_cmds.o execution/./executi/exeve_fct.o execution/ft_error.o execution/signal.o libft/ft_isdigit.o libft/ft_memset.o libft/ft_strjoin.o libft/ft_strtrim.o libft/ft_isprint.o libft/ft_putchar_fd.o libft/ft_strlcat.o libft/ft_substr.o libft/ft_itoa.o libft/ft_atoi.o libft/ft_putendl_fd.o libft/ft_strlcpy.o libft/ft_tolower.o libft/ft_bzero.o libft/ft_putnbr_fd.o libft/ft_strlen.o libft/ft_toupper.o libft/ft_calloc.o libft/ft_memchr.o libft/ft_putstr_fd.o libft/ft_strmapi.o libft/ft_isalnum.o libft/ft_memcmp.o libft/ft_split.o libft/ft_strncmp.o libft/ft_isalpha.o libft/ft_memcpy.o libft/ft_strchr.o libft/ft_strnstr.o libft/ft_isascii.o libft/ft_memmove.o libft/ft_strdup.o libft/ft_strrchr.o libft/ft_striteri.o libft/ft_add_string.o libft/ft_strcmp.o libft/ft_strcat.o libft/ft_lstnew.o libft/ft_lstlast.o libft/ft_lstadd_back.o libft/ft_lstadd_front.o libft/ft_lstsize.o libft/ft_lstclear.o libft/ft_lstdelone.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 23:51:16
+#  Last modified 2022-08-26 09:35:51
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  commands to execute (from `Makefile', line 64):
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  commands to execute (from `Makefile', line 66):
 	@echo "|+| make the libft.a library   ==> ${GREEN}DONE${RESET}"	
 	@$(MAKE) -C $(LIBFT_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
-	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) -lreadline -o $(NAME)
+	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
 	make clean
 	clear
 	
@@ -475,7 +475,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 78):
+#  commands to execute (from `Makefile', line 80):
 	@rm -f ${NAME}
 	@echo "|-| remove the program  ==> ${RED}DONE${RESET}"
 	
@@ -541,6 +541,7 @@ execution/ft_error.o:
 #  File has not been updated.
 
 # Not a target:
+ 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -550,7 +551,6 @@ execution/ft_error.o:
 execution/./builtins/ft_pwd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -586,7 +586,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 74):
+#  commands to execute (from `Makefile', line 76):
 	@rm -f $(ALL_OBJ) $(LIBS)
 	@echo "|-| remove object files ==> ${RED}DONE${RESET}"
 	
@@ -704,9 +704,9 @@ main.o: main.c minishell.h libft/libft.h
 # automatic
 # ? := main.c minishell.h libft/libft.h
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 61):
-	$(CC) ${FLAGS} -c $< -o $@
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  commands to execute (from `Makefile', line 63):
+	$(CC) ${FLAGS} -c $< -o $@ $(INCLUDES2)
 	
 
 # Not a target:
@@ -739,7 +739,7 @@ libft/ft_putstr_fd.o:
 # Not a target:
 minishell.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 23:23:13
+#  Last modified 2022-08-26 08:44:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -806,6 +806,6 @@ libft/ft_strtrim.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Aug 26 08:27:29 2022
+# Finished Make data base on Fri Aug 26 09:36:24 2022
 
  

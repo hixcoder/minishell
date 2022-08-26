@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/25 15:33:43 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/26 09:35:48 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,16 +55,18 @@ LIBS = libft.a
 
 # -g for the debugger
 FLAGS = -Wall -Wextra -Werror -g 
-CC = gcc 
+CC = gcc
+READLINE= -lreadline -L/opt/homebrew/opt/readline/lib
+INCLUDES2= -I/opt/homebrew/opt/readline/include
 
-%.o : %.c ${INCLUDES}
-	$(CC) ${FLAGS} -c $< -o $@
+%.o : %.c ${INCLUDES} 
+	$(CC) ${FLAGS} -c $< -o $@ $(INCLUDES2)
 	
 $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the libft.a library   ==> ${GREEN}DONE${RESET}"	
 	@$(MAKE) -C $(LIBFT_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
-	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) -lreadline -o $(NAME)
+	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
 	make clean
 	clear
 
