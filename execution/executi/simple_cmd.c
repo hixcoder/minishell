@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 17:25:33 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 19:46:50 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,26 @@ static void ft_run_simple_cmd(t_data *data)
 {
     int infile;
     int outfile;
+    int tmp[2];
 
+    tmp[0] = dup(0);
+    tmp[1] = dup(1); 
     infile = 0;
     outfile = 1;
     ft_trait_redir(data, 0, &infile, &outfile);
     if (infile != 0)
+    {
         dup2(infile, STDIN_FILENO);
+        close(infile);
+    }
     if (outfile != 1)
+    {
         dup2(outfile, STDOUT_FILENO);
+        close(outfile);
+    }
     ft_execute_cmd(data, 0);
+    dup2(tmp[0], 0);
+    dup2(tmp[1], 1);
 }
 
 int ft_simple_cmd(t_data *data)

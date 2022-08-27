@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 17:36:36 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 23:03:47 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_sig
 } t_sig;
 
 t_sig g_var;
+
 void ft_readline(t_data *data);
 void ft_error(char *error);
 
@@ -141,7 +142,7 @@ void ft_execmd_built(t_data *data, int k);
 
 int ft_simple_cmd(t_data *data);
 void ft_multiple_cmds(t_data *data);
-
+char *ft_pwd2(char *str);
 void ft_execute_cmd(t_data *data, int k);
 char *ft_get_bin(t_data *data, int k);
 // exeve ve fct
