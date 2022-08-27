@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/27 10:04:42 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/27 18:34:05 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,15 @@ PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
-EXECUTION_FOLDER = ./execution/builtins/
-EXECUTION_FILES  =	ft_echo.c ft_pwd.c ft_cd.c ft_env.c ft_export.c utile_export.c export_append.c \
-					ft_unset.c
+EXECUTION_FOLDER = ./execution/
+EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c ./builtins/ft_exit.c \
+					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c \
+					./builtins/ft_unset.c \
+					./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c  \
+					./executi/simple_cmd.c ./executi/multiple_cmds.c \
+					./executi/exeve_fct.c \
+					ft_error.c signal.c utils.c
+					
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
 # redirection
@@ -42,6 +48,7 @@ LIBFT_FILES =	ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c\
 				ft_lstadd_back.c ft_lstadd_front.c ft_lstdelone.c ft_lstlast.c\
 				ft_lstnew.c ft_lstsize.c ft_lstclear.c ft_lstiter.c ft_add_string.c ft_strcat.c\
 				ft_strcmp.c 
+
 SRCS_LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_FILES))
 
 # get_next_line
@@ -59,10 +66,12 @@ LIBS = libft.a get_next_line.a
 
 # -g for the debugger
 FLAGS = -Wall -Wextra -Werror -g 
-CC = gcc 
+CC = gcc
+READLINE= -lreadline -L/opt/homebrew/opt/readline/lib
+INCLUDES2= -I/opt/homebrew/opt/readline/include
 
 %.o : %.c ${INCLUDES}
-	$(CC) ${FLAGS} -c $< -o $@
+	$(CC) ${FLAGS} -c $< -o $@  $(INCLUDES2)
 	
 $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the libft.a library   ==> ${GREEN}DONE${RESET}"	
@@ -70,7 +79,8 @@ $(NAME) : ${ALL_OBJ}
 	@$(MAKE) -C  $(LIBFT_FOLDER)
 	@$(MAKE) -C  $(GET_NEXT_LINE_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
-	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) -lreadline -o $(NAME)
+	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
+	make clean
 	clear
 
 all : $(NAME) 

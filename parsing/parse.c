@@ -69,7 +69,7 @@ void ft_free(t_data *data)
 
 	cmds = data->cmds;
 	if (cmds == NULL)
-		return ;
+		return;
 	j = -1;
 	while (++j < data->cmds_len)
 	{
@@ -88,13 +88,17 @@ void ft_free(t_data *data)
 	free(cmds);
 }
 
-void    ft_readline(t_data *data)
+void ft_readline(t_data *data)
 {
 	while (1)
 	{
 		data->args = readline("Minishell ++> ");
-		if (ft_strlen(data->args) > 0)
-			add_history(data->args);
+		if (data->args == NULL)
+		{
+			ft_putstr_fd("exit\n", 2);
+			break;
+		}
+		add_history(data->args);
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
 		if (ft_spliter(data) == -1)
@@ -114,9 +118,9 @@ void    ft_readline(t_data *data)
 			continue;
 		}
 		ft_herdoc(data);
-		ft_print_values(data, 2);
-		ft_print_values(data, 3);
-
+		// ft_print_values(data, 2);
+		// ft_print_values(data, 3);
+		ft_minishell(data);
 		ft_free(data);
 	}
 }

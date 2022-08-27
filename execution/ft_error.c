@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:41:37 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:45:58 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/24 16:51:47 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/27 17:18:07 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-int ft_pwd()
+void *minishell_perror(int err_type)
 {
-    char cwd[PATH_MAX];
 
-    if (getcwd(cwd, PATH_MAX))
-    {
-        printf("%s\n", cwd);
-        return (1);
-    }
-    else
-        return (0);
+    if (err_type == MEM)
+        ft_putstr_fd("minishell: Error malloc\n", 2);
+    if (err_type == FORKERR)
+        ft_putstr_fd("minishell: Error creating prosses\n", 2);
+    return (NULL);
 }

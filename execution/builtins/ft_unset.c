@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:49:49 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:24:22 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:49:44 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int ft_strcmp_inset(char *s1, char *s2)
         return (-1);
     return (0);
 }
+
 void ft_remove_to_env(t_list *env, char *str)
 {
     t_list *tmp;
@@ -69,14 +70,14 @@ void ft_remove_to_env(t_list *env, char *str)
     }
 }
 
-void ft_unset(t_data *data, int k)
+int ft_unset(t_data *data, int k)
 {
 
     int i;
 
     i = 1;
     if (data->cmds[k].cmds[i] == NULL)
-        return;
+        return (1);
     else
     {
         while (data->cmds[k].cmds[i])
@@ -88,4 +89,5 @@ void ft_unset(t_data *data, int k)
             i++;
         }
     }
+    return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:10:23 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 17:35:26 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void ft_echo(t_command cmds)
+int ft_echo(t_command cmds)
 {
 
     int i;
@@ -20,18 +20,19 @@ void ft_echo(t_command cmds)
 
     i = 1;
     nl = 0;
-    if (cmds.cmds[i] && !ft_strcmp(cmds.cmds[i], "-n"))
+    while (cmds.cmds[i] && !ft_strcmp(cmds.cmds[i], "-n"))
     {
         nl = 1;
         i++;
     }
     while (cmds.cmds[i])
     {
-        printf("%s", cmds.cmds[i]);
+        ft_putstr_fd(cmds.cmds[i], 1);
         if (cmds.cmds[i + 1])
-            printf(" ");
+            write(1, " ", 1);
         i++;
     }
     if (!nl)
-        printf("\n");
+        write(1, "\n", 1);
+    return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 09:33:53 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/27 18:30:16 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <dirent.h>
 #include <sys/wait.h>
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <fcntl.h>
 #include "./libft/libft.h"
+#include <termios.h>
+#include <sys/stat.h>
 #include "./get_next_line/get_next_line.h"
+
+#define STDIN 0
+#define STDOUT 1
+#define STDERR 2
 
 // our types
 typedef enum type
@@ -34,7 +41,7 @@ typedef enum type
 	REDIRECT_OUT_APND, // '>>'
 
 	MY_FILE,
-}	Type;
+} Type;
 
 typedef struct s_word
 {
@@ -46,10 +53,11 @@ typedef struct s_word
 // words : atributes
 typedef struct s_command
 {
-	char	**cmds;
-	t_word	**words;
-	int		herdoc_fd;
-}   t_command;
+	char **cmds;
+	t_word **words;
+	int herdoc_fd;
+	char *path_bin;
+} t_command;
 
 typedef struct s_data
 {
@@ -60,6 +68,20 @@ typedef struct s_data
 	char **env;
 	t_list *env_2;
 } t_data;
+
+enum minishell_error
+{
+	MEM = 1,
+	FORKERR = 2,
+};
+
+typedef struct s_sig
+{
+	int exit_status;
+	pid_t pid_child;
+	pid_t pid_herdoc;
+
+} t_sig;
 
 void ft_readline(t_data *data);
 void ft_error(char *error);
@@ -82,15 +104,15 @@ int ft_spliter(t_data *data);
 int ft_redirector(t_data *data);
 
 // echo
-void ft_echo(t_command cmds);
+int ft_echo(t_command cmds);
 // pwd
 int ft_pwd();
 // cd
 int ft_cd(t_data *data, int k);
 
 // env
-void ft_env(t_data *data, int k);
-
+int ft_env(t_data *data, int k);
+t_sig g_var;
 // utile exportv
 int ft_export(t_data *data, int k);
 int ft_lenstring(t_list *env);
@@ -98,17 +120,42 @@ char *env_to_string(t_list *env);
 void ft_sort_table(char **table);
 int ft_is_identifier(char *str);
 int ft_print_env(t_list *env);
-void ft_append(t_list *env, char *str);
+int ft_append(t_list *env, char *str);
 
 // unset
-void ft_unset(t_data *data, int k);
-
+int ft_unset(t_data *data, int k);
 
 // remove it
-char	**ft_strsplit(char const *s, char c);
-
-
-
+char **ft_strsplit(char const *s, char c);
 void ft_herdoc(t_data *data);
+
+//
+void ft_minishell(t_data *data);
+
+void ft_trait_redir(t_data *data, int k, int *infile, int *outfile);
+
+// fct buil
+int ft_is_builtin(char *cmd);
+void ft_execmd_built(t_data *data, int k);
+
+int ft_exit(t_data *data, int k);
+int ft_simple_cmd(t_data *data);
+void ft_multiple_cmds(t_data *data);
+
+void ft_execute_cmd(t_data *data, int k);
+char *ft_get_bin(t_data *data, int k);
+// exeve ve fct
+void ft_execmd_bin(t_data *data, int k);
+// minishell
+void *minishell_perror(int err_type);
+
+// signal
+void ft_signal_handler(int sig);
+
+//
+char *ft_get_value(t_data *data, char *key);
+
+void ft_print_error2(char *str, char *msg);
+int ft_cmd_is_path(char *str);
 
 #endif

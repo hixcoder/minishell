@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:41:37 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:45:58 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/25 15:31:01 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/27 17:17:46 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-int ft_pwd()
+void ft_signal_handler(int sig)
 {
-    char cwd[PATH_MAX];
-
-    if (getcwd(cwd, PATH_MAX))
+    if (sig == SIGINT && g_var.pid_child != 0)
     {
-        printf("%s\n", cwd);
-        return (1);
+        kill(g_var.pid_child, SIGKILL);
+        g_var.pid_child = 0;
     }
-    else
-        return (0);
+    else if (sig == SIGINT)
+    {
+        ft_putstr_fd("\n", 2);
+        rl_on_new_line();
+        rl_replace_line("", 0);
+        rl_redisplay();
+    }
 }

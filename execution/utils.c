@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:41:37 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:45:58 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/27 16:38:15 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/27 16:51:12 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-int ft_pwd()
+int ft_cmd_is_path(char *str)
 {
-    char cwd[PATH_MAX];
+    int i;
 
-    if (getcwd(cwd, PATH_MAX))
+    i = 0;
+    while (str && str[i])
     {
-        printf("%s\n", cwd);
-        return (1);
+        if (str[i] == '/')
+            return (1);
+        i++;
     }
-    else
-        return (0);
+    return (0);
+}
+
+void ft_print_error2(char *str, char *msg)
+{
+    ft_putstr_fd("minishell: ", STDERR);
+    ft_putstr_fd(str, STDERR);
+    ft_putstr_fd(msg, STDERR);
 }

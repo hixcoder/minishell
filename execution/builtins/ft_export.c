@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:23:08 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:22:08 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/26 19:56:34 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int ft_is_char_exist(char *str, char c)
     int i;
 
     i = 0;
-    while (str[i])
+    while (str && str[i])
     {
         if (str[i] == c)
             return (i);
@@ -61,29 +61,18 @@ int ft_is_char_exist(char *str, char c)
 int ft_strncmp_env(const char *s1, const char *s2)
 {
     size_t i;
-    unsigned char str1;
-    unsigned char str2;
-    size_t len1 = 0;
-    size_t len2 = 0;
-
-    len1 = ft_is_char_exist((char *)s1, '=');
-    len2 = ft_is_char_exist((char *)s2, '='); // export value
     i = 0;
-    while (i < len1 && i < len2)
+    while (s1[i] && s2[i] && s2[i] != '=' && s1[i] != '=')
     {
-        str1 = (unsigned char)s1[i];
-        str2 = (unsigned char)s2[i];
-        if (str1 != str2)
-            return (str1 - str2);
+        if (s1[i] != s2[i])
+            return (s1[i] - s2[i]);
         i++;
     }
-    if (s2[i] == '\0' && s1[i] != '=')
-        return (s1[i] - s2[i]);
-    if ((s2[i] == '\0' && s1[i] == '=') || (s1[i] == '\0' && s2[i] == '='))
+    if ((s2[i] == '=' && s1[i] == '=') || (s2[i] == '=' && s1[i] == '\0'))
         return (0);
-    if ((s2[i] == '=' && s1[i] != '=') || (s1[i] == '=' && s2[i] != '='))
-        return (s1[i] - s2[i]);
-    return (0);
+    if ((s1[i] == '=' && s2[i] == '\0') || (s1[i] == '=' && s2[i] == '='))
+        return (0);
+    return (s1[i] - s2[i]);
 }
 
 int ft_is_exist_env(t_list *env, const char *var)
@@ -94,13 +83,13 @@ int ft_is_exist_env(t_list *env, const char *var)
     while (tmp)
     {
         if (ft_strncmp_env(tmp->content, var) == 0)
-            return (1); // kayn
+            return (1); // exist
         tmp = tmp->next;
     }
     return (0);
 }
 
-void update_env(t_list *env, char *par)
+int update_env(t_list *env, char *par)
 {
     t_list *tmp;
 
@@ -114,10 +103,13 @@ void update_env(t_list *env, char *par)
                 tmp->content = ft_strjoin(par, "=");
             else
                 tmp->content = ft_strdup(par);
-            return;
+            if (tmp->content == NULL)
+                return (minishell_perror(MEM), 0);
+            return (1);
         }
         tmp = tmp->next;
     }
+    return (1);
 }
 
 int ft_add_to_env(t_list *env, char *str)
@@ -125,13 +117,13 @@ int ft_add_to_env(t_list *env, char *str)
     t_list *new;
 
     if (ft_is_append(str))
-        ft_append(env, str);
+        return (ft_append(env, str));
     else if (ft_is_exist_env(env, str))
-        update_env(env, str);
+        return (update_env(env, str));
     else
     {
         if ((new = ft_lstnew(str)) == NULL)
-            return (0);
+            return (minishell_perror(MEM), 0);
         ft_lstadd_back(&env, new);
     }
     return (1);
@@ -155,5 +147,5 @@ int ft_export(t_data *data, int k)
             i++;
         }
     }
-    return 0;
+    return (1);
 }

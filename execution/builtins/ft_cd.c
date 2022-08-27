@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:44:37 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/22 11:18:08 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/24 16:33:59 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int go_to_path(t_data *data, int k)
     if (chdir(path) == -1)
         return (printf("minishell: cd: no such file or directory: %s\n", path), 0);
     update_pwd(data->env_2);
-
     return (1);
 }
 

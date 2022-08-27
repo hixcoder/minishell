@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:41:37 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:45:58 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/22 16:21:45 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/26 08:31:24 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int ft_pwd()
+void ft_execute_cmd(t_data *data, int k)
 {
-    char cwd[PATH_MAX];
-
-    if (getcwd(cwd, PATH_MAX))
-    {
-        printf("%s\n", cwd);
-        return (1);
-    }
+    if (ft_is_builtin(data->cmds[k].cmds[0]))
+        ft_execmd_built(data, k);
     else
-        return (0);
+        ft_execmd_bin(data, k);
+}
+
+void ft_minishell(t_data *data)
+{
+
+    if (data->cmds_len == 1)
+        ft_simple_cmd(data);
+    else if (data->cmds_len > 1)
+        ft_multiple_cmds(data);
 }
