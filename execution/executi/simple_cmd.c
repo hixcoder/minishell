@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 16:55:28 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 17:25:33 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int ft_simple_cmd(t_data *data)
     if (!ft_is_builtin(data->cmds[0].cmds[0]))
     {
         data->cmds[0].path_bin = ft_get_bin(data, 0);
+
         if (data->cmds[0].path_bin != NULL)
         {
             pid = fork();
