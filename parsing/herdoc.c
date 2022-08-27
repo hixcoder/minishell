@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:08:22 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 18:03:29 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:18:21 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void    ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
         if (ft_strcmp(line, "\n") == 0)
         {
             write(1, "Heredoc> ", 9);
+            write(fd, line, ft_strlen(line));
             continue;
         }
         if (strncmp(line, data->cmds[i].words[j + 1]->w, ft_strlen(line) - 1) != 0)

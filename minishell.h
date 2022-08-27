@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 18:30:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 20:08:18 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 #define STDIN 0
 #define STDOUT 1
 #define STDERR 2
+
+#define GREEN  "\033[0;92m"
+#define RED  "\033[0;91m"
+#define RESET  "\033[0m"
 
 // our types
 typedef enum type

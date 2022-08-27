@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/27 18:34:05 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/27 19:12:50 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,11 @@ LIBS = libft.a get_next_line.a
 # -g for the debugger
 FLAGS = -Wall -Wextra -Werror -g 
 CC = gcc
-READLINE= -lreadline -L/opt/homebrew/opt/readline/lib
-INCLUDES2= -I/opt/homebrew/opt/readline/include
+
+# brew --prefix readline
+readline  = /goinfre/hboumahd/.brew/opt/readline
+READLINE  = -lreadline -L$(readline)/lib
+INCLUDES2 = -I$(readline)/include
 
 %.o : %.c ${INCLUDES}
 	$(CC) ${FLAGS} -c $< -o $@  $(INCLUDES2)
@@ -80,8 +83,6 @@ $(NAME) : ${ALL_OBJ}
 	@$(MAKE) -C  $(GET_NEXT_LINE_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
-	make clean
-	clear
 
 all : $(NAME) 
 

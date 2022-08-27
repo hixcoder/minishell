@@ -103,7 +103,7 @@ void ft_readline(t_data *data)
 		signal(SIGINT, &ft_signal_handler);
 		signal(SIGQUIT, &ft_signal_handler);
 		setup_term();
-		data->args = readline("Minishell ++> ");
+		data->args = readline("💰 \033[0;92mMinishell 💰 \033[0;91m━> \033[0m");
 		if (data->args == NULL)
 		{
 			ft_putstr_fd("exit\n", 2);
