@@ -29,6 +29,14 @@ char *ft_type_printer(Type t)
 		return ("ARG");
 }
 
+void setup_term()
+{
+	struct termios t;
+	tcgetattr(0, &t);
+	t.c_lflag &= ~ECHOCTL;
+	tcsetattr(0, TCSANOW, &t);
+}
+
 // here I print the values of data->cmds
 void ft_print_values(t_data *data, int st)
 {
@@ -92,6 +100,9 @@ void ft_readline(t_data *data)
 {
 	while (1)
 	{
+		signal(SIGINT, &ft_signal_handler);
+		signal(SIGQUIT, &ft_signal_handler);
+		setup_term();
 		data->args = readline("Minishell ++> ");
 		if (data->args == NULL)
 		{
