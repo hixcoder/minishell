@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/26 11:54:21 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 10:52:23 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,15 @@ enum minishell_error
 	FORKERR = 2,
 };
 
+typedef struct s_sig
+{
+	int exit_status;
+	pid_t pid_child;
+	pid_t pid_herdoc;
+
+} t_sig;
+
+t_sig g_var;
 void ft_readline(t_data *data);
 void ft_error(char *error);
 
@@ -140,4 +149,7 @@ void *minishell_perror(int err_type);
 
 // signal
 void ft_signal_handler(int sig);
+
+//
+char *ft_get_value(t_data *data, char *key);
 #endif

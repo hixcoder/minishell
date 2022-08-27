@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:58:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 18:15:11 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/26 22:06:00 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ int ft_strncmp_app(char *str1, const char *str2)
     int i;
 
     i = 0;
-    while (str1[i] && str2[i])
+    while (str1[i] && str2[i] && str1[i] != '=')
     {
         if (str1[i] != str2[i])
-            return (0);
+            return (str1[i] - str2[i]);
         i++;
     }
-    if (str1[i] == '\0' && str2[i] == '\0')
-        return (1);
-    if ((str2[i] == '\0' && str1[i] != '=') || (str1[i] != '\0' && str1[i] != '='))
+    if ((str2[i] == '\0' && str1[i] == '=') || (str2[i] == '\0' && str1[i] == '\0'))
+    {
         return (0);
-    return (1);
+    }
+    return (str1[i] - str2[i]);
 }
 
 int ft_is_exist_envapp(t_list *env, const char *var)
@@ -55,8 +55,8 @@ int ft_is_exist_envapp(t_list *env, const char *var)
     tmp = env;
     while (tmp)
     {
-        if (ft_strncmp_app(tmp->content, var))
-            return (1);
+        if (ft_strncmp_app(tmp->content, var) == 0)
+            return (1); // exist
         tmp = tmp->next;
     }
     return (0);
@@ -93,7 +93,7 @@ int update_env_app(t_list *env, char *var, char *value)
     tmp = env;
     while (tmp)
     {
-        if (ft_strncmp_app(tmp->content, var))
+        if (ft_strncmp_app(tmp->content, var) == 0)
         {
             if (ft_strchr_app(tmp->content, '=') - 1 == (int)ft_strlen(tmp->content))
                 tmp->content = ft_add_char(tmp->content, '=');
@@ -126,7 +126,6 @@ int ft_append(t_list *env, char *str)
         return (update_env_app(env, variable, value));
     else
     {
-
         if ((variable = ft_add_char(variable, '=')) == NULL)
             return (minishell_perror(MEM), 0);
         if ((result = ft_strjoin(variable, value)) == NULL)
@@ -141,7 +140,6 @@ int ft_append(t_list *env, char *str)
             return (minishell_perror(MEM), 0);
         }
         free(variable);
-        free(result);
         ft_lstadd_back(&env, new);
     }
     return (1);

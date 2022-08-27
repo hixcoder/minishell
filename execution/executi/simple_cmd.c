@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 08:53:30 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 11:18:27 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void ft_run_simple_cmd(t_data *data)
         dup2(infile, STDIN_FILENO);
     if (outfile != 1)
         dup2(outfile, STDOUT_FILENO);
-
     ft_execute_cmd(data, 0);
 }
 
@@ -41,8 +40,16 @@ int ft_simple_cmd(t_data *data)
             if (pid == -1)
                 return (minishell_perror(FORKERR), 0);
             if (pid == 0)
+            {
                 ft_run_simple_cmd(data);
-            waitpid(pid, NULL, 0);
+                exit(EXIT_SUCCESS);
+            }
+            else
+            {
+                g_var.pid_child = pid;
+                waitpid(pid, NULL, 0);
+                g_var.pid_child = 0;
+            }
         }
         else
         {

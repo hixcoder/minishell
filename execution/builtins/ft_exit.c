@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:04 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 19:22:36 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 09:44:50 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ int ft_exit(t_data *data, int k)
         data->exit_status = 1;
         printf("exit\n");
     }
-
     return (1);
 }

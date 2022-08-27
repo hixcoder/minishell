@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 08:50:01 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 11:25:16 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char *check_dir(char *bin, char *command)
     char *tmp;
 
     path = NULL;
+    if (bin == NULL)
+        return (NULL);
     folder = opendir(bin);
     if (!folder)
         return (NULL);
@@ -36,33 +38,66 @@ char *check_dir(char *bin, char *command)
     return (path);
 }
 
+char *ft_cmd_clear(char *str)
+{
+    if (str && str[0] == '.' && str[1] == '/')
+        return (str + 2);
+    else
+        return (NULL);
+}
+
 char *ft_get_bin(t_data *data, int k)
 {
     char **bin;
-    t_list *temp;
     char *path;
+    char *pwd;
+    char *cmd;
     int i;
 
-    temp = data->env_2;
     i = 0;
     path = NULL;
-    while (temp && temp->content && ft_strncmp(temp->content, "PATH=", 5) != 0)
-        temp = temp->next;
-    if (!temp || !temp->content)
-        return (NULL);
-    bin = ft_split(temp->content + 5, ':');
+    pwd = ft_get_value(data, "PATH");
+    bin = ft_split(pwd, ':');
     while (bin[i] && path == NULL)
         path = check_dir(bin[i++], data->cmds[k].cmds[0]);
+    if (path != NULL)
+        return (path);
+    pwd = ft_get_value(data, "PWD");
+    cmd = ft_cmd_clear(data->cmds[k].cmds[0]);
+    if (cmd == NULL)
+        return (NULL);
+    path = check_dir(pwd, cmd);
+    printf("path=%s\n", path);
     if (path != NULL)
         return (path);
     return (NULL);
 }
 
+char **ft_env_list(t_data *data)
+{
+    char **result;
+    t_list *tmp;
+    int i;
+
+    tmp = data->env_2;
+    i = 0;
+    result = (char **)malloc(sizeof(char *) * (ft_lstsize(tmp) + 1));
+    while (tmp)
+    {
+        result[i] = ft_strdup(tmp->content);
+        tmp = tmp->next;
+        i++;
+    }
+    result[i] = NULL;
+    return (result);
+}
+
 void ft_execmd_bin(t_data *data, int k)
 {
-    if (execve(data->cmds[k].path_bin, data->cmds[k].cmds, NULL) == -1)
-    {
+    char **arg;
 
+    arg = ft_env_list(data);
+
+    if (execve(data->cmds[k].path_bin, data->cmds[k].cmds, arg) == -1)
         exit(EXIT_FAILURE);
-    }
 }

@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 12:05:37 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/26 17:47:01 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void ft_multiple_cmds(t_data *data)
                 ft_run_cmd(data, k, pipes);
                 exit(EXIT_SUCCESS);
             }
+            g_var.pid_child = pid;
         }
         else
         {
@@ -100,4 +101,5 @@ void ft_multiple_cmds(t_data *data)
     waitpid(pid, NULL, 0);
     while (waitpid(-1, NULL, 0) > 0)
         ;
+    g_var.pid_child = 0;
 }
