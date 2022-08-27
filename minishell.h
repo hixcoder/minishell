@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/26 11:58:32 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:33:53 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ typedef struct s_command
 {
 	char	**cmds;
 	t_word	**words;
-	int		fd_herdoc;
+	int		herdoc_fd;
 }   t_command;
 
 typedef struct s_data
 {
 	char *args;
 	t_command *cmds; // [echo "hello world", echo "hello world"]
+	int herdoc_pid;
 	int cmds_len;
 	char **env;
 	t_list *env_2;

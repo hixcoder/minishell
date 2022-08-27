@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:01:34 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/23 17:27:24 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:37:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	ft_tokenizer(t_data *data)
 	i = -1;
 	while (++i < data->cmds_len)
 	{
+		// init herdoc
+		data->cmds[i].herdoc_fd = -1;
 		j = -1;
 		while (cmds[i].words[++j])
 			cmds[i].words[j]->t = ft_tokenize(cmds[i].words[j]->w);
