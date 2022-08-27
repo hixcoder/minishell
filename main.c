@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 18:27:19 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 23:44:56 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ int init_env(t_data *data)
 
    i = 1;
    lvl = -2;
-   if ((content = ft_strdup(data->env[0])) == NULL)
-      return (minishell_perror(MEM), 0);
-   if ((head = ft_lstnew(content)) == NULL)
-      return (minishell_perror(MEM), 0);
+   content = ft_strdup(data->env[0]);
+   head = ft_lstnew(content);
    while (data->env[i])
    {
       if (!ft_strncmp(data->env[i], "SHLVL", 5) && ((data->env[i])[5] == '='))
