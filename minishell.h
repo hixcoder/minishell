@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 10:52:23 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:50:45 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include <readline/history.h>
 #include <fcntl.h>
 #include "./libft/libft.h"
+#include <termios.h>
+#include <sys/stat.h>
 
 #define STDIN 0
 #define STDOUT 1
@@ -152,4 +154,7 @@ void ft_signal_handler(int sig);
 
 //
 char *ft_get_value(t_data *data, char *key);
+
+void ft_print_error2(char *str, char *msg);
+int ft_cmd_is_path(char *str);
 #endif

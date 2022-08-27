@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 15:31:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 15:07:22 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/27 16:38:15 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/27 16:51:12 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_signal_handler(int sig)
+int ft_cmd_is_path(char *str)
 {
-    if (sig == SIGINT && g_var.pid_child != 0)
+    int i;
+
+    i = 0;
+    while (str && str[i])
     {
-        kill(g_var.pid_child, SIGKILL);
-        g_var.pid_child = 0;
+        if (str[i] == '/')
+            return (1);
+        i++;
     }
-    else if (sig == SIGINT)
-    {
-        ft_putstr_fd("\n", 2);
-        rl_on_new_line();
-        rl_replace_line("", 0);
-        rl_redisplay();
-    }
+    return (0);
+}
+
+void ft_print_error2(char *str, char *msg)
+{
+    ft_putstr_fd("minishell: ", STDERR);
+    ft_putstr_fd(str, STDERR);
+    ft_putstr_fd(msg, STDERR);
 }

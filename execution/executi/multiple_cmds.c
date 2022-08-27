@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 17:47:01 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:55:05 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,12 @@ void ft_multiple_cmds(t_data *data)
                 ft_run_cmd(data, k, pipes);
                 exit(EXIT_SUCCESS);
             }
-            g_var.pid_child = pid;
         }
-        else
-        {
-            ft_putstr_fd("minishell: ", STDERR);
-            ft_putstr_fd(data->cmds[k].cmds[0], STDERR);
-            ft_putstr_fd(": command not found\n", STDERR);
-        }
+        else if (!ft_cmd_is_path(data->cmds[k].cmds[0]))
+            ft_print_error2(data->cmds[k].cmds[0], ": command not found\n");
         k++;
     }
+    g_var.pid_child = pid;
     ft_close_all_pipes(pipes);
     waitpid(pid, NULL, 0);
     while (waitpid(-1, NULL, 0) > 0)

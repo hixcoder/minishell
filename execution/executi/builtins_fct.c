@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:12:22 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 18:50:56 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 14:39:29 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static char *ft_to_lowercase(char *str)
         i++;
     }
     result[i] = '\0';
+    if (!ft_strcmp(result, "unset") || !ft_strcmp(result, "exit") || !ft_strcmp(result, "export"))
+    {
+        free(result);
+        return (ft_strdup(str));
+    }
     return (result);
 }
 

@@ -60,12 +60,21 @@ void ft_print_values(t_data *data, int st)
 	}
 }
 
+void setup_term()
+{
+	struct termios t;
+	tcgetattr(0, &t);
+	t.c_lflag &= ~ECHOCTL;
+	tcsetattr(0, TCSANOW, &t);
+}
+
 void ft_readline(t_data *data)
 {
 	while (data->exit_status == 0)
 	{
 		signal(SIGINT, &ft_signal_handler);
 		signal(SIGQUIT, &ft_signal_handler);
+		setup_term();
 		data->args = readline("Minishell ++> ");
 		if (data->args == NULL)
 		{

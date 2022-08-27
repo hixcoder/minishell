@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 11:18:27 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:55:28 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,8 @@ int ft_simple_cmd(t_data *data)
                 g_var.pid_child = 0;
             }
         }
-        else
-        {
-            ft_putstr_fd("minishell: ", STDERR);
-            ft_putstr_fd(data->cmds[0].cmds[0], STDERR);
-            ft_putstr_fd(": command not found\n", STDERR);
-        }
+        else if (!ft_cmd_is_path(data->cmds[0].cmds[0]))
+            ft_print_error2(data->cmds[0].cmds[0], ": command not found\n");
     }
     else
         ft_run_simple_cmd(data);

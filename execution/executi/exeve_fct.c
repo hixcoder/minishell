@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 11:25:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:52:39 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,20 @@ char *check_dir(char *bin, char *command)
     return (path);
 }
 
-char *ft_cmd_clear(char *str)
+char *ft_return_sta(char *str)
 {
-    if (str && str[0] == '.' && str[1] == '/')
-        return (str + 2);
-    else
-        return (NULL);
+
+    struct stat inf;
+
+    if (lstat(str, &inf) == -1)
+        ft_print_error2(str, ": no such file or directory\n");
+    else if (S_ISDIR(inf.st_mode)) // S_IFDIR & inf.st_mode
+        ft_print_error2(str, ": is a directory\n");
+    else if (!(S_IXOTH & inf.st_mode))
+        ft_print_error2(str, ": permission denied\n");
+    if (S_ISREG(inf.st_mode))
+        return (ft_strdup(str));
+    return (NULL);
 }
 
 char *ft_get_bin(t_data *data, int k)
@@ -51,7 +59,6 @@ char *ft_get_bin(t_data *data, int k)
     char **bin;
     char *path;
     char *pwd;
-    char *cmd;
     int i;
 
     i = 0;
@@ -62,14 +69,8 @@ char *ft_get_bin(t_data *data, int k)
         path = check_dir(bin[i++], data->cmds[k].cmds[0]);
     if (path != NULL)
         return (path);
-    pwd = ft_get_value(data, "PWD");
-    cmd = ft_cmd_clear(data->cmds[k].cmds[0]);
-    if (cmd == NULL)
-        return (NULL);
-    path = check_dir(pwd, cmd);
-    printf("path=%s\n", path);
-    if (path != NULL)
-        return (path);
+    if (ft_cmd_is_path(data->cmds[k].cmds[0]))
+        return (ft_return_sta(data->cmds[k].cmds[0]));
     return (NULL);
 }
 
