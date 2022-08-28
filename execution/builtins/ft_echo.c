@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 09:57:59 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 12:58:18 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ int ft_echo(t_command cmds)
     }
     while (cmds.cmds[i])
     {
-        ft_putstr_fd(cmds.cmds[i], 1);
+        if (ft_strcmp(cmds.cmds[i], "$?") == 0)
+            ft_putnbr_fd(g_var.exit_status, 1);
+        else
+            ft_putstr_fd(cmds.cmds[i], 1);
         if (cmds.cmds[i + 1])
             write(1, " ", 1);
         i++;
     }
     if (!nl)
-        write(1, "\n", 1);
+        write(1, "\n", 2);
     g_var.exit_status = 0;
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 12:26:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 12:55:27 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,10 @@ void ft_multiple_cmds(t_data *data)
             }
         }
         else if (!ft_cmd_is_path(data->cmds[k].cmds[0]))
+        {
             ft_print_error2(data->cmds[k].cmds[0], ": command not found\n");
+            g_var.exit_status = 127;
+        }
         k++;
     }
     g_var.pid_child = pid;
