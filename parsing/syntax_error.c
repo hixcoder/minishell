@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:44:18 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/26 11:31:39 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 12:50:37 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ int ft_check_specials(char *s)
     i = -1;
     while (s[++i])
     {
-        // if (is_insid_qots(s, i) == 0 && s[i] != '>' && s[i] != '<' &&
-        //     s[i] != '\"' && s[i] != '\'' && s[i] != ' ' && s[i] != '|' &&
-        //     s[i] != '-' && s[i] != '_' && s[i] != '=' && s[i] != '.' && s[i] != '+' &&
-        //     s[i] != '$' && s[i] != '?' && ft_isalnum(s[i]) == 0)
-        //     return (1);
         if ((s[i] == '|' && is_insid_qots(s, i) == 0 &&
              s[i + 1] == '|' && is_insid_qots(s, i + 1) == 0) ||
             (s[i] == '|' && is_spaces_before(s, i) == 1) ||
@@ -64,12 +59,15 @@ int ft_check_syntax(t_data *data, int check_nbr)
 {
     // check if quotes are closed or not
     if (check_nbr == 0)
+    {
+        g_var.exit_status = 258;
         printf("syntax error\n");
+    }
     else if (check_nbr == 1)
     {
         if (ft_check_quotes(data->args) == 1)
         {
-            
+            g_var.exit_status = 258;
             printf("syntax error: unclosed quotes\n");
             return (-1);
         }
@@ -79,7 +77,7 @@ int ft_check_syntax(t_data *data, int check_nbr)
     {
         if (ft_check_specials(data->args) == 1)
         {
-            
+            g_var.exit_status = 258;
             printf("syntax error: unhandled special character\n");
             return (-1);
         }

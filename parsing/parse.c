@@ -107,7 +107,7 @@ void ft_readline(t_data *data)
 		g_var.pid_herdoc = 0;
 		g_var.is_killed = 0;
 		setup_term();
-		data->args = readline("💰 \033[0;92mMinishell 💰 \033[0;91m━> \033[0m");
+		data->args = readline("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
 		if (data->args == NULL)
 		{
 			ft_putstr_fd("exit\n", 2);
@@ -133,6 +133,7 @@ void ft_readline(t_data *data)
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
+			g_var.exit_status = 258;
 			continue;
 		}
 		
