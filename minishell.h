@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:01:33 by ubunto           ###   ########.fr       */
+/*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/28 23:45:27 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,4 +170,5 @@ void ft_create_herdoc_file(t_data *data, int i, int j, char *file_name);
 
 // free fct
 void ft_free_pipes(int **pipes);
+void ft_free_split(char **split);
 #endif

@@ -66,6 +66,6 @@ void	ft_readline(t_data *data)
 		ft_herdoc(data);
 		if (!g_var.is_killed)
 			ft_minishell(data);
-		// ft_free(data);
+		ft_free(data);
 	}
 }

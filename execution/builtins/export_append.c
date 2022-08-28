@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:58:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 22:06:00 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:43:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ char *ft_add_char(char *src, char c)
 
     result = 0;
     lent_src = ft_strlen(src);
-    if ((result = (char *)ft_calloc(lent_src + 2, sizeof(char))) == NULL)
-        return (minishell_perror(MEM));
+    result = (char *)ft_calloc(lent_src + 2, sizeof(char));
     i = 0;
     while (i < lent_src)
     {
@@ -97,11 +96,7 @@ int update_env_app(t_list *env, char *var, char *value)
         {
             if (ft_strchr_app(tmp->content, '=') - 1 == (int)ft_strlen(tmp->content))
                 tmp->content = ft_add_char(tmp->content, '=');
-            if (tmp->content == NULL)
-                return (minishell_perror(MEM), 0);
             result = ft_strjoin(tmp->content, value);
-            if (result == NULL)
-                return (minishell_perror(MEM), 0);
             free(tmp->content);
             tmp->content = result;
             return (1);
@@ -118,28 +113,17 @@ int ft_append(t_list *env, char *str)
     char *result;
     t_list *new;
 
-    if ((variable = ft_substr(str, 0, ft_strchr_app(str, '+') - 1)) == NULL)
-        return (minishell_perror(MEM), 0);
-    if ((value = ft_substr(str, ft_strchr_app(str, '+') + 1, ft_strlen(str))) == NULL)
-        return (minishell_perror(MEM), 0);
+    variable = ft_substr(str, 0, ft_strchr_app(str, '+') - 1);
+    value = ft_substr(str, ft_strchr_app(str, '+') + 1, ft_strlen(str));
     if (ft_is_exist_envapp(env, variable))
         return (update_env_app(env, variable, value));
     else
     {
-        if ((variable = ft_add_char(variable, '=')) == NULL)
-            return (minishell_perror(MEM), 0);
-        if ((result = ft_strjoin(variable, value)) == NULL)
-        {
-            free(variable);
-            return (minishell_perror(MEM), 0);
-        }
-        if ((new = ft_lstnew(result)) == NULL)
-        {
-            free(variable);
-            free(result);
-            return (minishell_perror(MEM), 0);
-        }
+        variable = ft_add_char(variable, '=');
+        result = ft_strjoin(variable, value);
+        new = ft_lstnew(result);
         free(variable);
+        free(value);
         ft_lstadd_back(&env, new);
     }
     return (1);
