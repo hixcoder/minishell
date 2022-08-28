@@ -5,17 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 22:36:24 by ahammam          ###   ########.fr        #
+#    Created: 2022/08/28 22:46:23 by ahammam           #+#    #+#              #
+#    Updated: 2022/08/28 22:46:24 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
 
 NAME = minishell
 
 #parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
+<<<<<<< HEAD
+					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c \
+					redirections_check.c get_commands.c
+=======
 					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c  
+>>>>>>> c8a3a0ad934094afc124bfc822f3bb98e33f39a0
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
@@ -27,13 +34,7 @@ EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c .
 					./executi/simple_cmd.c ./executi/multiple_cmds.c \
 					./executi/exeve_fct.c \
 					ft_error.c signal.c utils.c ft_free_exec.c
-					
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
-
-# redirection
-REDIRECTIONS_FOLDER = ./redirections/
-REDIRECTIONS_FILES  = redirections_check.c redirector.c
-SRCS_REDIRECTIONS = $(addprefix $(REDIRECTIONS_FOLDER), $(REDIRECTIONS_FILES))
 
 # |external libs|=================================================================================================>
 
@@ -58,7 +59,7 @@ SRCS_GET_NEXT_LINE = $(addprefix $(GET_NEXT_LINE_FOLDER), $(GET_NEXT_LINE_FILES)
 # <================================================================================================================>
 
 # All sources
-SRCS = main.c $(SRCS_PARSING) $(SRCS_REDIRECTIONS) $(SRCS_EXECUTION) $(SRCS_LIBFT) $(SRCS_GET_NEXT_LINE)
+SRCS = main.c $(SRCS_PARSING) $(SRCS_EXECUTION) $(SRCS_LIBFT) $(SRCS_GET_NEXT_LINE)
 ALL_OBJ = ${SRCS:.c=.o}
 
 INCLUDES = minishell.h ./libft/libft.h ./get_next_line/get_next_line.h

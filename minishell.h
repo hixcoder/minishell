@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 22:34:58 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/28 22:46:41 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ int ft_check_syntax(t_data *data, int check_nbr);
 void ft_expander(t_data *data);
 int ft_tokenizer(t_data *data);
 int ft_spliter(t_data *data);
-int ft_redirector(t_data *data);
+int ft_get_commands(t_data *data);
+void ft_free(t_data *data);
 
 char *ft_expand_env_vars(char *s, t_data *data);
 char *ft_expand(t_data *data, char *s);

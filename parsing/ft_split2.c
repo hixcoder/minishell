@@ -39,7 +39,7 @@ static int	ft_prdctlen(char const *s, char c)
 	return (len);
 }
 
-static char	**ft_free(char **dst)
+static char	**ft_free2(char **dst)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ static char	**ft_fillrows(char **dst, const char *s, char c)
 			// printf("i = %d\n\n\n", i);
 			dst[row] = malloc(sizeof(char) * (len  - i));
 			if (dst[row] == NULL)
-				return (ft_free(dst));
+				return (ft_free2(dst));
 			j = 0;
 			while (i < len)
 				dst[row][j++] = s[i++];
