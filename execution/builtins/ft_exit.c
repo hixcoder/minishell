@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:04 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 10:21:26 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:30:31 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,17 @@ int ft_exit(t_data *data, int k)
         exit(0);
     }
     else if (cmd.cmds[1] && ft_isnumber(cmd.cmds[1]) == 1 && cmd.cmds[2])
-       {
-         printf("minishell: exit: too many arguments\n");
-       }
+    {
+        printf("exit\nminishell: exit: too many arguments\n");
+        g_var.exit_status = 1;
+    }
     else
     {
         printf("exit\n");
-        exit(1);
+        if (cmd.cmds[1])
+            exit(ft_atoi(cmd.cmds[1]));
+        else
+            exit(g_var.exit_status);
     }
     return (1);
 }

@@ -6,82 +6,51 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:12:22 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 11:12:27 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:24:28 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static char *ft_to_lowercase(char *str)
-{
-    int i;
-    char *result;
-
-    i = 0;
-    if ((result = malloc(sizeof(char) * (ft_strlen(str) + 1))) == NULL)
-        return (minishell_perror(MEM));
-    while (str[i])
-    {
-        if (str[i] >= 'A' && str[i] <= 'Z')
-            result[i] = str[i] + 32;
-        else
-            result[i] = str[i];
-        i++;
-    }
-    result[i] = '\0';
-    if (!ft_strcmp(result, "unset") || !ft_strcmp(result, "exit") || !ft_strcmp(result, "export"))
-    {
-        free(result);
-        return (ft_strdup(str));
-    }
-    return (result);
-}
-
 int ft_is_builtin(char *cmd)
 {
-    char *lower_cmd;
     int a;
 
     if (!cmd)
         return (0);
-    lower_cmd = ft_to_lowercase(cmd);
     a = 0;
-    if (ft_strcmp(lower_cmd, "echo") == 0)
+    if (ft_strcmp(cmd, "echo") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "pwd") == 0)
+    if (ft_strcmp(cmd, "pwd") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "cd") == 0)
+    if (ft_strcmp(cmd, "cd") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "env") == 0)
+    if (ft_strcmp(cmd, "env") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "export") == 0)
+    if (ft_strcmp(cmd, "export") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "unset") == 0)
+    if (ft_strcmp(cmd, "unset") == 0)
         a = 1;
-    if (ft_strcmp(lower_cmd, "exit") == 0)
+    if (ft_strcmp(cmd, "exit") == 0)
         a = 1;
-    free(lower_cmd);
     return (a);
 }
 
 void ft_execmd_built(t_data *data, int k)
 {
-    char *lower_cmd;
-
-    lower_cmd = ft_to_lowercase(data->cmds[k].cmds[0]);
-    if (!ft_strcmp(lower_cmd, "echo"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "echo"))
         ft_echo((data->cmds)[k]);
-    if (!ft_strcmp(lower_cmd, "pwd"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "pwd"))
         ft_pwd();
-    if (!ft_strcmp(lower_cmd, "cd"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "cd"))
         ft_cd(data, k);
-    if (!ft_strcmp(lower_cmd, "env"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "env"))
         ft_env(data, k);
-    if (!ft_strcmp(lower_cmd, "export"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "export"))
         ft_export(data, k);
-    if (!ft_strcmp(lower_cmd, "unset"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "unset"))
         ft_unset(data, k);
-    if (!ft_strcmp(lower_cmd, "exit"))
+    if (!ft_strcmp(data->cmds[k].cmds[0], "exit"))
         ft_exit(data, k);
-    free(lower_cmd);
+    free(data->cmds[k].cmds[0]);
 }
