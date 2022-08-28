@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 17:25:33 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 01:06:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ static void ft_run_simple_cmd(t_data *data)
 {
     int infile;
     int outfile;
+    int tmp[2];
 
+    tmp[0] = dup(STDIN_FILENO);
+    tmp[1] = dup(STDOUT_FILENO);
     infile = 0;
     outfile = 1;
     ft_trait_redir(data, 0, &infile, &outfile);
     if (infile != 0)
-        dup2(infile, STDIN_FILENO);
+        ft_dup2_close(infile, STDIN_FILENO);
     if (outfile != 1)
-        dup2(outfile, STDOUT_FILENO);
+        ft_dup2_close(outfile, STDOUT_FILENO);
     ft_execute_cmd(data, 0);
+    ft_dup2_close(tmp[0], STDIN_FILENO);
+    ft_dup2_close(tmp[1], STDOUT_FILENO);
 }
 
 int ft_simple_cmd(t_data *data)
@@ -34,7 +39,6 @@ int ft_simple_cmd(t_data *data)
     if (!ft_is_builtin(data->cmds[0].cmds[0]))
     {
         data->cmds[0].path_bin = ft_get_bin(data, 0);
-
         if (data->cmds[0].path_bin != NULL)
         {
             pid = fork();
@@ -45,12 +49,9 @@ int ft_simple_cmd(t_data *data)
                 ft_run_simple_cmd(data);
                 exit(EXIT_SUCCESS);
             }
-            else
-            {
-                g_var.pid_child = pid;
-                waitpid(pid, NULL, 0);
-                g_var.pid_child = 0;
-            }
+            g_var.pid_child = pid;
+            waitpid(pid, NULL, 0);
+            g_var.pid_child = 0;
         }
         else if (!ft_cmd_is_path(data->cmds[0].cmds[0]))
             ft_print_error2(data->cmds[0].cmds[0], ": command not found\n");

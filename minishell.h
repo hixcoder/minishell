@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 20:08:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 01:04:25 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 #define STDOUT 1
 #define STDERR 2
 
-#define GREEN  "\033[0;92m"
-#define RED  "\033[0;91m"
-#define RESET  "\033[0m"
+#define GREEN "\033[0;92m"
+#define RED "\033[0;91m"
+#define RESET "\033[0m"
 
 // our types
 typedef enum type
@@ -125,7 +125,7 @@ void ft_sort_table(char **table);
 int ft_is_identifier(char *str);
 int ft_print_env(t_list *env);
 int ft_append(t_list *env, char *str);
-
+char *ft_pwd2(char *str);
 // unset
 int ft_unset(t_data *data, int k);
 
@@ -161,5 +161,5 @@ char *ft_get_value(t_data *data, char *key);
 
 void ft_print_error2(char *str, char *msg);
 int ft_cmd_is_path(char *str);
-
+void ft_dup2_close(int fd1, int fd2);
 #endif

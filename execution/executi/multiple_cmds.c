@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 16:55:05 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 01:01:12 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void ft_close_all_pipes(int **pipes)
     }
 }
 
+void ft_dup2_close(int fd1, int fd2)
+{
+    dup2(fd1, fd2);
+    close(fd1);
+}
+
 void ft_run_cmd(t_data *data, int k, int **pipes)
 {
     int infile;
@@ -53,19 +59,19 @@ void ft_run_cmd(t_data *data, int k, int **pipes)
     if (infile == 0)
     {
         if (k > 0)
-            dup2(pipes[k - 1][0], 0);
+            dup2(pipes[k - 1][0], STDIN_FILENO);
     }
     else
-        dup2(infile, STDIN_FILENO);
+        ft_dup2_close(infile, STDIN_FILENO);
     if (outfile == 1)
     {
         if (k < data->cmds_len - 1)
-            dup2(pipes[k][1], 1);
+            dup2(pipes[k][1], STDOUT_FILENO);
     }
     else
-        dup2(outfile, STDOUT_FILENO);
-    ft_close_all_pipes(pipes);
+        ft_dup2_close(outfile, STDOUT_FILENO);
     ft_execute_cmd(data, k);
+    ft_close_all_pipes(pipes);
 }
 
 void ft_multiple_cmds(t_data *data)

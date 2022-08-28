@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 18:35:00 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 00:31:22 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ char *ft_get_bin(t_data *data, int k)
     i = 0;
     path = NULL;
     pwd = ft_get_value(data, "PATH");
+    if (pwd == NULL)
+        return (NULL);
     bin = ft_split(pwd, ':');
-    while (bin[i] && path == NULL)
+    while (bin && bin[i] && path == NULL)
         path = check_dir(bin[i++], data->cmds[k].cmds[0]);
     if (path != NULL)
         return (path);
