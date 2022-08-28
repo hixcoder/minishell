@@ -6,11 +6,12 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:12:22 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 10:54:45 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 11:12:27 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
 static char *ft_to_lowercase(char *str)
 {
     int i;
