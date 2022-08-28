@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 16:26:54 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 12:21:39 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char    *get_env_var_value(char **env, char *var_name)
 }
 
 // this function check if there is an env var(start with '$') and expand it
-char    *ft_expand_env_vars(char *s, char **env)
+char    *ft_expand_env_vars(char *s, t_data *data)
 {
     int i;
     int j;
@@ -131,7 +131,9 @@ char    *ft_expand_env_vars(char *s, char **env)
         if (s[i] == '$' && ft_is_singl_qoted(s, i+1) == 0)
         {
             var_name = get_env_var_name(&s[i+1]);
-            var_value = get_env_var_value(env, var_name);
+            if (strncmp(var_name, "$?", ft_strlen(var_name)) == 0)
+                continue ;
+            var_value = ft_get_value(data, var_name + 1);
             new_s = ft_strreplace(new_s, var_name, var_value, j);
             j += ft_strlen(var_value) - ft_strlen(var_name) + 1;
             free(var_name);

@@ -82,3 +82,6 @@ to do:
 [✅]==} if you have : ls $kk -la ==> if (kk = null) return cmds={ls,-la}
 [✅]==} if you have : ls > $kk   ==> if (kk = null) return error (no such file or directory)
 [✅]==} if you have : << $USER   ==> do not expand the variable USER
+
+- $?
+- exit status

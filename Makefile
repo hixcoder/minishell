@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 10:44:46 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/28 12:02:30 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,18 +74,20 @@ readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 
-%.o : %.c ${INCLUDES}
-	$(CC) ${FLAGS} -c $< -o $@  $(INCLUDES2)
+
+%.o : %.c ${INCLUDES} 
+	@echo "${BLUE}|+++>${RESET}   ${GREEN}compiling minishell files...${RESET}   ${BLUE}<+++|${RESET}"
+	@$(CC) ${FLAGS} -c $< -o $@  $(INCLUDES2)
 	
-$(NAME) : ${ALL_OBJ}
+$(NAME) : ${ALL_OBJ} 
 	@echo "|+| make the libft.a library   ==> ${GREEN}DONE${RESET}"	
 	@echo "|+| make the get_next_line.a library   ==> ${GREEN}DONE${RESET}"	
 	@$(MAKE) -C  $(LIBFT_FOLDER)
 	@$(MAKE) -C  $(GET_NEXT_LINE_FOLDER)
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
-	make clean
-	clear
+	@clear
+	@./${NAME}
 
 all : $(NAME) 
 
@@ -101,6 +103,8 @@ re : fclean all
 
 
 # colors used
+BLUE = \033[0;94m
+YELLOW = \033[0;93m
 GREEN = \033[0;92m
 RED = \033[0;91m
 RESET = \033[0m

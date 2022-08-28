@@ -100,9 +100,10 @@ void ft_readline(t_data *data)
 {
 	while (1)
 	{
+		
+		setup_term();
 		signal(SIGINT, &ft_signal_handler);
 		signal(SIGQUIT, &ft_signal_handler);
-		setup_term();
 		data->args = readline("💰 \033[0;92mMinishell 💰 \033[0;91m━> \033[0m");
 		if (data->args == NULL)
 		{
@@ -123,12 +124,15 @@ void ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
+		// ft_print_values(data, 2);
+
 		ft_expander(data);
 		if (ft_redirector(data) == -1)
 		{
 			ft_check_syntax(data, 0);
 			continue;
 		}
+		
 		ft_herdoc(data);
 		// ft_print_values(data, 2);
 		// ft_print_values(data, 3);

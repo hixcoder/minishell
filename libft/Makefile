@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:41:31 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/25 22:45:13 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/28 11:52:31 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,22 +36,22 @@ CC = cc
 Include = libft.h
 
 %.o:%.c ${Include}
-		${CC} ${CFLAGS} -g -c $< -o $@
+		@${CC} ${CFLAGS} -g -c $< -o $@
 
 $(NAME): ${OBJSRC} 
 	@ar rcs ${NAME} ${OBJSRC}
 	@mv ${NAME} ..
 
 bonus : ${OBJBONUS} ${OBJSRC} ${Include}
-	ar rcs ${NAME} ${OBJSRC} ${OBJBONUS}
+	@ar rcs ${NAME} ${OBJSRC} ${OBJBONUS}
 
 all: ${NAME}
 
 clean:
-	rm -f ${OBJSRC} ${OBJBONUS}
+	@rm -f ${OBJSRC} ${OBJBONUS}
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 re: fclean all
 

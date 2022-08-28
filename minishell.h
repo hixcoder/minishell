@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 10:54:15 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 11:33:10 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,7 @@ void ft_error(char *error);
 int is_insid_qots(char const *s, int j);
 int ft_check_quotes(char *s);
 char **ft_split2(char const *s, char c);
-int ft_spliter(t_data *data);
-void ft_expander(t_data *data);
-char *ft_expand(char **env, char *s);
 int ft_get_quotes_nbr(char *s);
-char *ft_expand_env_vars(char *s, char **env);
 char *ft_strreplace(char *s, char *old_w, char *new_w, int from);
 Type ft_tokenize(char *word);
 char *ft_check_redirections(char *s);
@@ -105,6 +101,9 @@ void ft_expander(t_data *data);
 int ft_tokenizer(t_data *data);
 int ft_spliter(t_data *data);
 int ft_redirector(t_data *data);
+
+char    *ft_expand_env_vars(char *s, t_data *data);
+char    *ft_expand(t_data *data, char *s);
 
 // echo
 int ft_echo(t_command cmds);

@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 15:50:56 by hboumahd          #+#    #+#              #
-#    Updated: 2022/02/15 16:00:38 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/08/28 11:51:55 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 
 %.o : %.c ${INCLUDE}
-	${CC} ${FLAGS} -c $< -o $@
+	@${CC} ${FLAGS} -c $< -o $@
 
 $(NAME) : ${SRCOBJ} 
 	@ar rcs ${NAME} ${SRCOBJ} 
