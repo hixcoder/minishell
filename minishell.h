@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 18:16:36 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 19:39:55 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,7 @@ void get_exit_status(int status);
 char *ft_get_file_name();
 void ft_update_herdoc_info(t_data *data, int i, char *file_name);
 void ft_create_herdoc_file(t_data *data, int i, int j, char *file_name);
+
+// free fct
+void ft_free_pipes(int **pipes);
 #endif
