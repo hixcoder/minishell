@@ -100,16 +100,16 @@ void ft_readline(t_data *data)
 {
 	while (1)
 	{
-		setup_term();
-		signal(SIGINT, &ft_signal_handler);
-		signal(SIGQUIT, &ft_signal_handler);
+		signal(SIGINT, ft_signal_handler);
+		signal(SIGQUIT, ft_signal_handler);
 		g_var.pid_herdoc = 0;
 		g_var.is_killed = 0;
+		g_var.pid_child = 0;
 		setup_term();
 		data->args = readline("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
 		if (data->args == NULL)
 		{
-			ft_putstr_fd("exit\n", 2);
+			write(1, "\033[1A\033[20Cexit\n", 16);
 			break;
 		}
 		add_history(data->args);
@@ -125,8 +125,6 @@ void ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue;
 		}
-		// ft_print_values(data, 2);
-
 		ft_expander(data);
 		if (ft_redirector(data) == -1)
 		{
@@ -136,8 +134,6 @@ void ft_readline(t_data *data)
 		}
 
 		ft_herdoc(data);
-		// ft_print_values(data, 2);
-		// ft_print_values(data, 3);
 		if (!g_var.is_killed)
 			ft_minishell(data);
 		// ft_free(data);

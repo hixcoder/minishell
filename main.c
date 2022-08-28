@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 15:51:12 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 20:48:25 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int main(int ac, char **av, char **env)
    data.env = env;
    init_env(&data, env);
    g_var.exit_status = 0;
-   g_var.pid_child = 0;
    ft_readline(&data);
    return (0);
 }
