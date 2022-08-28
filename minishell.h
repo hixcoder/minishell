@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 21:15:41 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 23:01:33 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_command
 {
 	char **cmds;
 	t_word **words;
-	int herdoc_fd;
 	char *path_bin;
 } t_command;
 

@@ -1,21 +1,21 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/03 13:48:37 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 23:41:40 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void setup_term()
+void	setup_term(void)
 {
-	struct termios t;
+	struct termios	t;
+
 	tcgetattr(0, &t);
 	t.c_lflag &= ~ECHOCTL;
 	tcsetattr(0, TCSANOW, &t);
@@ -41,27 +41,27 @@ int	setup_readline(t_data *data)
 	return (1);
 }
 
-void ft_readline(t_data *data)
+void	ft_readline(t_data *data)
 {
 	while (setup_readline(data))
 	{
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
-			continue;
+			continue ;
 		if (ft_spliter(data) == -1)
 		{
 			ft_check_syntax(data, 0);
-			continue;
+			continue ;
 		}
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
-			continue;
+			continue ;
 		}
 		ft_expander(data);
 		if (ft_get_commands(data) == -1)
 		{
 			ft_check_syntax(data, 0);
-			continue;
+			continue ;
 		}
 		ft_herdoc(data);
 		if (!g_var.is_killed)

@@ -6,16 +6,17 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 16:50:40 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 22:56:10 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// this function takes the string s and return 1 if it contains only spaces and 0 otherways
-int ft_is_space(char *s)
+// this function takes the string s and 
+// return 1 if it contains only spaces and 0 otherways
+int	ft_is_space(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -26,64 +27,70 @@ int ft_is_space(char *s)
 	return (1);
 }
 
-void ft_fill_atrs(char **atrTmp, t_data *data, int ind)
+void	ft_fill_atrs(char **atr_tmp, t_data *data, int ind)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (atrTmp[i])
+	while (atr_tmp[i])
 		i++;
 	data->cmds[ind].words = malloc(sizeof(t_word *) * (i + 1));
 	data->cmds[ind].words[i] = NULL;
 	i = -1;
-	while (atrTmp[++i])
+	while (atr_tmp[++i])
 	{
 		data->cmds[ind].words[i] = malloc(sizeof(t_word));
-		data->cmds[ind].words[i]->w = ft_strdup(atrTmp[i]);
-		free(atrTmp[i]);
+		data->cmds[ind].words[i]->w = ft_strdup(atr_tmp[i]);
+		free(atr_tmp[i]);
 	}
-	free(atrTmp);
+	free(atr_tmp);
 }
 
-// what this function do:
-// 1- trim and split the input by '|'
-// 2- trim the commands and split them by " " then fill the values of data->cmds
-int ft_spliter(t_data *data)
+int	ft_init_spliter_vars(t_data *data, char	**cmds_tmp)
 {
-	char **cmdsTmp;
-	char **atrTmp;
-	char	*args2;
-	char	*cmdsTmp2;
-	int i;
+	int	i;
 
-	args2 = ft_strtrim(data->args, " ");
-	cmdsTmp = ft_split2(args2, '|');
-	free(args2);
 	i = -1;
-	while (cmdsTmp[++i])
+	while (cmds_tmp[++i])
 	{
-		if (ft_is_space(cmdsTmp[i]) == 1)
+		if (ft_is_space(cmds_tmp[i]) == 1)
 			return (-1);
 	}
 	data->cmds_len = i;
 	data->cmds = malloc(sizeof(t_command) * data->cmds_len);
 	if (!data->cmds)
 		return (-1);
+	return (0);
+}
+
+// what this function do:
+// 1- trim and split the input by '|'
+// 2- trim the commands and split them by " " then fill the values of data->cmds
+int	ft_spliter(t_data *data)
+{
+	char	**cmds_tmp;
+	char	**atr_tmp;
+	char	*cmds_tmp2;
+	char	*args2;
+	int		i;
+
+	args2 = ft_strtrim(data->args, " ");
+	cmds_tmp = ft_split2(args2, '|');
+	free(args2);
+	if (ft_init_spliter_vars(data, cmds_tmp) == -1)
+		return (-1);
 	i = -1;
-	while (cmdsTmp[++i])
+	while (cmds_tmp[++i])
 	{
-		// dragon cleaner
-		cmdsTmp[i] = ft_check_redirections(cmdsTmp[i]);
-		// printf("cmdsTmp[%d] : %s\n", i, cmdsTmp[i]);
-		cmdsTmp2 = ft_strtrim(cmdsTmp[i], " ");
-		atrTmp = ft_split2(cmdsTmp2, ' ');
-		free(cmdsTmp2);
-		ft_fill_atrs(atrTmp, data, i);
-		// free(atrTmp);
-		free(cmdsTmp[i]);
+		cmds_tmp[i] = ft_check_redirections(cmds_tmp[i]);
+		cmds_tmp2 = ft_strtrim(cmds_tmp[i], " ");
+		atr_tmp = ft_split2(cmds_tmp2, ' ');
+		free(cmds_tmp2);
+		ft_fill_atrs(atr_tmp, data, i);
+		free(cmds_tmp[i]);
 		if (data->cmds[i].words == NULL)
 			return (-1);
 	}
-	free(cmdsTmp);
+	free(cmds_tmp);
 	return (0);
 }

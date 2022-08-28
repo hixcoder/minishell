@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 10:38:28 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 01:48:31 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:30:58 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int ft_intlen(int n)
+static int	ft_intlen(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n == 0)
@@ -29,16 +29,16 @@ static int ft_intlen(int n)
 	return (len);
 }
 
-void ft_hndlzero(char *str, int n)
+void	ft_hndlzero(char *str, int n)
 {
 	if (n == 0)
 		*str = '0';
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	int len;
-	char *str;
+	int		len;
+	char	*str;
 
 	len = ft_intlen(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));

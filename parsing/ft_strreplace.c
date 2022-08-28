@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:31:07 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 16:59:16 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 23:30:27 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ void	ft_make_new_string(t_param *param, int from)
 {
 	int	i;
 	int	j;
-	int lock;
+	int	lock;
 
 	i = 0;
 	j = 0;
 	lock = 0;
 	while (j < param->res_len)
 	{
-		if (i >= from && lock == 0 && ft_memcmp(ft_strnstr(&param->s[i], param->old_w, ft_strlen(&param->s[i])), &param->s[i], param->old_w_len) == 0)
+		if (i >= from && lock == 0 && ft_memcmp(ft_strnstr(&param->s[i], \
+		param->old_w, ft_strlen(&param->s[i])), &param->s[i], \
+		param->old_w_len) == 0)
 		{
 			ft_memcpy(&param->res[j], param->new_w, param->new_w_len);
 			j += param->new_w_len;
@@ -42,10 +44,7 @@ void	ft_make_new_string(t_param *param, int from)
 			lock = 1;
 		}
 		else
-		{
-			param->res[j] = param->s[i];
-			j++;
-		}
+			param->res[j++] = param->s[i];
 		i++;
 	}
 	param->res[j] = '\0';
@@ -54,7 +53,8 @@ void	ft_make_new_string(t_param *param, int from)
 // Given three strings ‘s’, ‘old_w’ and ‘new_w’. 
 // The task is find all occurrences of the word ‘old_w’ in 
 // string ‘s’ and replace them with word ‘new_w’.
-// the 'all' tells the function if you want to change all old_w occurrences to new_w or just the first occurrence 
+// the 'all' tells the function if you want to change all 
+// old_w occurrences to new_w or just the first occurrence 
 char	*ft_strreplace(char *s, char *old_w, char *new_w, int from)
 {
 	int		i;

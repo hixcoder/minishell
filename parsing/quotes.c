@@ -6,53 +6,52 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 12:14:45 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 15:12:32 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 23:38:09 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int    ft_check_quotes(char *s)
+int	ft_check_quotes(char *s)
 {
-    int i;
-    int q1;
-    int q2;
+	int	i;
+	int	q1;
+	int	q2;
 
-    i = -1;
-    q1 = 0;
-    q2 = 0;
-    while (s[++i])
-    {
-        if (s[i] == '\'' && q2 % 2 == 0)
-            q1++;
-        if (s[i] == '\"' && q1 % 2 == 0)
-            q2++;
-    }
-    if (q1 % 2 != 0 || q2 % 2 != 0)
-        return (1);
-    return (0);
+	i = -1;
+	q1 = 0;
+	q2 = 0;
+	while (s[++i])
+	{
+		if (s[i] == '\'' && q2 % 2 == 0)
+			q1++;
+		if (s[i] == '\"' && q1 % 2 == 0)
+			q2++;
+	}
+	if (q1 % 2 != 0 || q2 % 2 != 0)
+		return (1);
+	return (0);
 }
 
 int	is_insid_qots(char const *s, int j)
 {
-	int i;
-    int q1;
-    int q2;
+	int	i;
+	int	q1;
+	int	q2;
 
-    i = -1;
-    q1 = 0;
-    q2 = 0;
-    while (++i < j)
-    {
-        if (s[i] == '\'' && q2 % 2 == 0)
-            q1++;
-        if (s[i] == '\"' && q1 % 2 == 0)
-            q2++;
-    }
-    if (q1 % 2 != 0 || q2 % 2 != 0)
-    {
-        return (1);
-        
-    }
+	i = -1;
+	q1 = 0;
+	q2 = 0;
+	while (++i < j)
+	{
+		if (s[i] == '\'' && q2 % 2 == 0)
+			q1++;
+		if (s[i] == '\"' && q1 % 2 == 0)
+			q2++;
+	}
+	if (q1 % 2 != 0 || q2 % 2 != 0)
+	{
+		return (1);
+	}
 	return (0);
 }

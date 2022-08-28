@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:27:09 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 15:37:32 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:26:56 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static size_t	ft_strlen6(const char *str)
 	}
 	return (i);
 }
- 
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split2.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:19:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2021/11/11 20:26:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 23:26:35 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static int	ft_rowlen(char const *s, char c)
 	row = 1;
 	while (s[j])
 	{
-		if (s[j] != c &&
-			((s[j + 1] == c && is_insid_qots(s, j + 1) == 0) || s[j + 1] == '\0'))
+		if (s[j] != c
+			&& ((s[j + 1] == c && is_insid_qots(s, j + 1) == 0)
+				|| s[j + 1] == '\0'))
 			row++;
 		j++;
 	}
@@ -64,11 +65,7 @@ static char	**ft_fillrows(char **dst, const char *s, char c)
 		if (s[i] != c)
 		{
 			len = ft_prdctlen(&s[i], c) + i;
-			// printf("\n\ns[i] = |%s|\n", &s[i]);
-			// printf("ft_prdctlen = %d\n", len -i);
-			// printf("len = %d\n", len);
-			// printf("i = %d\n\n\n", i);
-			dst[row] = malloc(sizeof(char) * (len  - i));
+			dst[row] = malloc(sizeof(char) * (len - i));
 			if (dst[row] == NULL)
 				return (ft_free2(dst));
 			j = 0;
