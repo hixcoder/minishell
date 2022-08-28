@@ -97,7 +97,7 @@ void ft_herdoc_2(t_data *data)
             exit(0);
             free(name_file);
         }
-        data->herdoc_pid = pid;
+        g_var.pid_herdoc = pid;
         wait(NULL);
         j = -1;
         while (data->cmds[i].words[++j])
