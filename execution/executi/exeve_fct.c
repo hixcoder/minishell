@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 10:53:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:31:49 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char *check_dir(char *bin, char *command)
             tmp = ft_strjoin(bin, "/");
             path = ft_strjoin(tmp, command);
             free(tmp);
+            break;
         }
     }
     closedir(folder);
@@ -71,6 +72,7 @@ char *ft_get_bin(t_data *data, int k)
     bin = ft_split(pwd, ':');
     while (bin && bin[i] && path == NULL)
         path = check_dir(bin[i++], data->cmds[k].cmds[0]);
+    ft_free_split(bin);
     if (path != NULL)
         return (path);
     if (ft_cmd_is_path(data->cmds[k].cmds[0]))

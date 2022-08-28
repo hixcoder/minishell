@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:33:05 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 19:41:06 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:34:41 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,17 @@ void ft_free_pipes(int **pipes)
         i++;
     }
     free(pipes);
+}
+
+void ft_free_split(char **split)
+{
+    int i;
+
+    i = 0;
+    while (split[i])
+    {
+        free(split[i]);
+        i++;
+    }
+    free(split);
 }

@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 21:49:51 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/28 22:36:24 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ CC = gcc
 
 # brew --prefix readline
 # readline  = /goinfre/hboumahd/.brew/opt/readline
-readline = $(shell brew --prefix readline)
+readline = /opt/homebrew/opt/readline
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 

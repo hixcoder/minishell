@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc_utiles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:37:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 20:48:02 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 22:32:47 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 // this one check if the suggested file name is already exist in the "/tmp" path
 static int check_file_name(char *file)
@@ -24,7 +24,10 @@ static int check_file_name(char *file)
     while ((item = readdir(folder)))
     {
         if (ft_strcmp(item->d_name, file) == 0)
+        {
+            closedir(folder);
             return (1); // found
+        }
     }
     closedir(folder);
     return (0); // not found
@@ -36,7 +39,7 @@ char *ft_get_file_name()
     int i;
     char *name;
     char *file_name;
-    
+
     i = 0;
     name = ft_itoa(i);
     while (check_file_name(name))
@@ -69,7 +72,7 @@ void ft_create_herdoc_file(t_data *data, int i, int j, char *file_name)
             write(fd, line, ft_strlen(line));
             continue;
         }
-        line[ft_strlen(line) - 1] = '\0'; 
+        line[ft_strlen(line) - 1] = '\0';
         if (strcmp(line, data->cmds[i].words[j + 1]->w) != 0)
         {
             write(1, "Heredoc> ", 9);
