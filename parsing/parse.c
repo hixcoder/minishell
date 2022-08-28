@@ -100,7 +100,6 @@ void ft_readline(t_data *data)
 {
 	while (1)
 	{
-		
 		setup_term();
 		signal(SIGINT, &ft_signal_handler);
 		signal(SIGQUIT, &ft_signal_handler);
@@ -113,7 +112,6 @@ void ft_readline(t_data *data)
 			ft_putstr_fd("exit\n", 2);
 			break;
 		}
-		g_var.exit_status = 0;
 		add_history(data->args);
 		if (ft_check_syntax(data, 1) == -1 || ft_check_syntax(data, 2) == -1)
 			continue;
@@ -136,11 +134,11 @@ void ft_readline(t_data *data)
 			g_var.exit_status = 258;
 			continue;
 		}
-		
+
 		ft_herdoc(data);
 		// ft_print_values(data, 2);
 		// ft_print_values(data, 3);
-		if (g_var.exit_status == 0)
+		if (!g_var.is_killed)
 			ft_minishell(data);
 		ft_free(data);
 	}

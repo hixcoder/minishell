@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:11:44 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 10:05:39 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 12:52:33 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int ft_env(t_data *data, int k)
     {
         printf("env: %s: No such file or directory\n", data->cmds[k].cmds[1]);
         g_var.exit_status = 127;
+        return (1);
     }
     g_var.exit_status = 0;
     while (!(data->cmds[k].cmds[1]) && tmp)
