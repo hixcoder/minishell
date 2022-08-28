@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 19:39:55 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 21:15:41 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ int ft_check_syntax(t_data *data, int check_nbr);
 void ft_expander(t_data *data);
 int ft_tokenizer(t_data *data);
 int ft_spliter(t_data *data);
-int ft_redirector(t_data *data);
+int ft_get_commands(t_data *data);
+void ft_free(t_data *data);
 
 char *ft_expand_env_vars(char *s, t_data *data);
 char *ft_expand(t_data *data, char *s);
