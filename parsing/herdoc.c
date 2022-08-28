@@ -3,91 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:08:22 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 02:01:11 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:26:16 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-// chmod numbers: 4(r) + 2(w) + 1(x)
 
-void ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
-{
-    char *file;
-    int fd;
-    char *line;
-
-    file = ft_strdup("/tmp/minishell_herdocx");
-    file[21] = file_nbr + '0';
-    fd = open(file, O_RDWR | O_CREAT | O_APPEND | O_TRUNC, 0600);
-    free(file);
-    if (fd == -1)
-        return;
-    write(1, "Heredoc> ", 9);
-    while ((line = get_next_line(0)))
-    {
-        if (ft_strcmp(line, "\n") == 0)
-        {
-            write(1, "Heredoc> ", 9);
-            write(fd, line, ft_strlen(line));
-            continue;
-        }
-        if (strncmp(line, data->cmds[i].words[j + 1]->w, ft_strlen(line) - 1) != 0)
-        {
-            write(1, "Heredoc> ", 9);
-            write(fd, line, ft_strlen(line));
-        }
-        else
-            break;
-    }
-    close(fd);
-}
-
-void ft_herdoc_hedoc_info(t_data *data, int i, int j, int file_nbr)
-{
-    char *file;
-
-    file = ft_strdup("/tmp/minishell_herdocx");
-    file[21] = file_nbr + '0';
-    data->cmds[i].words[j]->t = REDIRECT_IN;
-    free(data->cmds[i].words[j + 1]->w);
-    data->cmds[i].words[j + 1]->w = file;
-}
-
-void ft_herdoc(t_data *data)
+typedef struct s_var
 {
     int j;
     int i;
-    int file_nbr;
     int pid;
+    char *file_name;
+}   t_var;
 
-    i = -1;
-    file_nbr = -1;
-    while (++i < data->cmds_len)
+void ft_herdoc(t_data *data)
+{
+    t_var v;
+
+    v.i = -1;
+    while (++v.i < data->cmds_len)
     {
-        pid = fork();
-        if (pid == 0)
+        v.file_name = ft_get_file_name();
+        v.pid = fork();
+        if (v.pid == 0)
         {
-            j = -1;
-            while (data->cmds[i].words[++j])
+            v.j = -1;
+            while (data->cmds[v.i].words[++v.j])
             {
-                if (data->cmds[i].words[j]->t == HERE_DOC)
-                    ft_create_hedoc_file(data, i, j, ++file_nbr);
+                if (data->cmds[v.i].words[v.j]->t == HERE_DOC)
+                    ft_create_herdoc_file(data, v.i, v.j, v.file_name);
             }
+            free(v.file_name);
             exit(0);
         }
         else
         {
-            data->herdoc_pid = pid;
+            data->herdoc_pid = v.pid;
             wait(NULL);
-            j = -1;
-            while (data->cmds[i].words[++j])
-            {
-                if (data->cmds[i].words[j]->t == HERE_DOC)
-                    ft_herdoc_hedoc_info(data, i, j, ++file_nbr);
-            }
+            ft_update_herdoc_info(data, v.i, v.file_name);
         }
     }
 }
