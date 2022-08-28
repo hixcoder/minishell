@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 20:00:46 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 21:33:52 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void ft_run_cmd(t_data *data, int k, int **pipes)
 
     infile = 0;
     outfile = 1;
+
     ft_trait_redir(data, k, &infile, &outfile);
     if (infile == 0)
     {
@@ -70,8 +71,9 @@ void ft_run_cmd(t_data *data, int k, int **pipes)
     }
     else
         ft_dup2_close(outfile, STDOUT_FILENO);
-    ft_execute_cmd(data, k);
     ft_close_all_pipes(pipes);
+    ft_free_pipes(pipes);
+    ft_execute_cmd(data, k);
 }
 
 void ft_multiple_cmds(t_data *data)
@@ -103,10 +105,10 @@ void ft_multiple_cmds(t_data *data)
     }
     g_var.pid_child = pid;
     ft_close_all_pipes(pipes);
-    ft_free_pipes(pipes);
     waitpid(pid, &g_var.exit_status, 0);
     get_exit_status(g_var.exit_status);
     while (waitpid(-1, NULL, 0) > 0)
         ;
     g_var.pid_child = 0;
+    ft_free_pipes(pipes);
 }

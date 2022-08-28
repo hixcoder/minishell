@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 20:48:25 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 21:27:48 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int main(int ac, char **av, char **env)
    init_env(&data, env);
    g_var.exit_status = 0;
    ft_readline(&data);
+   ft_lstclear(&data.env_2, free);
    return (0);
 }

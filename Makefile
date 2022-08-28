@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
 #    Updated: 2022/08/28 21:49:28 by hboumahd         ###   ########.fr        #
+=======
+#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
+#    Updated: 2022/08/28 21:49:51 by ahammam          ###   ########.fr        #
+>>>>>>> c8a3a0ad934094afc124bfc822f3bb98e33f39a0
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +22,12 @@ NAME = minishell
 #parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
+<<<<<<< HEAD
 					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c \
 					redirections_check.c get_commands.c
+=======
+					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c  
+>>>>>>> c8a3a0ad934094afc124bfc822f3bb98e33f39a0
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
@@ -64,8 +75,8 @@ FLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 
 # brew --prefix readline
-readline  = /goinfre/hboumahd/.brew/opt/readline
-# readline = $(shell brew --prefix readline)
+# readline  = /goinfre/hboumahd/.brew/opt/readline
+readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 
@@ -82,7 +93,6 @@ $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
 	@clear
-	# @./${NAME}
 
 all : $(NAME) 
 
