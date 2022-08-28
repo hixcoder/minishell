@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 10:54:15 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 11:41:39 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_sig
 	int exit_status;
 	pid_t pid_child;
 	pid_t pid_herdoc;
+	int is_killed;
 
 } t_sig;
 

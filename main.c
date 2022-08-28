@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 10:29:07 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 11:41:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int init_env(t_data *data, char **env)
    data->env_2 = head;
    return 1;
 }
+
 int main(int ac, char **av, char **env)
 {
    t_data data;
