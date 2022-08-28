@@ -105,7 +105,6 @@ void ft_readline(t_data *data)
 		g_var.pid_herdoc = 0;
 		g_var.is_killed = 0;
 		g_var.pid_child = 0;
-		g_var.is_in_child = 0;
 		setup_term();
 		data->args = readline("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
 		if (data->args == NULL)

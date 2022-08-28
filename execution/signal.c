@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:31:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 17:24:20 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:18:50 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void get_exit_status(int status)
 {
 
     if (WIFEXITED(status))
-    {
         g_var.exit_status = WEXITSTATUS(status);
-        printf("valide exit status: %d\n", WEXITSTATUS(status));
-    }
     else if (WIFSIGNALED(status))
     {
         g_var.exit_status = WTERMSIG(status);
@@ -56,7 +53,7 @@ void ft_signal_handler(int sig)
         rl_redisplay();
         g_var.exit_status = 1;
     }
-    if (sig == SIGQUIT && !g_var.is_in_child)
+    if (sig == SIGQUIT && !g_var.pid_child) //  !g_var.is_in_child
     {
         printf("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
         g_var.exit_status = 130;
