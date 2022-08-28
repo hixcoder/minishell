@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 01:08:35 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 02:04:06 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,4 +162,5 @@ char *ft_get_value(t_data *data, char *key);
 void ft_print_error2(char *str, char *msg);
 int ft_cmd_is_path(char *str);
 void ft_dup2_close(int fd1, int fd2);
+void ft_herdoc_2(t_data *data);
 #endif

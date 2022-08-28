@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 01:08:18 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 02:22:43 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void ft_execmd_bin(t_data *data, int k)
     char **arg;
 
     arg = ft_env_list(data);
-
     if (execve(data->cmds[k].path_bin, data->cmds[k].cmds, arg) == -1)
         exit(EXIT_FAILURE);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:08:22 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/27 19:18:21 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 02:01:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 // chmod numbers: 4(r) + 2(w) + 1(x)
 
-void    ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
+void ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
 {
     char *file;
     int fd;
@@ -24,7 +24,7 @@ void    ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
     fd = open(file, O_RDWR | O_CREAT | O_APPEND | O_TRUNC, 0600);
     free(file);
     if (fd == -1)
-        return ;
+        return;
     write(1, "Heredoc> ", 9);
     while ((line = get_next_line(0)))
     {
@@ -45,7 +45,7 @@ void    ft_create_hedoc_file(t_data *data, int i, int j, int file_nbr)
     close(fd);
 }
 
-void    ft_herdoc_hedoc_info(t_data *data, int i, int j, int file_nbr)
+void ft_herdoc_hedoc_info(t_data *data, int i, int j, int file_nbr)
 {
     char *file;
 
