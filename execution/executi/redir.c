@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:45:43 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 02:33:09 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 09:31:35 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 void ft_redir(t_command cmds, int i, int *outfile)
 {
-    char *name_file;
 
-    if (ft_strcmp(cmds.words[++i]->w, "$?"))
-        name_file = ft_itoa(g_var.exit_status);
-    else
-        name_file = cmds.words[++i]->w;
     if (cmds.words[i]->t == REDIRECT_OUT)
         *outfile = open(cmds.words[++i]->w, O_CREAT | O_WRONLY | O_TRUNC, 0777);
-    else if (cmds.words[i]->t == REDIRECT_OUT_APND)
+
+    if (cmds.words[i]->t == REDIRECT_OUT_APND)
         *outfile = open(cmds.words[++i]->w, O_CREAT | O_WRONLY | O_APPEND, 0777);
     if (*outfile == -1)
         ft_error("Error: open");

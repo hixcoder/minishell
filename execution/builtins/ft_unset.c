@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:49:49 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/24 16:49:44 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:03:14 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int ft_unset(t_data *data, int k)
     int i;
 
     i = 1;
+    g_var.exit_status = 0;
     if (data->cmds[k].cmds[i] == NULL)
         return (1);
     else
@@ -85,7 +86,10 @@ int ft_unset(t_data *data, int k)
             if (ft_is_identifier_unset(data->cmds[k].cmds[i]))
                 ft_remove_to_env(data->env_2, data->cmds[k].cmds[i]);
             else
+            {
                 printf("Minishel: unset: %s: not an identifier\n", data->cmds[k].cmds[i]);
+                g_var.exit_status = 1;
+            }
             i++;
         }
     }

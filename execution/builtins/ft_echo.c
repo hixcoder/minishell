@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 17:35:26 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 09:57:59 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int ft_echo(t_command cmds)
     }
     if (!nl)
         write(1, "\n", 1);
+    g_var.exit_status = 0;
     return (0);
 }

@@ -81,9 +81,10 @@ void ft_herdoc_2(t_data *data)
     char *name_file;
 
     i = -1;
-    name_file = ft_get_name_file_2();
+
     while (++i < data->cmds_len)
     {
+        name_file = ft_get_name_file_2();
         pid = fork();
         if (pid == 0)
         {
@@ -96,7 +97,7 @@ void ft_herdoc_2(t_data *data)
             exit(0);
             free(name_file);
         }
-        data->herdoc_pid = pid;
+        g_var.pid_herdoc = pid;
         wait(NULL);
         j = -1;
         while (data->cmds[i].words[++j])
@@ -104,6 +105,6 @@ void ft_herdoc_2(t_data *data)
             if (data->cmds[i].words[j]->t == HERE_DOC)
                 ft_herdoc_hedoc_info_2(data, i, j, name_file);
         }
+        free(name_file);
     }
-    free(name_file);
 }

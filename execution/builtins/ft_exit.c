@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:04 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 18:36:16 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:21:26 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ int ft_exit(t_data *data, int k)
     {
         printf("exit\n");
         printf("minishell: exit: %s: numeric argument required\n", cmd.cmds[1]);
-        exit(1);
+        exit(0);
     }
     else if (cmd.cmds[1] && ft_isnumber(cmd.cmds[1]) == 1 && cmd.cmds[2])
-        printf("minishell: exit: too many arguments\n");
+       {
+         printf("minishell: exit: too many arguments\n");
+       }
     else
     {
         printf("exit\n");

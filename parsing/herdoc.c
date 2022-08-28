@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:08:22 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 10:26:16 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 10:31:47 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void ft_herdoc(t_data *data)
         }
         else
         {
-            data->herdoc_pid = v.pid;
+            g_var.pid_herdoc = v.pid;
             wait(NULL);
             ft_update_herdoc_info(data, v.i, v.file_name);
         }

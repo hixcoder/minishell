@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:23:08 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/26 19:56:34 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:03:50 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int ft_export(t_data *data, int k)
     int i;
 
     i = 1;
+    g_var.exit_status = 0;
     if (data->cmds[k].cmds[1] == NULL)
         return (ft_print_env(data->env_2));
     else
@@ -143,7 +144,10 @@ int ft_export(t_data *data, int k)
             if (ft_is_identifier(data->cmds[k].cmds[i]))
                 ft_add_to_env(data->env_2, data->cmds[k].cmds[i]);
             else
+            {
+                g_var.exit_status = 1;
                 printf("export: not an identifier: %s\n", data->cmds[k].cmds[i]);
+            }
             i++;
         }
     }
