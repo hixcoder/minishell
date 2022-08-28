@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 12:55:27 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:39:14 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void ft_multiple_cmds(t_data *data)
     g_var.pid_child = pid;
     ft_close_all_pipes(pipes);
     waitpid(pid, &g_var.exit_status, 0);
+    get_exit_status(g_var.exit_status);
     while (waitpid(-1, NULL, 0) > 0)
         ;
     g_var.pid_child = 0;

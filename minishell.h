@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:12:00 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 12:45:14 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:19:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ typedef struct s_sig
 	pid_t pid_child;
 	pid_t pid_herdoc;
 	int is_killed;
-
+	int is_in_child;
 } t_sig;
 
+t_sig g_var;
 void ft_readline(t_data *data);
 void ft_error(char *error);
 
@@ -103,8 +104,8 @@ int ft_tokenizer(t_data *data);
 int ft_spliter(t_data *data);
 int ft_redirector(t_data *data);
 
-char    *ft_expand_env_vars(char *s, t_data *data);
-char    *ft_expand(t_data *data, char *s);
+char *ft_expand_env_vars(char *s, t_data *data);
+char *ft_expand(t_data *data, char *s);
 
 // echo
 int ft_echo(t_command cmds);
@@ -115,7 +116,7 @@ int ft_cd(t_data *data, int k);
 
 // env
 int ft_env(t_data *data, int k);
-t_sig g_var;
+
 // utile exportv
 int ft_export(t_data *data, int k);
 int ft_lenstring(t_list *env);
@@ -160,6 +161,8 @@ char *ft_get_value(t_data *data, char *key);
 void ft_print_error2(char *str, char *msg);
 int ft_cmd_is_path(char *str);
 void ft_dup2_close(int fd1, int fd2);
+
+void get_exit_status(int status);
 
 char *ft_get_file_name();
 void ft_update_herdoc_info(t_data *data, int i, char *file_name);

@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 12:46:23 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:21:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int ft_simple_cmd(t_data *data)
         data->cmds[0].path_bin = ft_get_bin(data, 0);
         if (data->cmds[0].path_bin != NULL)
         {
+            g_var.is_in_child = 1;
             pid = fork();
             if (pid == -1)
                 return (minishell_perror(FORKERR), 0);
@@ -52,6 +53,8 @@ int ft_simple_cmd(t_data *data)
             g_var.pid_child = pid;
             waitpid(pid, &g_var.exit_status, 0);
             g_var.pid_child = 0;
+            g_var.is_in_child = 0;
+            get_exit_status(g_var.exit_status);
         }
         else if (!ft_cmd_is_path(data->cmds[0].cmds[0]))
         {

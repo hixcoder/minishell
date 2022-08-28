@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 12:51:21 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:20:14 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int main(int ac, char **av, char **env)
    data.env = env;
    init_env(&data, env);
    g_var.exit_status = 0;
-   g_var.pid_child = 0;
    ft_readline(&data);
    return (0);
 }
