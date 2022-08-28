@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 02:36:14 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:52:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void ft_multiple_cmds(t_data *data)
     while (k < data->cmds_len)
     {
         data->cmds[k].path_bin = ft_get_bin(data, k);
-        if (ft_is_builtin(data->cmds[k].cmds[0]) || data->cmds[k].path_bin != NULL)
+        if (ft_is_builtin(data->cmds[k].cmds[0]) || data->cmds[k].path_bin != NULL || data->cmds[k].words[0]->t != ARG)
         {
             pid = fork();
             if (pid == 0)

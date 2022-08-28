@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:12:22 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/27 14:39:29 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:54:45 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int ft_is_builtin(char *cmd)
     char *lower_cmd;
     int a;
 
+    if (!cmd)
+        return (0);
     lower_cmd = ft_to_lowercase(cmd);
     a = 0;
     if (ft_strcmp(lower_cmd, "echo") == 0)
