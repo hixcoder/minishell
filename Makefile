@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 21:35:04 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/28 21:49:51 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,6 @@ $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
 	@clear
-	@./${NAME}
 
 all : $(NAME) 
 
