@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 19:09:17 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:50:40 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,23 @@ int ft_is_space(char *s)
 	return (1);
 }
 
-void ft_fill_atrs(char **tmp, t_data *data, int ind)
+void ft_fill_atrs(char **atrTmp, t_data *data, int ind)
 {
 	int i;
 
 	i = 0;
-	while (tmp[i])
+	while (atrTmp[i])
 		i++;
 	data->cmds[ind].words = malloc(sizeof(t_word *) * (i + 1));
 	data->cmds[ind].words[i] = NULL;
 	i = -1;
-	while (tmp[++i])
+	while (atrTmp[++i])
 	{
 		data->cmds[ind].words[i] = malloc(sizeof(t_word));
-		data->cmds[ind].words[i]->w = tmp[i];
-		// free(tmp[i]);
+		data->cmds[ind].words[i]->w = ft_strdup(atrTmp[i]);
+		free(atrTmp[i]);
 	}
+	free(atrTmp);
 }
 
 // what this function do:
@@ -78,7 +79,7 @@ int ft_spliter(t_data *data)
 		atrTmp = ft_split2(cmdsTmp2, ' ');
 		free(cmdsTmp2);
 		ft_fill_atrs(atrTmp, data, i);
-		free(atrTmp);
+		// free(atrTmp);
 		free(cmdsTmp[i]);
 		if (data->cmds[i].words == NULL)
 			return (-1);

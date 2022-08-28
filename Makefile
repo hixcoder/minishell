@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 19:40:22 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/28 20:48:33 by ubunto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,8 @@ FLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 
 # brew --prefix readline
-# readline  = /goinfre/hboumahd/.brew/opt/readline
-readline = $(shell brew --prefix readline)
+readline  = /goinfre/hboumahd/.brew/opt/readline
+# readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 
@@ -87,7 +87,7 @@ $(NAME) : ${ALL_OBJ}
 	@echo "|+| make the minishell program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(ALL_OBJ) $(LIBS) $(READLINE) -o $(NAME)
 	@clear
-	# @./${NAME}
+	@./${NAME}
 
 all : $(NAME) 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc_utiles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:37:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 15:43:46 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:48:02 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void ft_create_herdoc_file(t_data *data, int i, int j, char *file_name)
             write(fd, line, ft_strlen(line));
             continue;
         }
-        if (strncmp(line, data->cmds[i].words[j + 1]->w, ft_strlen(line) - 1) != 0)
+        line[ft_strlen(line) - 1] = '\0'; 
+        if (strcmp(line, data->cmds[i].words[j + 1]->w) != 0)
         {
             write(1, "Heredoc> ", 9);
             write(fd, line, ft_strlen(line));
