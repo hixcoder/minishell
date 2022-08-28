@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
+#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 20:48:33 by ubunto           ###   ########.fr        #
+#    Updated: 2022/08/28 21:35:04 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minishell
 #parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
-					tokenizer.c syntax_error.c spliter.c ft_split4.c herdoc.c herdoc_utiles.c  
+					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c  
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution
@@ -69,8 +69,8 @@ FLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 
 # brew --prefix readline
-readline  = /goinfre/hboumahd/.brew/opt/readline
-# readline = $(shell brew --prefix readline)
+# readline  = /goinfre/hboumahd/.brew/opt/readline
+readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 

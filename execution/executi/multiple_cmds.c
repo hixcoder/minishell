@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 21:16:55 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 21:33:52 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void ft_close_all_pipes(int **pipes)
 
 void ft_dup2_close(int fd1, int fd2)
 {
-    printf("fd1 = %d\n", fd1);
-    printf("fd2 = %d\n", fd2);
     dup2(fd1, fd2);
     close(fd1);
 }
@@ -74,6 +72,7 @@ void ft_run_cmd(t_data *data, int k, int **pipes)
     else
         ft_dup2_close(outfile, STDOUT_FILENO);
     ft_close_all_pipes(pipes);
+    ft_free_pipes(pipes);
     ft_execute_cmd(data, k);
 }
 
