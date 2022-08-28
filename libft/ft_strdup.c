@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:41:33 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/21 13:18:07 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/08/28 01:23:27 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strlen1(const char *s1)
+static int ft_strlen1(const char *s1)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s1[i])
@@ -22,11 +22,11 @@ static int	ft_strlen1(const char *s1)
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char *ft_strdup(const char *s1)
 {
-	int		i;
-	char	*pdst;
-	int		s1len;
+	int i;
+	char *pdst;
+	int s1len;
 
 	i = 0;
 	s1len = ft_strlen1(s1);
