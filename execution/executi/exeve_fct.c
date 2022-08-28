@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 22:31:49 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 23:03:01 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,21 @@ char *ft_return_sta(char *str)
     struct stat inf;
 
     if (lstat(str, &inf) == -1)
+    {
+        g_var.exit_status = 127;
         ft_print_error2(str, ": no such file or directory\n");
-    else if (S_ISDIR(inf.st_mode)) // S_IFDIR & inf.st_mode
+    }
+    else if (S_ISDIR(inf.st_mode))
+    {
+        g_var.exit_status = 126;
         ft_print_error2(str, ": is a directory\n");
-    else if (!(S_IXOTH & inf.st_mode))                  // || !(S_ISUID & inf.st_mode)
-        ft_print_error2(str, ": permission denied \n"); //
-    if (S_ISREG(inf.st_mode))
+    }
+    else if (!(S_IXOTH & inf.st_mode))
+    {
+        g_var.exit_status = 126;
+        ft_print_error2(str, ": permission denied \n");
+    }
+    else if (S_ISREG(inf.st_mode))
         return (ft_strdup(str));
     return (NULL);
 }

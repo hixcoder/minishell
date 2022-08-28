@@ -6,7 +6,7 @@
 #    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 22:46:23 by ahammam           #+#    #+#              #
-#    Updated: 2022/08/28 22:46:24 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/28 23:00:40 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,8 @@ NAME = minishell
 #parsing
 PARSING_FOLDER = ./parsing/
 PARSING_FILES  =	parse.c quotes.c ft_split2.c utiles.c expander.c expand_2.c ft_strreplace.c \
-<<<<<<< HEAD
 					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c \
-					redirections_check.c get_commands.c
-=======
-					tokenizer.c syntax_error.c spliter.c herdoc.c herdoc_utiles.c  
->>>>>>> c8a3a0ad934094afc124bfc822f3bb98e33f39a0
+					redirections_check.c get_commands.c 
 SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 
 # execution

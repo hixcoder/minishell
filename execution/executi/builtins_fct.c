@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:12:22 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 18:24:28 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:49:52 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void ft_execmd_built(t_data *data, int k)
         ft_unset(data, k);
     if (!ft_strcmp(data->cmds[k].cmds[0], "exit"))
         ft_exit(data, k);
-    free(data->cmds[k].cmds[0]);
 }
