@@ -140,6 +140,6 @@ void ft_readline(t_data *data)
 		// ft_print_values(data, 3);
 		if (!g_var.is_killed)
 			ft_minishell(data);
-		ft_free(data);
+		// ft_free(data);
 	}
 }

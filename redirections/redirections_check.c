@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 09:23:26 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/25 16:49:06 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:21:51 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ typedef struct s_vars
 {
     int i;
 	int j;
+	char *old_s;
 	char *new_s;
 	char *tmp_d;
 	char *tmp_d_with_space;
@@ -71,18 +72,20 @@ char	*ft_check_redirections(char *s)
 {
 	// dragon cleaner
 	t_vars var;
-	int is_redi_exist;
+	// int is_redi_exist;
     
     ft_init_vars(&var, s);
-	is_redi_exist = 0;
+	// is_redi_exist = 0;
 	while (s[++var.i])
 	{
 		var.tmp_d = is_delimiter(var.c, &s[var.i]);
 		if (var.tmp_d != NULL && is_insid_qots(s, var.i) == 0)
 		{
-			is_redi_exist = 1;
+			// is_redi_exist = 1;
 			var.tmp_d_with_space = ft_add_spaces(var.tmp_d);
-			var.new_s = ft_strreplace(var.new_s, var.tmp_d, var.tmp_d_with_space, var.j);
+			var.old_s = var.new_s;
+			var.new_s = ft_strreplace(var.old_s, var.tmp_d, var.tmp_d_with_space, var.j);
+			free(var.old_s);
 			var.j += ft_strlen(var.tmp_d_with_space);
 			var.i += ft_strlen(var.tmp_d) - 1;
 			free(var.tmp_d_with_space);
@@ -90,8 +93,8 @@ char	*ft_check_redirections(char *s)
 		else
 			var.j++;
 	}
-	if (is_redi_exist == 1)
-		free(s);
+	// if (is_redi_exist == 1)
+	// 	free(s);
     free(var.c);
 	var.c = NULL;
 	return (var.new_s);

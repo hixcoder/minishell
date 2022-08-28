@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 12:51:21 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:51:12 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int init_env(t_data *data, char **env)
          lvl = ft_atoi(env[i] + 6);
          if (lvl < 0)
             lvl = -1;
-         content = ft_strjoin("SHLVL=",
-                              ft_itoa(lvl + 1));
+         content = ft_strjoin("SHLVL=", ft_itoa(lvl + 1));
       }
       else
          content = ft_strdup(env[i]);

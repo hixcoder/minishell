@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:31:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 12:25:46 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:01:01 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_signal_handler(int sig)
         g_var.is_killed = 1;
         g_var.exit_status = 1;
     }
-    else if (sig == SIGINT && g_var.pid_child == 0 && g_var.pid_child == 0)
+    else if (sig == SIGINT && g_var.pid_child == 0 && g_var.pid_herdoc == 0)
     {
         ft_putstr_fd("\n", 2);
         rl_on_new_line();
