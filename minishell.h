@@ -3,54 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/28 23:45:27 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 09:07:33 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
+# define MINISHELL_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <dirent.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <fcntl.h>
+# include "./libft/libft.h"
+# include <termios.h>
+# include <sys/stat.h>
+# include "./get_next_line/get_next_line.h"
 
-#define MINISHELL_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <dirent.h>
-#include <sys/wait.h>
-#include <signal.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <fcntl.h>
-#include "./libft/libft.h"
-#include <termios.h>
-#include <sys/stat.h>
-#include "./get_next_line/get_next_line.h"
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
-#define STDIN 0
-#define STDOUT 1
-#define STDERR 2
-
-#define GREEN "\033[0;92m"
-#define RED "\033[0;91m"
-#define RESET "\033[0m"
+# define GREEN "\033[0;92m"
+# define RED "\033[0;91m"
+# define RESET "\033[0m"
 
 // our types
 typedef enum type
 {
-	ARG,			   // word
-	REDIRECT_IN,	   // '<'
-	REDIRECT_OUT,	   // '>'
-	HERE_DOC,		   // '<<'
-	REDIRECT_OUT_APND, // '>>'
-
+	ARG,
+	REDIRECT_IN,
+	REDIRECT_OUT,
+	HERE_DOC,
+	REDIRECT_OUT_APND,
 	MY_FILE,
-} Type;
+}	Type;
 
 typedef struct s_word
 {
-	char *w; // this is the word
-	Type t;
+	char	*w;
+	Type	t;
 } t_word;
 
 // cmd : command
@@ -117,14 +115,18 @@ int ft_cd(t_data *data, int k);
 // env
 int ft_env(t_data *data, int k);
 
-// utile exportv
-int ft_export(t_data *data, int k);
-int ft_lenstring(t_list *env);
-char *env_to_string(t_list *env);
-void ft_sort_table(char **table);
-int ft_is_identifier(char *str);
-int ft_print_env(t_list *env);
-int ft_append(t_list *env, char *str);
+// export
+int		ft_export(t_data *data, int k);
+int		ft_is_identifier(char *str);
+int		ft_print_env(t_list *env);
+int		ft_is_exist_env(t_list *env, const char *var);
+int		ft_is_append(const char *str);
+char	*ft_add_char(char *src, char c);
+int		ft_append(t_list *env, char *str);
+int		ft_lenstring(t_list *env);
+char	*env_to_string(t_list *env);
+int		ft_strncmp_env(const char *s1, const char *s2);
+
 char *ft_pwd2(char *str);
 // unset
 int ft_unset(t_data *data, int k);

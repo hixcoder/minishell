@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:41:40 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 09:27:54 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_readline(t_data *data)
 			continue ;
 		}
 		ft_herdoc(data);
-		if (!g_var.is_killed)
+		// if (!g_var.is_killed)
 			ft_minishell(data);
-		ft_free(data);
+		// ft_free(data);
 	}
 }
