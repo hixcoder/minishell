@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/29 17:52:13 by ubunto           ###   ########.fr       */
-=======
-/*   Updated: 2022/08/29 16:56:54 by ahammam          ###   ########.fr       */
->>>>>>> 78c154b102254417cb815a68c5223869e68f5a6a
+/*   Updated: 2022/08/29 18:09:51 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +46,6 @@ void	ft_shlvl_noexit(t_env_par *par)
 	}
 }
 
-<<<<<<< HEAD
-=======
 void	ft_body_envshl(t_env_par *par, char **env)
 {
 	if (!ft_strncmp(env[par->i], "SHLVL", 5) && ((env[par->i])[5] == '='))
@@ -67,7 +61,6 @@ void	ft_body_envshl(t_env_par *par, char **env)
 	ft_lstadd_back(&par->head, par->new);
 }
 
->>>>>>> 78c154b102254417cb815a68c5223869e68f5a6a
 int	init_env(t_data *data, char **env)
 {
 	t_env_par	par;
