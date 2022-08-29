@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:46:44 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:07:23 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 18:14:08 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*env_to_string(t_list *env)
 	tmp = env;
 	result = (char *)malloc(sizeof(char) * ft_lenstring(env) + 1);
 	if (result == NULL)
-		return (ft_error_mallocation(),NULL);
+		return (ft_error_mallocation(), NULL);
 	while (tmp)
 	{
 		result = ft_strcat(result, (char *)tmp->content);

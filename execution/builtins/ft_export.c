@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 08:32:20 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 16:00:46 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 18:13:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ int	ft_export(t_data *data, int k)
 			else
 			{
 				g_var.exit_status = 1;
-				printf("minishell: export: not an identifier: %s\n", data->cmds[k].cmds[i]);
+				printf("minishell: export: not an identifier: %s\n",
+					data->cmds[k].cmds[i]);
 			}
 			i++;
 		}

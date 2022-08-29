@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 18:35:14 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:39:09 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ void	ft_shlvl_noexit(t_env_par *par)
 
 void	ft_body_envshl(t_env_par *par, char **env)
 {
+	char	*tmp;
+
 	if (!ft_strncmp(env[par->i], "SHLVL", 5) && ((env[par->i])[5] == '='))
 	{
 		par->lvl = ft_atoi(env[par->i] + 6);
 		if (par->lvl < 0)
 			par->lvl = -1;
-		par->content = ft_strjoin("SHLVL=", ft_itoa(par->lvl + 1));
+		tmp = ft_itoa(par->lvl + 1);
+		par->content = ft_strjoin("SHLVL=", tmp);
+		free(tmp);
 	}
 	else
 		par->content = ft_strdup(env[par->i]);

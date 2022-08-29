@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 10:50:33 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 16:02:32 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 18:30:15 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	**ft_create_pipes(int nbr_pipe)
 
 	tab = (int **)malloc(sizeof(int *) * (nbr_pipe + 1));
 	if (tab == NULL)
-		return (ft_error_mallocation(),tab);
+		return (ft_error_mallocation(), tab);
 	i = 0;
 	while (i < nbr_pipe)
 	{
@@ -46,7 +46,7 @@ void	ft_close_all_pipes(int **pipes)
 	}
 }
 
-void ft_error_mallocation(void)
+void	ft_error_mallocation(void)
 {
 	ft_putstr_fd("minishell: Error malloc", 2);
 	g_var.exit_status = 139;
