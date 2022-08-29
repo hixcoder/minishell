@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 12:31:07 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 17:56:00 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 18:17:06 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_make_new_string(t_param *param, int from)
 // the 'all' tells the function if you want to change all 
 // old_w occurrences to new_w or just the first occurrence 
 char	*ft_strreplace(char *s, char *old_w, char *new_w, int from)
-{ 
+{
 	int		i;
 	t_param	param;
 
