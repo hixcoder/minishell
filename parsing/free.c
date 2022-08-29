@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:15:02 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:44:09 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 16:33:52 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_free(t_data *data)
 	int			i;
 	t_command	*cmds;
 
+	free(data->args);
 	cmds = data->cmds;
 	if (cmds == NULL)
 		return ;

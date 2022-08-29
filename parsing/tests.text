@@ -8,7 +8,7 @@ env
 exit
 
 
-ls > $j<dd | '"$USER"' << $jj | ls >> ll -la| "ls < file" $USER
+ls > j<dd | '"$USER"' << $jj | ls >> ll -la| "ls < file" $USER
 
 
 ✅   ❌

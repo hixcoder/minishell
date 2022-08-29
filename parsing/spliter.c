@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spliter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 09:29:37 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:30:10 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ void	ft_fill_atrs(char **atr_tmp, t_data *data, int ind)
 	free(atr_tmp);
 }
 
+int	ft_free_spliter(char **cmds_tmp)
+{
+	int	i;
+
+	i = -1;
+	while (cmds_tmp[++i])
+		free(cmds_tmp[i]);
+	free(cmds_tmp);
+	return (-1);
+}
+
 int	ft_init_spliter_vars(t_data *data, char	**cmds_tmp)
 {
 	int	i;
@@ -54,12 +65,12 @@ int	ft_init_spliter_vars(t_data *data, char	**cmds_tmp)
 	while (cmds_tmp[++i])
 	{
 		if (ft_is_space(cmds_tmp[i]) == 1)
-			return (-1);
+			return (ft_free_spliter(cmds_tmp));
 	}
 	data->cmds_len = i;
 	data->cmds = malloc(sizeof(t_command) * data->cmds_len);
 	if (!data->cmds)
-		return (-1);
+		return (ft_free_spliter(cmds_tmp));
 	return (0);
 }
 
@@ -82,6 +93,7 @@ int	ft_spliter(t_data *data)
 	i = -1;
 	while (cmds_tmp[++i])
 	{
+		// printf("cmds_tmp[%d] = %s\n", i, cmds_tmp[i]);
 		cmds_tmp[i] = ft_check_redirections(cmds_tmp[i]);
 		cmds_tmp2 = ft_strtrim(cmds_tmp[i], " ");
 		atr_tmp = ft_split2(cmds_tmp2, ' ');

@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 11:28:10 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 17:52:13 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_shlvl_noexit(t_env_par *par)
 	}
 }
 
-void	init_env(t_data *data, char **env)
+int	init_env(t_data *data, char **env)
 {
 	t_env_par	par;
 
@@ -91,6 +91,7 @@ void	init_env(t_data *data, char **env)
 	}
 	ft_shlvl_noexit(&par);
 	data->env_2 = par.head;
+	return (0);
 }
 
 int	main(int ac, char **av, char **env)
@@ -99,7 +100,16 @@ int	main(int ac, char **av, char **env)
 
 	(void)av;
 	(void)ac;
-	data.env = env;
+	(void)env;
+
+	// int i = -1;
+	// char **s = ft_split2("jello|df|sdjf|sdf", '|');
+	// while (s[++i])
+	// {
+	// 	printf("s[%d] = %s\n", i, s[i]);
+	// 	free(s[i]);
+	// }
+	// free(s);
 	init_env(&data, env);
 	g_var.exit_status = 0;
 	ft_readline(&data);

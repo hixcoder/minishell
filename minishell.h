@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 11:11:03 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:18:07 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_data
 	char		*args;
 	t_command	*cmds;
 	int			cmds_len;
-	char		**env;
 	t_list		*env_2;
 }	t_data;
 

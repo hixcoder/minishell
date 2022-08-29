@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:37:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 11:26:54 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 17:14:39 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_create_herdoc_file(t_data *data, int i, int j, char *file_name)
 		if (ft_strcmp(line, "\n") == 0)
 		{
 			ft_print_to_herdoc_file(fd, line);
+			line = get_next_line(0);
 			continue ;
 		}
 		line[ft_strlen(line) - 1] = '\0';

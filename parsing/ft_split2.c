@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:19:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:26:35 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:00:44 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ static int	ft_rowlen(char const *s, char c)
 
 static int	ft_prdctlen(char const *s, char c)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	while (s[len] && (s[len] != c || is_insid_qots(s, len) == 1))
-		len++;
-	return (len);
+	i = 0;
+	while (s[i] && (s[i] != c || is_insid_qots(s, i) == 1))
+		i++;
+	return (i);
 }
 
 static char	**ft_free2(char **dst)
@@ -51,48 +51,39 @@ static char	**ft_free2(char **dst)
 	return (NULL);
 }
 
-static char	**ft_fillrows(char **dst, const char *s, char c)
-{
-	int	row;
-	int	j;
-	int	len;
-	int	i;
-
-	row = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != c)
-		{
-			len = ft_prdctlen(&s[i], c) + i;
-			dst[row] = malloc(sizeof(char) * (len - i));
-			if (dst[row] == NULL)
-				return (ft_free2(dst));
-			j = 0;
-			while (i < len)
-				dst[row][j++] = s[i++];
-			dst[row++][j] = '\0';
-		}
-		if (s[i] != '\0')
-			i++;
-	}
-	dst[row] = NULL;
-	return (dst);
-}
-
 char	**ft_split2(char const *s, char c)
 {
 	int		row;
+	int		dst_len;
+	int		len;
+	int		i;
 	char	**dst;
 
 	if (!s)
 		return (NULL);
-	row = ft_rowlen(s, c);
-	dst = (char **)malloc(sizeof(char *) * row);
+	dst_len = ft_rowlen(s, c);
+	// printf("dstlen = %d\n\n", dst_len);
+	dst = (char **)malloc(sizeof(char *) * dst_len);
 	if (dst == NULL)
 		return (NULL);
-	if (row == 1)
-		dst[0] = NULL;
-	dst = ft_fillrows(dst, s, c);
+	row = 0;
+	i = -1;
+	while (s[++i])
+	{
+		if (s[i] != c)
+		{
+			len = ft_prdctlen(&s[i], c);
+			dst[row] = malloc(sizeof(char) * (len + 1));
+			if (dst[row] == NULL)
+				return (ft_free2(dst));
+			ft_memcpy(dst[row], &s[i], sizeof(char) * len);
+			dst[row][len] = '\0';
+			// printf("dst[%d] = %s\nlen = %d\n-----------\n", row, dst[row], len);
+			row++;
+			i += len - 1;
+		}
+	}
+	dst[row] = NULL;
+	// printf("\n");
 	return (dst);
 }

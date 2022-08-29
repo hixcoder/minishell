@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:30:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 08:35:35 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 12:22:31 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	ft_get_commands(t_data *data)
 				&& ft_strlen(data->cmds[i].words[j]->w) != 0)
 				data->cmds[i].cmds = ft_add_string(data->cmds[i].cmds, \
 				data->cmds[i].words[j]->w);
+			else if (data->cmds[i].words[j]->t != ARG
+				&& data->cmds[i].words[j]->t != MY_FILE
+				&& ft_strlen(data->cmds[i].words[j + 1]->w) == 0)
+				return (-1);
 		}
 	}
 	return (0);

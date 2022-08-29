@@ -7,10 +7,10 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "gg",
-            "program": "/Users/hboumahd/Desktop/minishell/minishell",
+            "name": "go bro",
+            "program": "/home/ubunto/Desktop/minishell/minishell",
             "args": [],
-            "cwd": "/Users/hboumahd/Desktop/minishell"
+            "cwd": "/home/ubunto/Desktop/minishell"
         }
     ]
 }

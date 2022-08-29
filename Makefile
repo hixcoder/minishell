@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
+#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/29 11:07:14 by ahammam          ###   ########.fr        #
+#    Updated: 2022/08/29 11:36:33 by ubunto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,8 @@ FLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 
 # brew --prefix readline
-# readline  = /goinfre/hboumahd/.brew/opt/readline
-readline = $(shell brew --prefix readline)
+readline  = /goinfre/hboumahd/.brew/opt/readline
+# readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 

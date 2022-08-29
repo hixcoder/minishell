@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 11:27:34 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 16:29:58 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue ;
 		}
+		// ft_print_values(data, 2);
 		if (ft_tokenizer(data) == -1)
 		{
 			ft_check_syntax(data, 0);
@@ -114,8 +115,8 @@ void	ft_readline(t_data *data)
 		// ft_print_values(data, 2);
 		// ft_print_values(data, 3);
 		ft_herdoc(data);
-		// if (!g_var.is_killed)
+		if (!g_var.is_killed)
 			ft_minishell(data);
-		// ft_free(data);
+		ft_free(data);
 	}
 }

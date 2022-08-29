@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 09:23:26 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 11:24:46 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 17:59:01 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_init_vars(t_vars *var, char *s)
 	var->c[4] = NULL;
 	var->i = -1;
 	var->j = 0;
-	var->new_s = s;
+	var->new_s = ft_strdup(s);
 }
 
 // given a string 's'
@@ -72,21 +72,18 @@ void	ft_init_vars(t_vars *var, char *s)
 char	*ft_check_redirections(char *s)
 {
 	t_vars	var;
-	// int		is_first_s;
 
 	ft_init_vars(&var, s);
-	// is_first_s = 0;
 	while (s[++var.i])
 	{
 		var.tmp_d = is_delimiter(var.c, &s[var.i]);
 		if (var.tmp_d != NULL && is_insid_qots(s, var.i) == 0)
 		{
 			var.tmp_d_with_space = ft_add_spaces(var.tmp_d);
-			// if (is_first_s != 0)
-			// 	var.old_s = var.new_s;
-			var.new_s = ft_strreplace(var.new_s, var.tmp_d, \
+			var.old_s = var.new_s;
+			var.new_s = ft_strreplace(var.old_s, var.tmp_d, \
 			var.tmp_d_with_space, var.j);
-			// free(var.old_s);
+			free(var.old_s);
 			var.j += ft_strlen(var.tmp_d_with_space);
 			var.i += ft_strlen(var.tmp_d) - 1;
 			free(var.tmp_d_with_space);
@@ -95,5 +92,6 @@ char	*ft_check_redirections(char *s)
 			var.j++;
 	}
 	free(var.c);
+	free(s);
 	return (var.new_s);
 }
