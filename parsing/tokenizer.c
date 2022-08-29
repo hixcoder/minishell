@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:01:34 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 10:35:11 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:36:17 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_is_redi(char *w)
 }
 
 // the ft_tokenize takes the 'word' string and return its type
-Type	ft_tokenize(char *word)
+t_type	ft_tokenize(char *word)
 {
 	int	w_len;
 

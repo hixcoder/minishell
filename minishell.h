@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 18:08:18 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:36:58 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define RESET "\033[0m"
 
 // our types
-typedef enum type
+typedef enum s_type
 {
 	ARG,
 	REDIRECT_IN,
@@ -43,12 +43,12 @@ typedef enum type
 	HERE_DOC,
 	REDIRECT_OUT_APND,
 	MY_FILE,
-}	Type;
+}	t_type;
 
 typedef struct s_word
 {
 	char	*w;
-	Type	t;
+	t_type	t;
 }	t_word;
 
 // cmd : command
@@ -86,7 +86,7 @@ int		ft_check_quotes(char *s);
 char	**ft_split2(char const *s, char c);
 int		ft_get_quotes_nbr(char *s);
 char	*ft_strreplace(char *s, char *old_w, char *new_w, int from);
-Type	ft_tokenize(char *word);
+t_type	ft_tokenize(char *word);
 char	*ft_check_redirections(char *s);
 int		ft_check_syntax(t_data *data, int check_nbr);
 void	ft_expander(t_data *data);

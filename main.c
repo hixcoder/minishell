@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 18:09:51 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:35:14 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,6 @@ int	main(int ac, char **av, char **env)
 
 	(void)av;
 	(void)ac;
-	(void)env;
-
-	// int i = -1;
-	// char **s = ft_split2("jello|df|sdjf|sdf", '|');
-	// while (s[++i])
-	// {
-	// 	printf("s[%d] = %s\n", i, s[i]);
-	// 	free(s[i]);
-	// }
-	// free(s);
 	init_env(&data, env);
 	g_var.exit_status = 0;
 	ft_readline(&data);

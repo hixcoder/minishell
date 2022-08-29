@@ -7,6 +7,7 @@
         "vector": "c",
         "libft.h": "c",
         "minishell.h": "c",
-        "wait.h": "c"
+        "wait.h": "c",
+        "type_traits": "c"
     }
 }

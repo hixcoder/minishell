@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 16:30:10 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:34:29 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_fill_atrs(char **atr_tmp, t_data *data, int ind)
 	{
 		data->cmds[ind].words[i] = malloc(sizeof(t_word));
 		data->cmds[ind].words[i]->w = atr_tmp[i];
-		// free(atr_tmp[i]);
 	}
 	free(atr_tmp);
 }
@@ -93,7 +92,6 @@ int	ft_spliter(t_data *data)
 	i = -1;
 	while (cmds_tmp[++i])
 	{
-		// printf("cmds_tmp[%d] = %s\n", i, cmds_tmp[i]);
 		cmds_tmp[i] = ft_check_redirections(cmds_tmp[i]);
 		cmds_tmp2 = ft_strtrim(cmds_tmp[i], " ");
 		atr_tmp = ft_split2(cmds_tmp2, ' ');

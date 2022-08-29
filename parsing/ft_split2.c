@@ -6,11 +6,20 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:19:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 18:00:44 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:34:04 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+typedef struct s_ft_split2_vars
+{
+	int		row;
+	int		dst_len;
+	int		len;
+	int		i;
+	char	**dst;
+}	t_split2_vars;
 
 static int	ft_rowlen(char const *s, char c)
 {
@@ -53,37 +62,28 @@ static char	**ft_free2(char **dst)
 
 char	**ft_split2(char const *s, char c)
 {
-	int		row;
-	int		dst_len;
-	int		len;
-	int		i;
-	char	**dst;
+	t_split2_vars	v;
 
-	if (!s)
+	v.dst_len = ft_rowlen(s, c);
+	v.dst = (char **)malloc(sizeof(char *) * v.dst_len);
+	if (v.dst == NULL)
 		return (NULL);
-	dst_len = ft_rowlen(s, c);
-	// printf("dstlen = %d\n\n", dst_len);
-	dst = (char **)malloc(sizeof(char *) * dst_len);
-	if (dst == NULL)
-		return (NULL);
-	row = 0;
-	i = -1;
-	while (s[++i])
+	v.row = 0;
+	v.i = -1;
+	while (s[++v.i])
 	{
-		if (s[i] != c)
+		if (s[v.i] != c)
 		{
-			len = ft_prdctlen(&s[i], c);
-			dst[row] = malloc(sizeof(char) * (len + 1));
-			if (dst[row] == NULL)
-				return (ft_free2(dst));
-			ft_memcpy(dst[row], &s[i], sizeof(char) * len);
-			dst[row][len] = '\0';
-			// printf("dst[%d] = %s\nlen = %d\n-----------\n", row, dst[row], len);
-			row++;
-			i += len - 1;
+			v.len = ft_prdctlen(&s[v.i], c);
+			v.dst[v.row] = malloc(sizeof(char) * (v.len + 1));
+			if (v.dst[v.row] == NULL)
+				return (ft_free2(v.dst));
+			ft_memcpy(v.dst[v.row], &s[v.i], sizeof(char) * v.len);
+			v.dst[v.row][v.len] = '\0';
+			v.row++;
+			v.i += v.len - 1;
 		}
 	}
-	dst[row] = NULL;
-	// printf("\n");
-	return (dst);
+	v.dst[v.row] = NULL;
+	return (v.dst);
 }
