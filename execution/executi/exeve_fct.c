@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:56:59 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 10:33:12 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:02:08 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ char	**ft_env_list(t_data *data)
 	tmp = data->env_2;
 	i = 0;
 	result = (char **)malloc(sizeof(char *) * (ft_lstsize(tmp) + 1));
+	if (result == NULL)
+		return (ft_error_mallocation(), result);
 	while (tmp)
 	{
 		result[i] = ft_strdup(tmp->content);

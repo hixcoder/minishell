@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:39:05 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 15:58:25 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	ft_echo(t_command cmds)
 	}
 	while (cmds.cmds[i])
 	{
-		if (ft_strcmp(cmds.cmds[i], "$?") == 0)
-			ft_putnbr_fd(g_var.exit_status, 1);
-		else
-			ft_putstr_fd(cmds.cmds[i], 1);
+		ft_putstr_fd(cmds.cmds[i], 1);
 		if (cmds.cmds[i + 1])
 			write(1, " ", 1);
 		i++;

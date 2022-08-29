@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 16:18:07 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:08:18 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_sig
 	pid_t	pid_child;
 	pid_t	pid_herdoc;
 	int		is_killed;
+	int		malloc_error;
 }	t_sig;
 
 t_sig	g_var;
@@ -162,4 +163,8 @@ void	get_exit_status(int status);
 char	*ft_get_file_name(void);
 void	ft_update_herdoc_info(t_data *data, int i, char *file_name);
 void	ft_create_herdoc_file(t_data *data, int i, int j, char *file_name);
+
+void	ft_error_mallocation(void);
+
+void	ft_fixdollar(t_data *data);
 #endif

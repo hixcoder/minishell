@@ -3,32 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/29 17:52:13 by ubunto           ###   ########.fr       */
+=======
+/*   Updated: 2022/08/29 16:56:54 by ahammam          ###   ########.fr       */
+>>>>>>> 78c154b102254417cb815a68c5223869e68f5a6a
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*ft_get_value(t_data *data, char *key)
-{
-   t_list *tmp;
-   char     *content;
-   int key_len;
-
-   tmp = data->env_2;
-   key_len = ft_strlen(key);
-   while (tmp)
-   {
-      content = tmp->content;
-      if (ft_strncmp(key, content, key_len) == 0 && content[key_len] == '=')
-         return (ft_strchr(tmp->content, '=') + 1);
-      tmp = tmp->next;
-   }
-   return (NULL);
-}
 
 int	ft_env_is_empty(t_data *data)
 {
@@ -64,6 +50,24 @@ void	ft_shlvl_noexit(t_env_par *par)
 	}
 }
 
+<<<<<<< HEAD
+=======
+void	ft_body_envshl(t_env_par *par, char **env)
+{
+	if (!ft_strncmp(env[par->i], "SHLVL", 5) && ((env[par->i])[5] == '='))
+	{
+		par->lvl = ft_atoi(env[par->i] + 6);
+		if (par->lvl < 0)
+			par->lvl = -1;
+		par->content = ft_strjoin("SHLVL=", ft_itoa(par->lvl + 1));
+	}
+	else
+		par->content = ft_strdup(env[par->i]);
+	par->new = ft_lstnew(par->content);
+	ft_lstadd_back(&par->head, par->new);
+}
+
+>>>>>>> 78c154b102254417cb815a68c5223869e68f5a6a
 int	init_env(t_data *data, char **env)
 {
 	t_env_par	par;
@@ -76,17 +80,7 @@ int	init_env(t_data *data, char **env)
 	par.head = ft_lstnew(par.content);
 	while (env[par.i])
 	{
-		if (!ft_strncmp(env[par.i], "SHLVL", 5) && ((env[par.i])[5] == '='))
-		{
-			par.lvl = ft_atoi(env[par.i] + 6);
-			if (par.lvl < 0)
-				par.lvl = -1;
-			par.content = ft_strjoin("SHLVL=", ft_itoa(par.lvl + 1));
-		}
-		else
-			par.content = ft_strdup(env[par.i]);
-		par.new = ft_lstnew(par.content);
-		ft_lstadd_back(&par.head, par.new);
+		ft_body_envshl(&par, env);
 		par.i = par.i + 1;
 	}
 	ft_shlvl_noexit(&par);

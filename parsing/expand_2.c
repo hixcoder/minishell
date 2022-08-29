@@ -99,8 +99,8 @@ char	*get_env_var_name(char *s)
 			break ;
 	}
 	name_var.var_name = malloc(sizeof(char) * (name_var.len + 2));
-	if (!name_var.var_name)
-		return (NULL);
+	if (name_var.var_name == NULL)
+		return (ft_error_mallocation(), NULL);
 	name_var.var_name[0] = '$';
 	name_var.i = -1;
 	name_var.j = 0;
