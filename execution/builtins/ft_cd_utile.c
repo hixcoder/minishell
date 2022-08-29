@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_cd_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:39:05 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/29 09:50:32 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/29 09:54:11 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_echo(t_command cmds)
+int	update_oldpwd(t_list *env)
 {
-	int	i;
-	int	nl;
+	char	cwd[PATH_MAX];
+	char	*oldpwd;
+	t_list	*tmp;
+	t_list	*new;
 
-	i = 1;
-	nl = 0;
-	while (cmds.cmds[i] && !ft_strcmp(cmds.cmds[i], "-n"))
+	tmp = env;
+	if (getcwd(cwd, PATH_MAX) == NULL)
+		return (0);
+	oldpwd = ft_strjoin("OLDPWD=", cwd);
+	while (tmp)
 	{
-		nl = 1;
-		i++;
+		if (ft_strncmp((char *)tmp->content, "OLDPWD=", 7) == 0)
+		{
+			free(tmp->content);
+			tmp->content = oldpwd;
+			return (0);
+		}
+		tmp = tmp->next;
 	}
-	while (cmds.cmds[i])
-	{
-		if (ft_strcmp(cmds.cmds[i], "$?") == 0)
-			ft_putnbr_fd(g_var.exit_status, 1);
-		else
-			ft_putstr_fd(cmds.cmds[i], 1);
-		if (cmds.cmds[i + 1])
-			write(1, " ", 1);
-		i++;
-	}
-	if (!nl)
-		write(1, "\n", 2);
-	g_var.exit_status = 0;
+	new = ft_lstnew(oldpwd);
+	ft_lstadd_back(&env, new);
+	return (0);
 }

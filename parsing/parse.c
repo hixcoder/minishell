@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 09:27:54 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 10:24:24 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	setup_term(void)
 
 int	setup_readline(t_data *data)
 {
-	signal(SIGINT, ft_signal_handler);
-	signal(SIGQUIT, ft_signal_handler);
+	signal(SIGINT, ft_signal_handler_int);
+	signal(SIGQUIT, ft_signal_handler_quit);
 	g_var.pid_herdoc = 0;
 	g_var.is_killed = 0;
 	g_var.pid_child = 0;
