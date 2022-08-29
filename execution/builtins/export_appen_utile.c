@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   export_appen_utile.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:12:03 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:39:05 by ahammam          ###   ########.fr       */
+/*   Created: 2022/08/29 09:02:37 by ahammam           #+#    #+#             */
+/*   Updated: 2022/08/29 09:05:25 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_echo(t_command cmds)
+int	ft_is_append(const char *str)
 {
-	int	i;
-	int	nl;
+	int		i;
 
-	i = 1;
-	nl = 0;
-	while (cmds.cmds[i] && !ft_strcmp(cmds.cmds[i], "-n"))
+	i = 0;
+	while (str[i] && str[i] != '=')
 	{
-		nl = 1;
+		if (str[i] == '+')
+			return (1);
 		i++;
 	}
-	while (cmds.cmds[i])
+	return (0);
+}
+
+char	*ft_add_char(char *src, char c)
+{
+	int		lent_src;
+	char	*result;
+	int		i;
+
+	result = 0;
+	lent_src = ft_strlen(src);
+	result = (char *)ft_calloc(lent_src + 2, sizeof(char));
+	i = 0;
+	while (i < lent_src)
 	{
-		if (ft_strcmp(cmds.cmds[i], "$?") == 0)
-			ft_putnbr_fd(g_var.exit_status, 1);
-		else
-			ft_putstr_fd(cmds.cmds[i], 1);
-		if (cmds.cmds[i + 1])
-			write(1, " ", 1);
+		result[i] = src[i];
 		i++;
 	}
-	if (!nl)
-		write(1, "\n", 2);
-	g_var.exit_status = 0;
+	if (src)
+		free(src);
+	result[i] = c;
+	result[i + 1] = '\0';
+	return (result);
 }

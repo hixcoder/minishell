@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spliter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:24:50 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 22:56:10 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 09:29:37 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_fill_atrs(char **atr_tmp, t_data *data, int ind)
 	while (atr_tmp[++i])
 	{
 		data->cmds[ind].words[i] = malloc(sizeof(t_word));
-		data->cmds[ind].words[i]->w = ft_strdup(atr_tmp[i]);
-		free(atr_tmp[i]);
+		data->cmds[ind].words[i]->w = atr_tmp[i];
+		// free(atr_tmp[i]);
 	}
 	free(atr_tmp);
 }

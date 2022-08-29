@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+         #
+#    By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 13:03:02 by hboumahd          #+#    #+#              #
-#    Updated: 2022/08/28 23:45:14 by ubunto           ###   ########.fr        #
+#    Updated: 2022/08/29 11:07:14 by ahammam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,12 @@ SRCS_PARSING = $(addprefix $(PARSING_FOLDER), $(PARSING_FILES))
 # execution
 EXECUTION_FOLDER = ./execution/
 EXECUTION_FILES  = ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_cd.c ./builtins/ft_env.c ./builtins/ft_exit.c \
-					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c \
-					./builtins/ft_unset.c \
+					./builtins/ft_export.c ./builtins/utile_export.c ./builtins/export_append.c ./builtins/export_print.c \
+					./builtins/export_appen_utile.c ./builtins/ft_unset.c ./builtins/ft_cd_utile.c \
 					./executi/minishell.c ./executi/redir.c ./executi/builtins_fct.c  \
 					./executi/simple_cmd.c ./executi/multiple_cmds.c \
-					./executi/exeve_fct.c \
-					ft_error.c signal.c utils.c ft_free_exec.c
+					./executi/exeve_fct.c ./executi/pipes_fct.c \
+					signal.c utils.c ft_free_exec.c
 SRCS_EXECUTION = $(addprefix $(EXECUTION_FOLDER), $(EXECUTION_FILES))
 
 # |external libs|=================================================================================================>
@@ -66,8 +66,8 @@ FLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 
 # brew --prefix readline
-readline  = /goinfre/hboumahd/.brew/opt/readline
-# readline = $(shell brew --prefix readline)
+# readline  = /goinfre/hboumahd/.brew/opt/readline
+readline = $(shell brew --prefix readline)
 READLINE  = -lreadline -L$(readline)/lib
 INCLUDES2 = -I$(readline)/include
 
