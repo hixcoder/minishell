@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 08:32:20 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:26:15 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:00:46 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_add_to_env(t_list *env, char *str)
 
 int	ft_export(t_data *data, int k)
 {
-	int	i;
+	int		i;
 
 	i = 1;
 	g_var.exit_status = 0;
@@ -101,13 +101,12 @@ int	ft_export(t_data *data, int k)
 	{
 		while (data->cmds[k].cmds[i])
 		{
-			printf("-->%s\n", data->cmds[k].cmds[i]);
 			if (ft_is_identifier(data->cmds[k].cmds[i]))
 				ft_add_to_env(data->env_2, data->cmds[k].cmds[i]);
 			else
 			{
 				g_var.exit_status = 1;
-				printf("export: not an identifier: %s\n", data->cmds[k].cmds[i]);
+				printf("minishell: export: not an identifier: %s\n", data->cmds[k].cmds[i]);
 			}
 			i++;
 		}

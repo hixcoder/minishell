@@ -52,6 +52,8 @@ char	*env_to_string(t_list *env)
 
 	tmp = env;
 	result = (char *)malloc(sizeof(char) * ft_lenstring(env) + 1);
+	if (result == NULL)
+		return (ft_error_mallocation(),NULL);
 	while (tmp)
 	{
 		result = ft_strcat(result, (char *)tmp->content);

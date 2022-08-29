@@ -74,7 +74,7 @@ void	ft_multiple_cmds(t_data *data)
 
 	pipes = ft_create_pipes(data->cmds_len - 1);
 	k = 0;
-	while (k < data->cmds_len)
+	while (k < data->cmds_len && g_var.malloc_error == 0)
 	{
 		ft_body_multiple_cmds(data, k, pipes, &pid);
 		k++;

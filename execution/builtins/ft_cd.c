@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:48:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:51:51 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 16:16:06 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,18 @@ int	go_to_home(t_data *data)
 }
 
 int	go_to_path(t_data *data, int k)
-{
-	char	*path;
-
-	path = data->cmds[k].cmds[1];
-	if (update_oldpwd(data->env_2) == 0)
-		return (0);
-	if (chdir(path) == -1)
+{	
+	if (data->cmds[k].cmds[1] && data->cmds[k].cmds[2])
+	{
+		g_var.exit_status = 1;
+		return (printf("minishell: cd: too many arguments\n"), 0);
+	}
+	update_oldpwd(data->env_2);
+	if (chdir(data->cmds[k].cmds[1]) == -1)
 	{
 		g_var.exit_status = 1;
 		return (printf("minishell: cd: no such file or directory: %s\n",
-				path), 0);
+				data->cmds[k].cmds[1]), 0);
 	}
 	update_pwd(data->env_2);
 	return (1);

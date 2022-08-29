@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 11:27:34 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 16:57:35 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *ft_type_printer(Type t)
+char	*ft_type_printer(Type t)
 {
 	if (t == REDIRECT_IN)
 		return ("REDIRECT_IN");
@@ -27,7 +27,6 @@ char *ft_type_printer(Type t)
 	else
 		return ("ARG");
 }
-
 
 // here I print the values of data->cmds
 void ft_print_values(t_data *data, int st)
@@ -76,6 +75,7 @@ int	setup_readline(t_data *data)
 	g_var.pid_herdoc = 0;
 	g_var.is_killed = 0;
 	g_var.pid_child = 0;
+	g_var.malloc_error = 0;
 	setup_term();
 	data->args = readline("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
 	if (data->args == NULL)
@@ -111,10 +111,11 @@ void	ft_readline(t_data *data)
 			ft_check_syntax(data, 0);
 			continue ;
 		}
+		ft_herdoc(data);
+		ft_fixdollar(data);
 		// ft_print_values(data, 2);
 		// ft_print_values(data, 3);
-		ft_herdoc(data);
-		// if (!g_var.is_killed)
+		if (!g_var.is_killed)
 			ft_minishell(data);
 		// ft_free(data);
 	}
