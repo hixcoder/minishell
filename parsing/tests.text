@@ -20,7 +20,6 @@ split tests:
 [✅]==} "    "| sdf|sdf
 [✅]==} echo $?
 [✅]==} echo "cat lol.c | cat > lol.c"
-[✅]==} echo "cat lol.c | cat > lol.c"
 [✅]==} echo '$USER'
 [✅]==} c1 a1 a2 a3  | c2 a1 a2 |c3 a1 "a2 |a3 a4"
 
@@ -67,7 +66,7 @@ redirections tests:
 -----------------------------------------------
 
 syntax error:
-[✅]==} check if there is any special character not inside quotes
+[✅]==} check if there is any special character not inside quotes || you can treat them like any other character
 [✅]==} check if there is a redirection without its file or herdoc without delimeter
 [✅]==} check this " f |   "
 [✅]==} check this "  |"

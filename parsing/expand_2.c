@@ -6,48 +6,79 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:24:44 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:23:44 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 11:03:50 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_is_singl_qoted(char *s, int j)
+typedef struct s_qot_var
 {
-	int	i;
-	int	n1;
-	int	n2;
-	int	start;
-	int	end;
+	int		i;
+	int		n1;
+	int		n2;
+	int		start;
+	int		end;
+	char	*s;
+	int		j;
+}	t_qot_var;
 
-	start = 0;
-	end = 0;
-	n1 = 0;
-	n2 = 0;
-	i = -1;
-	while (++i < j)
+typedef struct s_get_env_var_name
+{
+	int		i;
+	int		len;
+	char	*var_name;
+	int		j;
+}	t_name_var;
+
+typedef struct s_ft_expand_env_vars
+{
+	int		i;
+	int		j;
+	char	*var_name;
+	char	*var_value;
+	char	*new_s;
+}	t_expand_env_vars;
+
+void	ft_check_the_beginning(t_qot_var *qot_var)
+{
+	qot_var->start = 0;
+	qot_var->n1 = 0;
+	qot_var->n2 = 0;
+	qot_var->i = -1;
+	while (++qot_var->i < qot_var->j)
 	{
-		if (s[i] == '\'' && n2 % 2 == 0)
+		if (qot_var->s[qot_var->i] == '\'' && qot_var->n2 % 2 == 0)
 		{
-			n1++;
-			start = 1;
+			qot_var->n1++;
+			qot_var->start = 1;
 		}
-		else if (s[i] == '\"' && n1 % 2 == 0)
+		else if (qot_var->s[qot_var->i] == '\"' && qot_var->n1 % 2 == 0)
 		{
-			n2++;
-			start = 0;
+			qot_var->n2++;
+			qot_var->start = 0;
 		}
 	}
-	i--;
-	while (s[++i])
+	qot_var->i--;
+}
+
+int	ft_is_singl_qoted(char *s, int j)
+{
+	t_qot_var	qot_var;
+
+	qot_var.s = s;
+	qot_var.j = j;
+	ft_check_the_beginning(&qot_var);
+	qot_var.end = 0;
+	while (s[++qot_var.i])
 	{
-		if (s[i] == '\'')
+		if (s[qot_var.i] == '\'')
 		{
-			end = 1;
+			qot_var.end = 1;
 			break ;
 		}
 	}
-	if (start == 1 && end == 1 && n1 % 2 != 0)
+	if (qot_var.start == 1 && qot_var.end == 1 && qot_var.n1 % 2 != 0)
 		return (1);
 	return (0);
 }
@@ -56,64 +87,57 @@ int ft_is_singl_qoted(char *s, int j)
 // only its name that comes after the '$' sign.
 char	*get_env_var_name(char *s)
 {
-	int		i;
-	int		len;
-	char	*var_name;
-	int		j;
+	t_name_var	name_var;
 
-	i = -1;
-	len = 0;
-	while (s[++i])
+	name_var.i = -1;
+	name_var.len = 0;
+	while (s[++name_var.i])
 	{
-		if (s[i] == '_' || ft_isalnum(s[i]))
-			len++;
+		if (s[name_var.i] == '_' || ft_isalnum(s[name_var.i]))
+			name_var.len++;
 		else
 			break ;
 	}
-	var_name = malloc(sizeof(char) * (len + 2));
-	if (!var_name)
+	name_var.var_name = malloc(sizeof(char) * (name_var.len + 2));
+	if (!name_var.var_name)
 		return (NULL);
-	var_name[0] = '$';
-	i = -1;
-	j = 0;
-	while (s[++i] && j < len)
+	name_var.var_name[0] = '$';
+	name_var.i = -1;
+	name_var.j = 0;
+	while (s[++name_var.i] && name_var.j < name_var.len)
 	{
-		if (s[i] == '_' || ft_isalnum(s[i]))
-			var_name[++j] = s[i];
+		if (s[name_var.i] == '_' || ft_isalnum(s[name_var.i]))
+			name_var.var_name[++name_var.j] = s[name_var.i];
 	}
-	var_name[len + 1] = '\0';
-	return (var_name);
+	name_var.var_name[name_var.len + 1] = '\0';
+	return (name_var.var_name);
 }
-
 
 // this function check if there is an env var(start with '$') and expand it
 char	*ft_expand_env_vars(char *s, t_data *data)
 {
-	int		i;
-	int		j;
-	char	*var_name;
-	char	*var_value;
-	char	*new_s;
+	t_expand_env_vars	vars;
 
-	i = -1;
-	j = 0;
-	var_name = NULL;
-	new_s = s;
-	while (s[++i])
+	vars.i = -1;
+	vars.j = 0;
+	vars.var_name = NULL;
+	vars.new_s = s;
+	while (s[++vars.i])
 	{
-		if (s[i] == '$' && ft_is_singl_qoted(s, i + 1) == 0)
+		if (s[vars.i] == '$' && ft_is_singl_qoted(s, vars.i + 1) == 0)
 		{
-			var_name = get_env_var_name(&s[i+1]);
-			if (strncmp(var_name, "$?", ft_strlen(var_name)) == 0)
+			vars.var_name = get_env_var_name(&s[vars.i + 1]);
+			if (strncmp(vars.var_name, "$?", ft_strlen(vars.var_name)) == 0)
 				continue ;
-			var_value = ft_get_value(data, var_name + 1);
-			new_s = ft_strreplace(new_s, var_name, var_value, j);
-			j += ft_strlen(var_value) - ft_strlen(var_name) + 1;
-			free(var_name);
-			var_name = NULL;
+			vars.var_value = ft_get_value(data, vars.var_name + 1);
+			vars.new_s = ft_strreplace(vars.new_s, vars.var_name, \
+			vars.var_value, vars.j);
+			vars.j += ft_strlen(vars.var_value) - ft_strlen(vars.var_name) + 1;
+			free(vars.var_name);
+			vars.var_name = NULL;
 		}
 		else
-			j++;
+			vars.j++;
 	}
-	return (new_s);
+	return (vars.new_s);
 }

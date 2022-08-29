@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:30:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:32:13 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 08:35:35 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_get_commands(t_data *data)
 		j = -1;
 		while (data->cmds[i].words[++j])
 		{
-			if (data->cmds[i].words[j]->t == ARG 
+			if (data->cmds[i].words[j]->t == ARG
 				&& ft_strlen(data->cmds[i].words[j]->w) != 0)
 				data->cmds[i].cmds = ft_add_string(data->cmds[i].cmds, \
 				data->cmds[i].words[j]->w);

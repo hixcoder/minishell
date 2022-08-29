@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:37:41 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:44:57 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 11:00:33 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_file_name(char *file)
 		if (ft_strcmp(item->d_name, file) == 0)
 		{
 			closedir(folder);
-			return (1); 
+			return (1);
 		}
 		item = readdir(folder);
 	}
@@ -56,6 +56,13 @@ char	*ft_get_file_name(void)
 	return (file_name);
 }
 
+// this function print a text plus give you the standart input
+void	ft_print_to_herdoc_file(int fd, char *line)
+{
+	write(1, "Heredoc> ", 9);
+	write(fd, line, ft_strlen(line));
+}
+
 // this function creates the herdoc file
 // chmod numbers: 4(r) + 2(w) + 1(x)
 void	ft_create_herdoc_file(t_data *data, int i, int j, char *file_name)
@@ -72,18 +79,15 @@ void	ft_create_herdoc_file(t_data *data, int i, int j, char *file_name)
 	{
 		if (ft_strcmp(line, "\n") == 0)
 		{
-			write(1, "Heredoc> ", 9);
-			write(fd, line, ft_strlen(line));
+			ft_print_to_herdoc_file(fd, line);
 			continue ;
 		}
 		line[ft_strlen(line) - 1] = '\0';
 		if (strcmp(line, data->cmds[i].words[j + 1]->w) != 0)
-		{
-			write(1, "Heredoc> ", 9);
-			write(fd, line, ft_strlen(line));
-		}
+			ft_print_to_herdoc_file(fd, line);
 		else
 			break ;
+		free(line);
 		line = get_next_line(0);
 	}
 	close(fd);
@@ -94,6 +98,7 @@ void	ft_update_herdoc_info(t_data *data, int i, char *file_name)
 {
 	int	j;
 
+	g_var.pid_herdoc = 0;
 	j = -1;
 	while (data->cmds[i].words[++j])
 	{

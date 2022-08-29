@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:11:01 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 21:27:48 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/29 10:18:41 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 char *ft_get_value(t_data *data, char *key)
 {
    t_list *tmp;
+   char     *content;
+   int key_len;
 
    tmp = data->env_2;
+   key_len = ft_strlen(key);
    while (tmp)
    {
-      if (ft_strncmp(key, tmp->content, ft_strlen(key)) == 0)
+      content = tmp->content;
+      if (ft_strncmp(key, content, key_len) == 0 && content[key_len] == '=')
          return (ft_strchr(tmp->content, '=') + 1);
       tmp = tmp->next;
    }

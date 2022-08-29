@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:01:34 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:07:02 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 10:35:11 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ Type	ft_tokenize(char *word)
 	int	w_len;
 
 	w_len = ft_strlen(word);
-	if (ft_memcmp(word, "<<", w_len) == 0)
-		return (HERE_DOC);
-	else if (ft_memcmp(word, ">>", w_len) == 0)
-		return (REDIRECT_OUT_APND);
-	else if (ft_memcmp(word, "<", w_len) == 0)
+	if (ft_memcmp(word, "<", w_len) == 0)
 		return (REDIRECT_IN);
 	else if (ft_memcmp(word, ">", w_len) == 0)
 		return (REDIRECT_OUT);
+	else if (ft_memcmp(word, "<<", w_len) == 0)
+		return (HERE_DOC);
+	else if (ft_memcmp(word, ">>", w_len) == 0)
+		return (REDIRECT_OUT_APND);
 	else
 		return (ARG);
 }

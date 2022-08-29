@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:08:22 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/28 23:37:34 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/29 08:40:04 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_herdoc(t_data *data)
 		{
 			g_var.pid_herdoc = v.pid;
 			waitpid(g_var.pid_herdoc, NULL, 0);
-			g_var.pid_herdoc = 0;
 			ft_update_herdoc_info(data, v.i, v.file_name);
 		}
 	}
