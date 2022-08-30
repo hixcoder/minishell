@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:45:43 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 18:16:47 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 17:18:46 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_redir(t_command cmds, int i, int *outfile)
 		*outfile = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (cmds.words[i]->t == REDIRECT_OUT_APND)
 		*outfile = open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
-	free(cmds.words[i + 1]->w);
 }
 
 void	ft_redir_in(t_command cmds, int i, int *infile)
@@ -32,6 +31,7 @@ void	ft_redir_in(t_command cmds, int i, int *infile)
 		ft_putstr_fd("minishell: ", STDERR);
 		ft_putendl_fd("No such file or directory: ", STDERR);
 		ft_putstr_fd(cmds.words[i]->w, STDERR);
+		exit(EXIT_FAILURE);
 	}
 }
 
