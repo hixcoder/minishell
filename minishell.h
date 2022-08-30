@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 18:38:59 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/30 11:05:14 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,16 @@ typedef struct s_data
 
 typedef struct s_sig
 {
-	int		exit_status;
-	pid_t	pid_child;
-	pid_t	pid_herdoc;
-	int		is_killed;
-	int		malloc_error;
+	int				exit_status;
+	pid_t			pid_child;
+	pid_t			pid_herdoc;
+	int				is_killed;
+	int				malloc_error;
+	struct termios	g_t;
 }	t_sig;
 
 t_sig	g_var;
+
 void	ft_readline(t_data *data);
 void	ft_error(char *error);
 

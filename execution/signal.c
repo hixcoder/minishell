@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:28:38 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 10:23:55 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 10:24:22 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_signal_handler_int(int sig)
 	if (sig == SIGINT && g_var.pid_child != 0)
 	{
 		kill(g_var.pid_child, SIGKILL);
+		ft_putstr_fd("\n", 2);
 		g_var.pid_child = 0;
 		g_var.exit_status = 1;
 	}

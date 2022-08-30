@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/29 18:32:48 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/08/30 11:05:36 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	setup_term(void)
 	struct termios	t;
 
 	tcgetattr(0, &t);
+	g_var.g_t = t;
 	t.c_lflag &= ~ECHOCTL;
 	tcsetattr(0, TCSANOW, &t);
 }
@@ -65,8 +66,8 @@ void	ft_readline(t_data *data)
 			continue ;
 		}
 		ft_herdoc(data);
-		if (!g_var.is_killed)
-			ft_minishell(data);
+		tcsetattr(0, TCSANOW, &g_var.g_t);
+		ft_minishell(data);
 		ft_free(data);
 	}
 }
