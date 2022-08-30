@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:22:01 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 10:46:33 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 12:03:06 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ft_simple_cmd(t_data *data)
 			free(data->cmds[0].path_bin);
 			get_exit_status(g_var.exit_status);
 		}
-		else if (!ft_cmd_is_path(data->cmds[0].cmds[0]))
+		else if (data->cmds[0].cmds[0] != NULL
+			&& !ft_cmd_is_path(data->cmds[0].cmds[0]))
 		{
 			ft_print_error2(data->cmds[0].cmds[0], ": command not found\n");
 			g_var.exit_status = 127;

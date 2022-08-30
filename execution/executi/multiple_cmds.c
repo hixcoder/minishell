@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:12:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 18:20:06 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 12:04:00 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	ft_body_multiple_cmds(t_data *data, int k, int **pipes, int *pid)
 		}
 		free(data->cmds[k].path_bin);
 	}
-	else if (!ft_cmd_is_path(data->cmds[k].cmds[0]))
+	else if (data->cmds[0].cmds[0] != NULL
+		&& !ft_cmd_is_path(data->cmds[k].cmds[0]))
 	{
 		ft_print_error2(data->cmds[k].cmds[0], ": command not found\n");
 		g_var.exit_status = 127;

@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 13:19:31 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/08/30 11:05:36 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:58:47 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	setup_readline(t_data *data)
 	g_var.pid_child = 0;
 	g_var.malloc_error = 0;
 	setup_term();
-	data->args = readline("💰\033[0;92m Minishell 💰 \033[0;91m━> \033[0m");
+	data->args = readline(" Minishell-1.0$ ");
 	if (data->args == NULL)
 	{
-		write(1, "\033[1A\033[20C", 10);
+		write(1, "\033[1A\033[16C", 10);
 		write(1, "exit\n", 6);
 		return (0);
 	}

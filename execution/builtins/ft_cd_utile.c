@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:50:32 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 09:54:11 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:51:14 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	update_oldpwd(t_list *env)
 
 	tmp = env;
 	if (getcwd(cwd, PATH_MAX) == NULL)
-		return (0);
+		return (1);
 	oldpwd = ft_strjoin("OLDPWD=", cwd);
 	while (tmp)
 	{
@@ -36,4 +36,18 @@ int	update_oldpwd(t_list *env)
 	new = ft_lstnew(oldpwd);
 	ft_lstadd_back(&env, new);
 	return (0);
+}
+
+char	*get_env_path(t_list *env, const char *var, size_t len)
+{
+	t_list	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		if (ft_strncmp(tmp->content, var, len) == 0)
+			return (ft_strchr(tmp->content, '=') + 1);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

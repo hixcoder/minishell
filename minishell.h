@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/30 11:05:14 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:40:49 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int		ft_pwd(void);
 
 int		ft_cd(t_data *data, int k);
 int		update_oldpwd(t_list *env);
+char	*get_env_path(t_list *env, const char *var, size_t len);
 
 int		ft_env(t_data *data, int k);
 
@@ -169,4 +170,6 @@ void	ft_create_herdoc_file(t_data *data, int i, int j, char *file_name);
 void	ft_error_mallocation(void);
 
 void	ft_fixdollar(t_data *data);
+
+int		ft_is_exit_slash(char *cmd);
 #endif

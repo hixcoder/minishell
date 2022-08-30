@@ -6,25 +6,11 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:48:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/29 16:16:06 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/30 15:56:51 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
-
-char	*get_env_path(t_list *env, const char *var, size_t len)
-{
-	t_list	*tmp;
-
-	tmp = env;
-	while (tmp)
-	{
-		if (ft_strncmp(tmp->content, var, len) == 0)
-			return (ft_strchr(tmp->content, '=') + 1);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
 
 int	update_pwd(t_list *env)
 {
@@ -53,7 +39,7 @@ int	go_to_home(t_data *data)
 {
 	char	*path;
 
-	if (update_oldpwd(data->env_2) == 0)
+	if (update_oldpwd(data->env_2) == 1)
 		return (0);
 	path = get_env_path(data->env_2, "HOME=", 5);
 	if (path == NULL)
@@ -72,18 +58,24 @@ int	go_to_home(t_data *data)
 }
 
 int	go_to_path(t_data *data, int k)
-{	
+{
+	char	*path;
+
 	if (data->cmds[k].cmds[1] && data->cmds[k].cmds[2])
 	{
 		g_var.exit_status = 1;
 		return (printf("minishell: cd: too many arguments\n"), 0);
 	}
+	if (data->cmds[k].cmds[1][0] == '-' && data->cmds[k].cmds[1][1] == '\0')
+		path = get_env_path(data->env_2, "OLDPWD=", 7);
+	else
+		path = data->cmds[k].cmds[1];
 	update_oldpwd(data->env_2);
-	if (chdir(data->cmds[k].cmds[1]) == -1)
+	if (chdir(path) == -1)
 	{
 		g_var.exit_status = 1;
 		return (printf("minishell: cd: no such file or directory: %s\n",
-				data->cmds[k].cmds[1]), 0);
+				path), 0);
 	}
 	update_pwd(data->env_2);
 	return (1);
