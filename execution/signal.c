@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:28:38 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/30 15:58:21 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:31:04 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,5 @@ void	ft_signal_handler_int(int sig)
 		rl_replace_line("", 0);
 		rl_redisplay();
 		g_var.exit_status = 1;
-	}
-}
-
-void	ft_signal_handler_quit(int sig)
-{
-	if (rl_line_buffer && ft_strlen(rl_line_buffer))
-	{
-		write(1, "\n", 1);
-		exit(0);
-	}
-	if (sig == SIGQUIT && !g_var.pid_child)
-	{
-		printf(" Minishell-1.0$ ");
-		g_var.exit_status = 130;
 	}
 }

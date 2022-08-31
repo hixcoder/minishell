@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:46:34 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/30 16:51:47 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:31:38 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ char	*get_env_path(t_list *env, const char *var, size_t len);
 int		ft_env(t_data *data, int k);
 
 void	ft_signal_handler_int(int sig);
-void	ft_signal_handler_quit(int sig);
 
 void	ft_free_pipes(int **pipes);
 void	ft_free_split(char **split);

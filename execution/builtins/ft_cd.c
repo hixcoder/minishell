@@ -6,7 +6,7 @@
 /*   By: ahammam <ahammam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:48:57 by ahammam           #+#    #+#             */
-/*   Updated: 2022/08/30 15:56:51 by ahammam          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:33:32 by ahammam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	go_to_path(t_data *data, int k)
 		g_var.exit_status = 1;
 		return (printf("minishell: cd: too many arguments\n"), 0);
 	}
+	if (data->cmds[k].cmds[1][0] == '~' && data->cmds[k].cmds[1][1] == '\0')
+		return (go_to_home(data));
 	if (data->cmds[k].cmds[1][0] == '-' && data->cmds[k].cmds[1][1] == '\0')
 		path = get_env_path(data->env_2, "OLDPWD=", 7);
 	else
