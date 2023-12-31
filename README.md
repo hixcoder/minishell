@@ -19,7 +19,7 @@ Minishell is a simple shell program written in C. It provides a command-line int
 To compile and run Minishell, follow these steps:
 
 1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd Minishell`
+2. Navigate to the project directory: `cd minishell`
 3. Compile the source code: `make`
 4. Run Minishell: `./minishell`
 
